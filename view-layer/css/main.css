@@ -7,6 +7,10 @@ body {
     background-image: url("../assets/loginBackground.jpg");
 }
 
-.mt-10 {
-    margin-top: 10rem;
+.margin-top-5 {
+    margin-top: 5rem !important;
+}
+
+.input-width {
+    width: 20rem;
 }
