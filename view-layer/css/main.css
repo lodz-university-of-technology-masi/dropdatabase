@@ -7,10 +7,42 @@ body {
     background-image: url("../assets/loginBackground.jpg");
 }
 
-.margin-top-5 {
-    margin-top: 5rem !important;
+.div-form {
+    margin: 5rem auto !important;
+    color: #fff !important;
 }
 
-.input-width {
-    width: 20rem;
+.sign-form {
+    text-align: center !important;
+    border: 1px solid #f8f9fa !important;
+    padding: 3rem !important;
+}
+
+.sign-header {
+    margin-bottom: 1.5rem !important;
+}
+
+.sign-input {
+    width: 20rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.sign-button {
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+@media (max-width: 600px) {
+    .div-form {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    .sign-form {
+        padding: 1rem !important;
+    }
+
+    .sign-input {
+        width: 15rem !important;
+    }
 }
