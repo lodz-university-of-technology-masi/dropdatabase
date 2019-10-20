@@ -7,7 +7,8 @@ body {
     background-image: url("../assets/loginBackground.jpg");
 }
 
-.div-form {
+/*----- SIGN IN PAGE -----*/
+.sign-div {
     margin: 5rem auto !important;
     color: #fff !important;
 }
@@ -19,7 +20,7 @@ body {
 }
 
 .sign-header {
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 2rem !important;
 }
 
 .sign-input {
@@ -33,7 +34,7 @@ body {
 }
 
 @media (max-width: 600px) {
-    .div-form {
+    .sign-div {
         margin-left: 1rem !important;
         margin-right: 1rem !important;
     }
@@ -43,6 +44,48 @@ body {
     }
 
     .sign-input {
+        width: 15rem !important;
+    }
+}
+
+/*----- REGISTER IN PAGE -----*/
+.register-div {
+    margin: 2.5rem auto !important;
+    color: #fff !important;
+}
+
+.register-form {
+    text-align: center !important;
+    border: 1px solid #f8f9fa !important;
+    padding: 2rem !important;
+}
+
+.register-header {
+    margin-bottom: 1.5rem !important;
+}
+
+.register-input {
+    width: 20rem !important;
+    margin-bottom: 1.1rem !important;
+    display: block;
+}
+
+.register-button {
+    margin-top: 3rem !important;
+    margin-bottom: 1rem !important;
+}
+
+@media (max-width: 600px) {
+    .register-div {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    .register-form {
+        padding: 1rem !important;
+    }
+
+    .register-input {
         width: 15rem !important;
     }
 }

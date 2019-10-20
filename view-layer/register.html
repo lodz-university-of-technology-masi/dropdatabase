@@ -40,6 +40,33 @@
   <!-------------------- BODY SECTION -------------------->
   <body>
 
+    <main class="container">
+      <div class="row justify-content-center register-div">
+        <form class="register-form" action="#!">
+          <header class="h4 register-header">Register</header>
+
+          <input type="text" id="inputUsername"
+                 class="form-control register-input" placeholder="Username">
+          <input type="password" id="inputPassword"
+                 class="form-control register-input" placeholder="Password">
+          <input type="password" id="inputRepeatPassword"
+                 class="form-control register-input" placeholder="Repeat Password">
+          <input type="text" id="inputFirstName"
+                 class="form-control register-input" placeholder="FirstName">
+          <input type="text" id="inputLastName"
+                 class="form-control register-input" placeholder="LastName">
+
+          <select class="browser-default custom-select register-input" id="langSelect">
+            <option value="" disabled selected>Choose Preferred Language</option>
+            <option value="eng">English</option>
+            <option value="pl">Polish</option>
+          </select>
+
+          <button class="btn btn-indigo register-button" type="submit">Register</button>
+        </form>
+      </div>
+    </main>
+
     <!-------------------- SCRIPT SECTION -------------------->
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
