@@ -89,3 +89,9 @@ body {
         width: 15rem !important;
     }
 }
+
+/*----- RECRUITER INFO PAGE -----*/
+.message {
+    font-size: 5rem;
+    margin-top: 10rem;
+}
