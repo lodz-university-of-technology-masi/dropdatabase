@@ -48,16 +48,16 @@ body {
     }
 }
 
-/*----- REGISTER IN PAGE -----*/
+/*----- REGISTER PAGE -----*/
 .register-div {
-    margin: 2.5rem auto !important;
+    margin: 1.8rem auto !important;
     color: #fff !important;
 }
 
 .register-form {
     text-align: center !important;
     border: 1px solid #f8f9fa !important;
-    padding: 2rem !important;
+    padding: 1.7rem !important;
 }
 
 .register-header {
@@ -66,13 +66,13 @@ body {
 
 .register-input {
     width: 20rem !important;
-    margin-bottom: 1.1rem !important;
+    margin-bottom: 1.0rem !important;
     display: block;
 }
 
 .register-button {
     margin-top: 3rem !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.7rem !important;
 }
 
 @media (max-width: 600px) {
@@ -82,7 +82,7 @@ body {
     }
 
     .register-form {
-        padding: 1rem !important;
+        padding: 0.8rem !important;
     }
 
     .register-input {
