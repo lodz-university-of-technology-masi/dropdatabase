@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	 <!--Cognito JavaScript-->
+	<script src="./js/amazon-cognito-identity.min.js"></script>  
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+  </head>
+
+  <body>
+	<div class="container">
+      <div>
+        <h2>User Profile</h2>
+		<button type="button" onclick="signOut()">Sign out</button>
+      </div>
+	
+	<div>
+
+		<h4>Personal Information</h4>
+		
+		<br>
+		<div>
+			<label>Type <span>(1-privileged)</span></label>
+		</div>
+		<div>
+			<label id="classID"></label>
+        </div>
+        <div>
+			<label>Email</label>
+		</div>
+		<div>
+			<label id="email"></label>
+        </div>
+        
+		
+    </div>
+
+    <script>
+	var data = { 
+		UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId
+    };
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    var cognitoUser = userPool.getCurrentUser();
+	
+	window.onload = function(){
+    if (cognitoUser != null) {
+        cognitoUser.getSession(function(err, session) {
+            if (err) {
+                alert(err);
+                return;
+            }
+            console.log('session validity: ' + session.isValid());
+			//Set the profile info
+			cognitoUser.getUserAttributes(function(err, result) {
+				if (err) {
+					console.log(err);
+					return;
+				}
+				console.log(result);
+                document.getElementById("classID").innerHTML = result[2].getValue();
+                document.getElementById("email").innerHTML = result[3].getValue();	
+			});			
+			
+        });
+    }
+}
+    </script>
+  </body>
+</html>

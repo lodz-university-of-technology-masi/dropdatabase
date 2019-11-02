@@ -45,8 +45,8 @@
         <form class="sign-form" action="#!">
           <header class="h4 sign-header">Sign in</header>
 
-          <input type="email" id="inputEmail"
-                 class="form-control sign-input" placeholder="E-mail">
+          <input type="text" id="inputUsername"
+                 class="form-control sign-input" placeholder="Username">
           <input type="password" id="inputPassword"
                  class="form-control sign-input" placeholder="Password">
 
@@ -57,7 +57,7 @@
             </label>
           </div>
 
-          <button class="btn btn-indigo sign-button" type="submit">Sign in</button>
+          <button class="btn btn-indigo sign-button" type="submit" onclick="signInButton()">Sign in</button>
         </form>
       </div>
     </main>
@@ -77,6 +77,26 @@
 
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js">
+    </script>
+
+    <script 
+        src="https://code.jquery.com/jquery-1.11.3.min.js">
+    </script>
+
+    <script 
+        src="./js/amazon-cognito-auth.min.js">
+    </script>
+
+    <script 
+        src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js">
+    </script> 
+    
+    <script 
+        src="./js/amazon-cognito-identity.min.js">
+    </script> 
+
+    <script 
+        src="./js/config.js">
     </script>
 
     <script
