@@ -128,7 +128,13 @@
                 return;
               }
               console.log(result);
-              document.getElementById("classID").innerHTML = result[2].getValue();
+
+              if (result[2].getValue() == 1) {
+                document.getElementById("classID").innerHTML = "Recruiter";
+              } else if (result[2].getValue() == 0) {
+                document.getElementById("classID").innerHTML = "Candidate"
+              }
+
               document.getElementById("email").innerHTML = result[3].getValue();
             });
 
