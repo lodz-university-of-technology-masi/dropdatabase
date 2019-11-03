@@ -95,3 +95,14 @@ body {
     font-size: 5rem;
     margin-top: 10rem;
 }
+
+/*----- PROFILE PAGE PAGE -----*/
+.personal-card {
+    font-size: 2rem;
+    margin-top: 4rem;
+    margin-bottom: auto;
+}
+
+.light-grey-font {
+    color: #cfd8dc;
+}
