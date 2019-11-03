@@ -43,32 +43,35 @@
     <main class="container">
       <div class="row justify-content-center register-div">
         <form class="register-form" action="#!">
-          <header class="h4 register-header">Register</header>
+          <header class="h4 register-header" id="titleheader">Register</header>
 
-          <input type="text" id="inputUsername"
+          <input type="text" id="personalnameRegister"
                  class="form-control register-input" placeholder="Username">
-          <input type="password" id="inputPassword"
-                 class="form-control register-input" placeholder="Password">
-          <input type="password" id="inputRepeatPassword"
-                 class="form-control register-input" placeholder="Repeat Password">
-          <input type="text" id="inputFirstName"
-                 class="form-control register-input" placeholder="First Name">
-          <input type="text" id="inputLastName"
-                 class="form-control register-input" placeholder="Last Name">
 
-          <select class="browser-default custom-select register-input" id="langSelect">
+          <input type="text" id="emailInputRegister"
+                 class="form-control register-input" placeholder="E-mail">
+          <input type="password" id="passwordInputRegister"
+                 class="form-control register-input" placeholder="Password">
+          <input type="password" id="confirmationpassword"
+                 class="form-control register-input" placeholder="Repeat Password">
+           <!-- <input type="text" id="inputFirstName"
+                  class="form-control register-input" placeholder="First Name">
+           <input type="text" id="inputLastName"
+                  class="form-control register-input" placeholder="Last Name"> -->
+
+          <!--<select class="browser-default custom-select register-input" id="langSelect">
             <option value="" disabled selected>Choose Preferred Language</option>
             <option value="eng">English</option>
             <option value="pl">Polish</option>
-          </select>
+          </select>-->
 
-          <select class="browser-default custom-select register-input" id="roleSelect">
+          <select class="browser-default custom-select register-input" id="userClass">
             <option value="" disabled selected>Choose Role</option>
-            <option value="recruiter">Recruiter</option>
-            <option value="candidate">Candidate</option>
+            <option value="0">Candidate</option>
+            <option value="1">Recruiter</option>
           </select>
 
-          <button class="btn btn-indigo register-button" type="submit">Register</button>
+          <button class="btn btn-indigo register-button" id="mainbutton" type="submit" onclick="registerButton()">Register</button>
         </form>
       </div>
     </main>
@@ -88,6 +91,25 @@
 
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js">
+    </script>
+    <script 
+        src="https://code.jquery.com/jquery-1.11.3.min.js">
+    </script>
+
+    <script 
+        src="./js/amazon-cognito-auth.min.js">
+    </script>
+
+    <script 
+        src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js">
+    </script> 
+    
+    <script 
+        src="./js/amazon-cognito-identity.min.js">
+    </script> 
+
+    <script 
+        src="./js/config.js">
     </script>
 
     <script
