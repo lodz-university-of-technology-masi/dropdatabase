@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<!-------------------- HTML SECTION -------------------->
+<html lang="en">
+
+  <!-------------------- HEAD SECTION -------------------->
+  <head>
+
+    <!-------------------- META SECTION -------------------->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-------------------- TITLE SECTION -------------------->
+    <title>Register</title>
+
+    <!-------------------- LINK SECTION -------------------->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    >
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css"
+    >
+    <link
+        rel="stylesheet"
+        href="./css/main.css"
+    />
+
+  </head>
+
+  <!-------------------- BODY SECTION -------------------->
+  <body>
+
+    <main class="container">
+      <div class="row justify-content-center register-div">
+        <form class="register-form" action="#!">
+          <header class="h4 register-header" id="titleheader">Register</header>
+
+          <input type="text" id="personalnameRegister"
+                 class="form-control register-input" placeholder="Username">
+
+          <input type="text" id="emailInputRegister"
+                 class="form-control register-input" placeholder="E-mail">
+          <input type="password" id="passwordInputRegister"
+                 class="form-control register-input" placeholder="Password">
+          <input type="password" id="confirmationpassword"
+                 class="form-control register-input" placeholder="Repeat Password">
+           <!-- <input type="text" id="inputFirstName"
+                  class="form-control register-input" placeholder="First Name">
+           <input type="text" id="inputLastName"
+                  class="form-control register-input" placeholder="Last Name"> -->
+
+          <!--<select class="browser-default custom-select register-input" id="langSelect">
+            <option value="" disabled selected>Choose Preferred Language</option>
+            <option value="eng">English</option>
+            <option value="pl">Polish</option>
+          </select>-->
+
+          <select class="browser-default custom-select register-input" id="userClass">
+            <option value="" disabled selected>Choose Role</option>
+            <option value="0">Candidate</option>
+            <option value="1">Recruiter</option>
+          </select>
+
+          <button class="btn btn-indigo register-button" id="mainbutton" type="submit" onclick="registerButton()">Register</button>
+        </form>
+      </div>
+    </main>
+
+    <!-------------------- SCRIPT SECTION -------------------->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js">
+    </script>
+    <script 
+        src="https://code.jquery.com/jquery-1.11.3.min.js">
+    </script>
+
+    <script 
+        src="./js/amazon-cognito-auth.min.js">
+    </script>
+
+    <script 
+        src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js">
+    </script> 
+    
+    <script 
+        src="./js/amazon-cognito-identity.min.js">
+    </script> 
+
+    <script 
+        src="./js/config.js">
+    </script>
+
+    <script
+        src="./js/main.js">
+    </script>
+
+  </body>
+
+</html>
+
+<!--------------------  SECTION -------------------->

@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../assets/loginBackground.jpg");
+}
+
+/*----- SIGN IN PAGE -----*/
+.sign-div {
+    margin: 5rem auto !important;
+    color: #fff !important;
+}
+
+.sign-form {
+    text-align: center !important;
+    border: 1px solid #f8f9fa !important;
+    padding: 3rem !important;
+}
+
+.sign-header {
+    margin-bottom: 2rem !important;
+}
+
+.sign-input {
+    width: 20rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.sign-button {
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+@media (max-width: 600px) {
+    .sign-div {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    .sign-form {
+        padding: 1rem !important;
+    }
+
+    .sign-input {
+        width: 15rem !important;
+    }
+}
+
+/*----- REGISTER PAGE -----*/
+.register-div {
+    margin: 1.8rem auto !important;
+    color: #fff !important;
+}
+
+.register-form {
+    text-align: center !important;
+    border: 1px solid #f8f9fa !important;
+    padding: 1.7rem !important;
+}
+
+.register-header {
+    margin-bottom: 1.5rem !important;
+}
+
+.register-input {
+    width: 20rem !important;
+    margin-bottom: 1.0rem !important;
+    display: block;
+}
+
+.register-button {
+    margin-top: 3rem !important;
+    margin-bottom: 0.7rem !important;
+}
+
+@media (max-width: 600px) {
+    .register-div {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    .register-form {
+        padding: 0.8rem !important;
+    }
+
+    .register-input {
+        width: 15rem !important;
+    }
+}
+
+/*----- RECRUITER INFO PAGE -----*/
+.message {
+    font-size: 5rem;
+    margin-top: 10rem;
+}
+
+/*----- PROFILE PAGE PAGE -----*/
+.personal-card {
+    font-size: 2rem;
+    margin-top: 4rem;
+    margin-bottom: auto;
+}
+
+.light-grey-font {
+    color: #cfd8dc;
+}

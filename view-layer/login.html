@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<!-------------------- HTML SECTION -------------------->
+<html lang="en">
+
+  <!-------------------- HEAD SECTION -------------------->
+  <head>
+
+    <!-------------------- META SECTION -------------------->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-------------------- TITLE SECTION -------------------->
+    <title>Login</title>
+
+    <!-------------------- LINK SECTION -------------------->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    >
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css"
+    >
+    <link
+        rel="stylesheet"
+        href="./css/main.css"
+    />
+
+  </head>
+
+  <!-------------------- BODY SECTION -------------------->
+  <body>
+
+    <main class="container">
+      <div class="row justify-content-center sign-div">
+        <form class="sign-form" action="#!">
+          <header class="h4 sign-header">Sign in</header>
+
+          <input type="text" id="inputUsername"
+                 class="form-control sign-input" placeholder="Username">
+          <input type="password" id="inputPassword"
+                 class="form-control sign-input" placeholder="Password">
+
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="inputRememberMe">
+            <label class="custom-control-label" for="inputRememberMe">
+              Remember me
+            </label>
+          </div>
+
+          <button class="btn btn-indigo sign-button" type="submit" onclick="signInButton()">Sign in</button>
+        </form>
+      </div>
+    </main>
+
+    <!-------------------- SCRIPT SECTION -------------------->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js">
+    </script>
+
+    <script 
+        src="https://code.jquery.com/jquery-1.11.3.min.js">
+    </script>
+
+    <script 
+        src="./js/amazon-cognito-auth.min.js">
+    </script>
+
+    <script 
+        src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js">
+    </script> 
+    
+    <script 
+        src="./js/amazon-cognito-identity.min.js">
+    </script> 
+
+    <script 
+        src="./js/config.js">
+    </script>
+
+    <script
+        src="./js/main.js">
+    </script>
+
+  </body>
+</html>
