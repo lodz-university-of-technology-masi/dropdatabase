@@ -4,7 +4,7 @@ import {
   CREATE_TEST_PATH,
   DELETE_TEST_PATH,
   DISPLAY_TEST_PATH,
-  SLASH,
+  HOME_PATH,
   UPDATE_TEST_PATH
 } from "../constants";
 import CreateTest from "../page/create-test/CreateTest";
@@ -21,7 +21,7 @@ export class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path={SLASH} component={Home}/>
+        <Route exact path={HOME_PATH} component={Home}/>
         <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
         <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
         <Route exact path={DISPLAY_TEST_PATH} component={DisplayTest}/>

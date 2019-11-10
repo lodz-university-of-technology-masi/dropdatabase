@@ -6,6 +6,7 @@ export const UPDATE_TEST = "updatetest";
 
 /*---------- PATHS ----------*/
 export const SLASH = "/";
+export const HOME_PATH = "/";
 export const CREATE_TEST_PATH = SLASH + CREATE_TEST;
 export const DELETE_TEST_PATH = SLASH + DELETE_TEST;
 export const DISPLAY_TEST_PATH = SLASH + DISPLAY_TEST;
