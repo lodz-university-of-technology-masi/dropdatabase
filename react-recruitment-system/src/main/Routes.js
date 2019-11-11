@@ -17,7 +17,7 @@ export class Routes extends Component {
 
   /*------------------------ FIELDS REGION ------------------------*/
 
-  /*------------------------ METHODS REGION ------------------------*/
+  /*------------------------ RENDER REGION ------------------------*/
   render() {
     return (
       <Switch>
