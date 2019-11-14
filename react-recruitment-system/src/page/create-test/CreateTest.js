@@ -1,20 +1,16 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 
-export class CreateTest extends Component {
+export const CreateTest = (props) => {
 
-  /*------------------------ FIELDS REGION ------------------------*/
+  /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ METHODS REGION ------------------------*/
-
-  /*------------------------ RENDER REGION ------------------------*/
-  render() {
-    return (
-      <div>
-        CreateTest
-      </div>
-    );
-  }
-}
+  /*------------------------ RETURN REGION ------------------------*/
+  return (
+    <>
+      CreateTest
+    </>
+  );
+};
 
 export default CreateTest;
     

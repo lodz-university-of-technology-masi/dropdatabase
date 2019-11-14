@@ -8,6 +8,7 @@ import 'mdbreact/dist/css/mdb.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
+import './index.css';
 import App from './main/App';
 
 ReactDOM.render(<App/>, document.getElementById('root'));

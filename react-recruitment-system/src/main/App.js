@@ -1,26 +1,19 @@
-import React, {Component} from "react";
-import Styles from "./App.module.css"
+import React, {useState} from "react";
+import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
-import {BrowserRouter} from "react-router-dom";
 
-export class App extends Component {
+export const App = (props) => {
 
-  /*------------------------ FIELDS REGION ------------------------*/
+  /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ METHODS REGION ------------------------*/
-
-  /*------------------------ RENDER REGION ------------------------*/
-  render() {
-    return (
-      <BrowserRouter>
-        <div className={Styles.App}>
-          <Navbar msg={"Recruitment System"}/>
-          <Routes/>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+  /*------------------------ RETURN REGION ------------------------*/
+  return (
+    <BrowserRouter>
+      <Navbar msg={"Recruitment System"}/>
+      <Routes/>
+    </BrowserRouter>
+  );
+};
 
 export default App;

@@ -1,20 +1,16 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 
-export class Home extends Component {
+export const Home = (props) => {
 
-  /*------------------------ FIELDS REGION ------------------------*/
+  /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ METHODS REGION ------------------------*/
-
-  /*------------------------ RENDER REGION ------------------------*/
-  render() {
-    return (
-      <div>
-        Home
-      </div>
-    );
-  }
-}
+  /*------------------------ RETURN REGION ------------------------*/
+  return (
+    <>
+      Home
+    </>
+  );
+};
 
 export default Home;
     

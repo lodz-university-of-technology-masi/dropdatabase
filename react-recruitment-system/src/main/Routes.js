@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import {Route, Switch} from "react-router-dom";
 import {
   CREATE_TEST_PATH,
@@ -13,23 +13,20 @@ import DeleteTest from "../page/delete-test/DeleteTest";
 import DisplayTest from "../page/display-test/DisplayTest";
 import UpdateTest from "../page/update-test/UpdateTest";
 
-export class Routes extends Component {
+export const Routes = (props) => {
 
-  /*------------------------ FIELDS REGION ------------------------*/
+  /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ RENDER REGION ------------------------*/
-  render() {
-    return (
-      <Switch>
-        <Route exact path={HOME_PATH} component={Home}/>
-        <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
-        <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
-        <Route exact path={DISPLAY_TEST_PATH} component={DisplayTest}/>
-        <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
-      </Switch>
-    );
-  }
-}
+  /*------------------------ RETURN REGION ------------------------*/
+  return (
+    <Switch>
+      <Route exact path={HOME_PATH} component={Home}/>
+      <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
+      <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
+      <Route exact path={DISPLAY_TEST_PATH} component={DisplayTest}/>
+      <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
+    </Switch>
+  );
+};
 
 export default Routes;
-    

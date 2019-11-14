@@ -1,20 +1,16 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 
-export class DeleteTest extends Component {
+export const DeleteTest = (props) => {
 
-  /*------------------------ FIELDS REGION ------------------------*/
+  /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ METHODS REGION ------------------------*/
-
-  /*------------------------ RENDER REGION ------------------------*/
-  render() {
-    return (
-      <div>
-        DeleteTest
-      </div>
-    );
-  }
-}
+  /*------------------------ RETURN REGION ------------------------*/
+  return (
+    <>
+      DeleteTest
+    </>
+  );
+};
 
 export default DeleteTest;
     

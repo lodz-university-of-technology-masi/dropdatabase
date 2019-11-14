@@ -1,20 +1,16 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 
-export class DisplayTest extends Component {
+export const DisplayTest = (props) => {
 
-  /*------------------------ FIELDS REGION ------------------------*/
+  /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ METHODS REGION ------------------------*/
-
-  /*------------------------ RENDER REGION ------------------------*/
-  render() {
-    return (
-      <div>
-        DisplayTest
-      </div>
-    );
-  }
-}
+  /*------------------------ RETURN REGION ------------------------*/
+  return (
+    <>
+      DisplayTest
+    </>
+  );
+};
 
 export default DisplayTest;
     
