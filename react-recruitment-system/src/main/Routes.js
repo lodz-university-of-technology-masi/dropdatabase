@@ -12,6 +12,7 @@ import Home from "../page/home/Home";
 import DeleteTest from "../page/delete-test/DeleteTest";
 import DisplayTest from "../page/display-test/DisplayTest";
 import UpdateTest from "../page/update-test/UpdateTest";
+import NotFound from "../page/not-found/NotFound";
 
 export const Routes = (props) => {
 
@@ -25,6 +26,7 @@ export const Routes = (props) => {
       <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
       <Route exact path={DISPLAY_TEST_PATH} component={DisplayTest}/>
       <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
+      <Route component={NotFound}/>
     </Switch>
   );
 };
