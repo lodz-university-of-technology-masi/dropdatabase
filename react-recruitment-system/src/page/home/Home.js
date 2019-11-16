@@ -7,8 +7,8 @@ export const Home = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="container mt-5">
-      <div class="card text-center">
-        <h3 class="card-header text-center">
+      <div className="card text-center">
+        <h3 className="card-header text-center">
           Home
         </h3>
 
