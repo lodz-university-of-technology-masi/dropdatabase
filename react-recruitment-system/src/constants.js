@@ -11,3 +11,8 @@ export const CREATE_TEST_PATH = SLASH + CREATE_TEST;
 export const DELETE_TEST_PATH = SLASH + DELETE_TEST;
 export const DISPLAY_TEST_PATH = SLASH + DISPLAY_TEST;
 export const UPDATE_TEST_PATH = SLASH + UPDATE_TEST;
+
+/*---------- KEYS ----------*/
+const FIREBASE_LINK = "https://react-cloud-8a7bc.firebaseio.com/";
+const FIREBASE_KEY = "Vr58zDSDqflQlIbEXHqaoPBca3hLCOh5Su2cbu1Y";
+export const FIREBASE_PATH = FIREBASE_LINK + ".json" + "?auth=" + FIREBASE_KEY;
