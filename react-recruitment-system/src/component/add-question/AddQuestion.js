@@ -16,7 +16,7 @@ export const AddQuestion = (props) => {
 
   const renderOpenQuestion = () => {
     return (
-      <form>
+      <form onSubmit={props.handleSubmitOpenQuestion}>
         <input className="form-control mb-3" placeholder="Question"
                name="openQuestion"
         />
@@ -26,7 +26,7 @@ export const AddQuestion = (props) => {
         />
 
         <div className="row justify-content-center mt-3">
-          <button className="btn btn-primary" onClick={props.handleSubmitOpenQuestion}>
+          <button type="submit" className="btn btn-primary">
             Add question to test
           </button>
         </div>
@@ -34,52 +34,41 @@ export const AddQuestion = (props) => {
     );
   };
 
-  //TODO ADD SUBMITING DATA FROM FORM - NOW RERENDER AFTER BUTTON CLICK AND ADD '?' TO PATH
   const renderCloseQuestion = () => {
     return (
-      <form>
-        <input className="form-control mb-3" placeholder="Question"
-
-        />
+      <form onSubmit={props.handleSubmitCloseQuestion}>
+        <input className="form-control mb-3" placeholder="Question" name="closeQuestion"/>
 
         <div className="input-group-prepend mb-2">
           <div className="input-group-text">
-            <input type="checkbox"/>
+            <input type="checkbox" name="checkboxAnswerA"/>
           </div>
-          <input className="form-control" placeholder="Answer A"
-
-          />
+          <input className="form-control" placeholder="Answer A" name="closeAnswerA"/>
         </div>
 
         <div className="input-group-prepend mb-2">
           <div className="input-group-text">
-            <input type="checkbox"/>
+            <input type="checkbox" name="checkboxAnswerB"/>
           </div>
-          <input className="form-control" placeholder="Answer B"
-
-          />
+          <input className="form-control" placeholder="Answer B" name="closeAnswerB"/>
         </div>
 
         <div className="input-group-prepend mb-2">
           <div className="input-group-text">
-            <input type="checkbox"/>
+            <input type="checkbox" name="checkboxAnswerC"/>
           </div>
-          <input className="form-control" placeholder="Answer C"
-
-          />
+          <input className="form-control" placeholder="Answer C" name="closeAnswerC"/>
         </div>
 
         <div className="input-group-prepend mb-2">
           <div className="input-group-text">
-            <input type="checkbox"/>
+            <input type="checkbox" name="checkboxAnswerD"/>
           </div>
-          <input className="form-control" placeholder="Answer D"
-
-          />
+          <input className="form-control" placeholder="Answer D" name="closeAnswerD"/>
         </div>
 
         <div className="row justify-content-center mt-3">
-          <button className="btn btn-primary" onClick={props.handleSubmitCloseQuestion}>
+          <button type="submit" className="btn btn-primary">
             Add question to test
           </button>
         </div>

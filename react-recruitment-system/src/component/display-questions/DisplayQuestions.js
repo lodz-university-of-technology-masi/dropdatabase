@@ -16,7 +16,7 @@ export const DisplayQuestions = (props) => {
   const renderPartQuestion = (it, index) => {
     return (
       <li className="list-group-item" key={index}>
-        {it.name}
+        {it.questionContent}
         {renderDeleteQuestionButton()}
       </li>
     );

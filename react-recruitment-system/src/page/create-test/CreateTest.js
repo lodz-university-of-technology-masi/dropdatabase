@@ -11,26 +11,7 @@ export const CreateTest = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
-  const [questionArray, setQuestionArray] = useState([
-    {
-      "name": "vfvfvfv",
-      "content": "qqq",
-    },
-    {
-      "name": "vfvfvfv",
-      "content": "qqq",
-    },
-    {
-      "name": "vfvfvfv",
-      "content": "qqq",
-    },
-    {
-      "name": "vfvfvfv",
-      "content": "qqq",
-    },
-  ]);
-
-  console.log(FIREBASE_PATH);
+  const [questionArray, setQuestionArray] = useState([]);
 
   const handleSwitchClick = () => {
     setIsOpenQuestion(!isOpenQuestion);
@@ -40,21 +21,44 @@ export const CreateTest = (props) => {
     console.log("delete")
   };
 
-  const handleSubmitOpenQuestion = () => {
-    console.log("open");
+  const handleSubmitOpenQuestion = (e) => {
+    e.preventDefault();
 
-    let question = {
+    const question = {
       id: uuidv4(),
+      isOpen: true,
+      questionContent: e.target.openQuestion.value,
+      questionAnswer: e.target.openAnswer.value,
     };
+
     setQuestionArray([...questionArray, question]);
   };
 
-  const handleSubmitCloseQuestion = () => {
-    console.log("close");
+  const handleSubmitCloseQuestion = (e) => {
+    e.preventDefault();
 
-    let question = {
+    let temp = "";
+    if (e.target.checkboxAnswerA.checked) {
+      temp += ";A"
+    } else if (e.target.checkboxAnswerB.checked) {
+      temp += ";B"
+    } else if (e.target.checkboxAnswerC.checked) {
+      temp += ";C"
+    } else if (e.target.checkboxAnswerD.checked) {
+      temp += ";D"
+    }
+
+    const question = {
       id: uuidv4(),
+      isOpen: false,
+      questionContent: e.target.closeQuestion.value,
+      answerA: e.target.closeAnswerA.value,
+      answerB: e.target.closeAnswerB.value,
+      answerC: e.target.closeAnswerC.value,
+      answerD: e.target.closeAnswerD.value,
+      correct: temp,
     };
+
     setQuestionArray([...questionArray, question]);
   };
 
