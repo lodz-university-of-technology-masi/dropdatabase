@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
 export const CreateDisplayQuestions = (props) => {
 
@@ -19,8 +20,7 @@ export const CreateDisplayQuestions = (props) => {
                 <li className="list-group-item" key={index}>
                   {it.name}
                   <button className="btn btn-danger white-text float-right"
-                          onClick={props.handleDeleteQuestion}
-                  >
+                          onClick={props.handleDeleteQuestion}>
                     Delete
                   </button>
                 </li>
@@ -37,6 +37,12 @@ export const CreateDisplayQuestions = (props) => {
       </section>
     </>
   );
+};
+
+CreateDisplayQuestions.propTypes = {
+  questionArray: PropTypes.array,
+  handleDeleteQuestion: PropTypes.func,
+  postTestToServer: PropTypes.func,
 };
 
 export default CreateDisplayQuestions;

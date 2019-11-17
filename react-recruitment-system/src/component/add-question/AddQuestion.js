@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
 export const AddQuestion = (props) => {
 
@@ -102,6 +103,13 @@ export const AddQuestion = (props) => {
       </section>
     </>
   );
+};
+
+AddQuestion.propTypes = {
+  isOpenQuestion: PropTypes.bool,
+  handleSwitchClick: PropTypes.func,
+  handleSubmitOpenQuestion: PropTypes.func,
+  handleSubmitCloseQuestion: PropTypes.func,
 };
 
 export default AddQuestion;
