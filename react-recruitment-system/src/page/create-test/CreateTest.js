@@ -3,15 +3,32 @@ import {FIREBASE_PATH} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTest.css";
-import CreateDisplayQuestions
-  from "../../component/create-display-questions/CreateDisplayQuestions";
+import DisplayQuestions
+  from "../../component/display-questions/DisplayQuestions";
 import AddQuestion from "../../component/add-question/AddQuestion";
 
 export const CreateTest = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
-  const [questionArray, setQuestionArray] = useState([]);
+  const [questionArray, setQuestionArray] = useState([
+    {
+      "name": "vfvfvfv",
+      "content": "qqq",
+    },
+    {
+      "name": "vfvfvfv",
+      "content": "qqq",
+    },
+    {
+      "name": "vfvfvfv",
+      "content": "qqq",
+    },
+    {
+      "name": "vfvfvfv",
+      "content": "qqq",
+    },
+  ]);
 
   console.log(FIREBASE_PATH);
 
@@ -23,9 +40,9 @@ export const CreateTest = (props) => {
     console.log("delete")
   };
 
-  const handleSubmitOpenQuestion = (e) => {
+  const handleSubmitOpenQuestion = () => {
     console.log("open");
-    console.log(e.target.openQuestion.value);
+
     let question = {
       id: uuidv4(),
     };
@@ -34,6 +51,7 @@ export const CreateTest = (props) => {
 
   const handleSubmitCloseQuestion = () => {
     console.log("close");
+
     let question = {
       id: uuidv4(),
     };
@@ -54,7 +72,8 @@ export const CreateTest = (props) => {
         handleSubmitCloseQuestion={handleSubmitCloseQuestion}
       />
 
-      <CreateDisplayQuestions
+      <DisplayQuestions
+        isChangeable={true}
         questionArray={questionArray}
         handleDeleteQuestion={handleDeleteQuestion}
         postTestToServer={postTestToServer}
