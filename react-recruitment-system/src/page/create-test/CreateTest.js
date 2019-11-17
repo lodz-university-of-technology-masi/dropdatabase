@@ -12,6 +12,18 @@ export const CreateTest = (props) => {
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
 
+  const areEmptyInputs = (...elements) => {
+    let result = false;
+
+    elements.forEach((it) => {
+      if (it.value === "") {
+        result = true;
+      }
+    });
+
+    return result;
+  };
+
   const clearTextInputs = (...elements) => {
     elements.forEach((it) => it.value = "")
   };
@@ -33,6 +45,11 @@ export const CreateTest = (props) => {
   const handleSubmitOpenQuestion = (e) => {
     e.preventDefault();
 
+    if (areEmptyInputs(e.target.openQuestion, e.target.openAnswer)) {
+      alert("All inputs must be fill in");
+      return;
+    }
+
     const question = {
       id: uuidv4(),
       isOpen: true,
@@ -46,6 +63,20 @@ export const CreateTest = (props) => {
 
   const handleSubmitCloseQuestion = (e) => {
     e.preventDefault();
+
+    if (e.target.checkboxAnswerA.checked === false
+      && e.target.checkboxAnswerB.checked === false
+      && e.target.checkboxAnswerC.checked === false
+      && e.target.checkboxAnswerD.checked === false) {
+      alert("In close quetions at least one answer must be marked as correct");
+      return;
+    }
+
+    if (areEmptyInputs(e.target.closeQuestion, e.target.closeAnswerA,
+      e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD)) {
+      alert("All inputs must be fill in");
+      return;
+    }
 
     let temp = "";
     if (e.target.checkboxAnswerA.checked) {
@@ -74,12 +105,8 @@ export const CreateTest = (props) => {
 
     setQuestionArray([...questionArray, question]);
 
-    clearTextInputs(
-      e.target.closeQuestion,
-      e.target.closeAnswerA,
-      e.target.closeAnswerB,
-      e.target.closeAnswerC,
-      e.target.closeAnswerD
+    clearTextInputs(e.target.closeQuestion, e.target.closeAnswerA,
+      e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD
     );
 
     clearCheckboxes(
