@@ -1,9 +1,29 @@
-import React, {useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 export const DisplayQuestions = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const renderDeleteTestButton = () => {
+    return (
+      <div className="row justify-content-center mb-4">
+        <button className="btn btn-danger white-text"
+                onClick={props.handleDeleteTest}>
+          Delete Test
+        </button>
+      </div>
+    );
+  };
+
+  // TODO ADD DISPLAY QUESTION ID
+  const renderTestId = () => {
+    return (
+      <h6 className="font-weight-bold text-center mb-1">
+        Test Identifier:
+      </h6>
+    );
+  };
+
   const renderWholeQuestion = (it, index) => {
     //TODO ADD MORE VALUE FROM ARRAY - MORE THAN IT.NAME
     return (
@@ -17,35 +37,15 @@ export const DisplayQuestions = (props) => {
     return (
       <li className="list-group-item" key={index}>
         {it.questionContent}
-        {renderDeleteQuestionButton()}
+        {renderDeleteQuestionButton(index)}
       </li>
     );
   };
 
-  // TODO ADD DISPLAY QUESTION ID
-  const renderTestId = () => {
-    return (
-      <h6 className="font-weight-bold text-center mb-1">
-        Test Identifier:
-      </h6>
-    );
-  };
-
-  const renderDeleteTestButton = () => {
-    return (
-      <div className="row justify-content-center mb-4">
-        <button className="btn btn-danger white-text"
-                onClick={props.handleDeleteTest}>
-          Delete Test
-        </button>
-      </div>
-    );
-  };
-
-  const renderDeleteQuestionButton = () => {
+  const renderDeleteQuestionButton = (index) => {
     return (
       <button className="btn btn-danger white-text float-right"
-              onClick={props.handleDeleteQuestion}>
+              onClick={() => props.handleDeleteQuestion(index)}>
         Delete
       </button>
     );

@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {FIREBASE_PATH} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTest.css";
-import DisplayQuestions
-  from "../../component/display-questions/DisplayQuestions";
+import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 import AddQuestion from "../../component/add-question/AddQuestion";
 
 export const CreateTest = (props) => {
@@ -13,12 +12,22 @@ export const CreateTest = (props) => {
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
 
+  const clearTextInputs = (...elements) => {
+    elements.forEach((it) => it.value = "")
+  };
+
+  const clearCheckboxes = (...elements) => {
+    elements.forEach((it) => it.checked = false)
+  };
+
   const handleSwitchClick = () => {
     setIsOpenQuestion(!isOpenQuestion);
   };
 
-  const handleDeleteQuestion = () => {
-    console.log("delete")
+  const handleDeleteQuestion = (index) => {
+    let temp = questionArray.slice();
+    temp.splice(index, 1);
+    setQuestionArray(temp);
   };
 
   const handleSubmitOpenQuestion = (e) => {
@@ -32,6 +41,7 @@ export const CreateTest = (props) => {
     };
 
     setQuestionArray([...questionArray, question]);
+    clearTextInputs(e.target.openQuestion, e.target.openAnswer);
   };
 
   const handleSubmitCloseQuestion = (e) => {
@@ -63,6 +73,21 @@ export const CreateTest = (props) => {
     };
 
     setQuestionArray([...questionArray, question]);
+
+    clearTextInputs(
+      e.target.closeQuestion,
+      e.target.closeAnswerA,
+      e.target.closeAnswerB,
+      e.target.closeAnswerC,
+      e.target.closeAnswerD
+    );
+
+    clearCheckboxes(
+      e.target.checkboxAnswerA,
+      e.target.checkboxAnswerB,
+      e.target.checkboxAnswerC,
+      e.target.checkboxAnswerD,
+    );
   };
 
   const postTestToServer = () => {
