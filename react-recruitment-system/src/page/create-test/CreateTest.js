@@ -40,11 +40,14 @@ export const CreateTest = (props) => {
     let temp = "";
     if (e.target.checkboxAnswerA.checked) {
       temp += ";A"
-    } else if (e.target.checkboxAnswerB.checked) {
+    }
+    if (e.target.checkboxAnswerB.checked) {
       temp += ";B"
-    } else if (e.target.checkboxAnswerC.checked) {
+    }
+    if (e.target.checkboxAnswerC.checked) {
       temp += ";C"
-    } else if (e.target.checkboxAnswerD.checked) {
+    }
+    if (e.target.checkboxAnswerD.checked) {
       temp += ";D"
     }
 
