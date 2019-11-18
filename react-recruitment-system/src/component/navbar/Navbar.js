@@ -1,12 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {
-  CREATE_TEST_PATH,
-  DELETE_TEST_PATH,
-  DISPLAY_TEST_PATH,
-  HOME_PATH,
-  UPDATE_TEST_PATH
-} from "../../constants";
+import {CREATE_TEST_PATH, DELETE_TEST_PATH, HOME_PATH, UPDATE_TEST_PATH} from "../../constants";
 
 export const Navbar = (props) => {
 
@@ -28,12 +22,6 @@ export const Navbar = (props) => {
 
       <div className="collapse navbar-collapse" id="navList">
         <ul className="navbar-nav ml-auto">
-
-          <li className="nav-item">
-            <Link to={DISPLAY_TEST_PATH} className="nav-link">
-              Display Test
-            </Link>
-          </li>
 
           <li className="nav-item">
             <Link to={CREATE_TEST_PATH} className="nav-link">
