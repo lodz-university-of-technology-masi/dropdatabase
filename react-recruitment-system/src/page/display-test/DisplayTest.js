@@ -35,7 +35,7 @@ export const DisplayTest = (props) => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        axios.get(FIREBASE_PATH)
+        axios.get(FIREBASE_PATH+"/tests")
             .then(res => {
                 setTestArray(res.data);
                 //                setTestArray(Object.entries(res.data));

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {FIREBASE_PATH} from "../../constants";
+import {USER_SESSION_ID} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTest.css";
@@ -11,7 +12,7 @@ export const CreateTest = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
-
+    
   const areEmptyInputs = (...elements) => {
     let result = false;
 
@@ -80,16 +81,16 @@ export const CreateTest = (props) => {
 
     let temp = "";
     if (e.target.checkboxAnswerA.checked) {
-      temp += ";A"
+      temp += "A"
     }
     if (e.target.checkboxAnswerB.checked) {
-      temp += ";B"
+      temp += "B"
     }
     if (e.target.checkboxAnswerC.checked) {
-      temp += ";C"
+      temp += "C"
     }
     if (e.target.checkboxAnswerD.checked) {
-      temp += ";D"
+      temp += "D"
     }
 
     const question = {
@@ -118,7 +119,16 @@ export const CreateTest = (props) => {
   };
 
   const postTestToServer = () => {
-    axios.post(FIREBASE_PATH, questionArray).then(() => alert("Test has been sent"));
+      console.log(questionArray)
+      let test = {
+          "user": {
+            "userToken": USER_SESSION_ID
+          },
+          "testUUID": uuidv4(),
+          "questions": questionArray
+      };
+      console.log(test);
+      axios.post(FIREBASE_PATH+"/test", test).then(() => alert("Test has been sent"));
   };
 
   /*------------------------ RETURN REGION ------------------------*/
