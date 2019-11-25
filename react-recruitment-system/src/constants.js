@@ -15,6 +15,7 @@ export const UPDATE_TEST_PATH = SLASH + UPDATE_TEST;
 /*---------- KEYS ----------*/
 const FIREBASE_LINK = "https://react-cloud-8a7bc.firebaseio.com/";
 const FIREBASE_KEY = "Vr58zDSDqflQlIbEXHqaoPBca3hLCOh5Su2cbu1Y";
-export const FIREBASE_PATH = FIREBASE_LINK + ".json" + "?auth=" + FIREBASE_KEY;
+//export const FIREBASE_PATH = FIREBASE_LINK + ".json" + "?auth=" + FIREBASE_KEY;
+export const FIREBASE_PATH = "https://8ry9799483.execute-api.us-east-1.amazonaws.com/cc_Tests/tests";
 // FULL PATH TO FIREBASE
 // https://react-cloud-8a7bc.firebaseio.com/.json?auth=Vr58zDSDqflQlIbEXHqaoPBca3hLCOh5Su2cbu1Y

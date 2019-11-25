@@ -16,21 +16,37 @@ export const DisplayQuestions = (props) => {
   };
 
   // TODO ADD DISPLAY QUESTION ID
-  const renderTestId = () => {
+  const renderTestId = (id) => {
     return (
       <h6 className="font-weight-bold text-center mb-1">
-        Test Identifier:
+        Test Identifier: {id}
       </h6>
     );
   };
 
   const renderWholeQuestion = (it, index) => {
     //TODO ADD MORE VALUE FROM ARRAY - MORE THAN IT.NAME
-    return (
-      <li className="list-group-item" key={index}>
-        {it.name}
-      </li>
-    );
+    let items = [];
+      switch(it.questionContent){
+        case "sample":
+            Object.keys(it).map((it2, index)=>{
+                if((it2).includes("answer"))
+                   items.push (
+                  <li className="list-group-item" key={index}>
+                       {it2}:  {it[it2]}
+                  </li>
+                );    
+            })
+              return items;
+            break;
+      default:
+            return (
+              <li className="list-group-item" key={index}>
+                {JSON.stringify(it)}
+              </li>
+            );
+            
+    }
   };
 
   const renderPartQuestion = (it, index) => {
@@ -71,12 +87,12 @@ export const DisplayQuestions = (props) => {
 
         {props.isRemovable ? renderDeleteTestButton() : null}
 
-        {props.isChangeable ? null : renderTestId()}
+        {props.isChangeable ? null : renderTestId(props.testUUID)}
 
         <ul className="list-group list-group-flush mt-3">
           {
             props.questionArray.map((it, index) => {
-              return (
+            return (
                 props.isChangeable ? renderPartQuestion(it, index) : renderWholeQuestion(it, index)
               );
             })
