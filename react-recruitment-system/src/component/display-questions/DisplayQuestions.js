@@ -26,27 +26,34 @@ export const DisplayQuestions = (props) => {
 
   const renderWholeQuestion = (it, index) => {
     //TODO ADD MORE VALUE FROM ARRAY - MORE THAN IT.NAME
-    let items = [];
-      switch(it.questionContent){
-        case "sample":
-            Object.keys(it).map((it2, index)=>{
-                if((it2).includes("answer"))
-                   items.push (
-                  <li className="list-group-item" key={index}>
-                       {it2}:  {it[it2]}
-                  </li>
-                );    
-            })
-              return items;
-            break;
-      default:
-            return (
-              <li className="list-group-item" key={index}>
-                {JSON.stringify(it)}
+    let items = [];  
+    if(!it.open){
+        Object.keys(it).map((it2, index)=>{
+            if(it2.includes("answer")){
+               if(it.correct.includes(it2[it2.length-1])){
+                items.push (
+              <li className="list-group-item green" key={index}>
+                   {it2}:  {it[it2]}
               </li>
-            );
-            
+            );    
+               }else{
+                   items.push (
+              <li className="list-group-item" key={index}>
+                   {it2}:  {it[it2]}
+              </li>
+            );   
+               }
+            }
+        })
+        return (<ul className="list-group list-group-flush mt-3 card"><h4 className="text-center">Question: {it.questionContent}</h4>{items}</ul>); 
+    }else{
+        return (<ul className="list-group list-group-flush mt-3 card"><h4 className="text-center">Question: {it.questionContent}</h4><li className="list-group-item">Anwser: {it.questionAnswer}</li></ul>); 
     }
+    return (
+      <li className="list-group-item" key={index}>
+        {JSON.stringify(it)}
+      </li>
+    );
   };
 
   const renderPartQuestion = (it, index) => {
