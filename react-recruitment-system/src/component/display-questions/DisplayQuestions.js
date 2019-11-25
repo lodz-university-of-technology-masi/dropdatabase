@@ -1,14 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import axios from "axios";
+import {Link} from "react-router-dom";
+import {USER_SESSION_ID} from "../../constants";
+import {CREATE_TEST} from "../../constants";
+import {
+    FIREBASE_PATH
+} from "../../constants";
 export const DisplayQuestions = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const renderDeleteTestButton = () => {
+  const renderDeleteTestButton = (it) => {
     return (
-      <div className="row justify-content-center mb-4">
+      <div className="row right mb-4">
         <button className="btn btn-danger white-text"
-                onClick={props.handleDeleteTest}>
+                onClick={()=>{handleDeleteTest(it)}}>
           Delete Test
         </button>
       </div>
@@ -24,13 +30,14 @@ export const DisplayQuestions = (props) => {
     );
   };
 
+
   const renderWholeQuestion = (it, index) => {
     //TODO ADD MORE VALUE FROM ARRAY - MORE THAN IT.NAME
     let items = [];  
-    if(!it.open){
+    if(!it.isOpen){
         Object.keys(it).map((it2, index)=>{
             if(it2.includes("answer")){
-               if(it.correct.includes(it2[it2.length-1])){
+               if(it.correct && it.correct.includes(it2[it2.length-1])){
                 items.push (
               <li className="list-group-item green" key={index}>
                    {it2}:  {it[it2]}
@@ -64,7 +71,33 @@ export const DisplayQuestions = (props) => {
       </li>
     );
   };
-
+const handleDeleteTest = (e) => {
+      let test = {
+          "user": {
+            "userToken": USER_SESSION_ID
+          },
+          "testUUID": e.testUUID,
+          "questions": e.questions
+      };
+      console.log(JSON.stringify(test));
+//      console.log(questionArray)
+//      let test = {
+//          "user": {
+//            "userToken": USER_SESSION_ID
+//          },
+//          "testUUID": uuidv4(),
+//          "questions": questionArray
+//      };
+//      console.log(test);
+      console.log(test);
+      console.log(FIREBASE_PATH+"/test");
+      axios.delete(FIREBASE_PATH+"/test", {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  data: test
+}).then(() => {alert("Test has been deleted");window.location.reload()}).catch((error)=>console.log(error));
+  };
   const renderDeleteQuestionButton = (index) => {
     return (
       <button className="btn btn-danger white-text float-right"
@@ -83,7 +116,19 @@ export const DisplayQuestions = (props) => {
       </div>
     );
   };
-
+  const renderChangeTestButton = () => {
+    return (
+      <div className="row justify-content-center my-3">
+        <Link to={CREATE_TEST} className="nav-link">
+              
+            
+        <button className="btn btn-primary" onClick={()=>{document.location.replace(CREATE_TEST)}}>
+          Change Test
+        </button>
+</Link>
+      </div>
+    );
+  };
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
@@ -92,7 +137,7 @@ export const DisplayQuestions = (props) => {
           <h5 className="font-weight-bold mb-1">Questions in the Test</h5>
         </header>
 
-        {props.isRemovable ? renderDeleteTestButton() : null}
+      {!props.noDelete? renderDeleteTestButton(props.all): null}
 
         {props.isChangeable ? null : renderTestId(props.testUUID)}
 
@@ -106,7 +151,7 @@ export const DisplayQuestions = (props) => {
           }
         </ul>
 
-        {props.isChangeable ? renderCreateTestButton() : null}
+        {(props.isChangeable && !props.isForChange)? renderCreateTestButton() : renderChangeTestButton()}
       </section>
     </>
   );
@@ -114,11 +159,13 @@ export const DisplayQuestions = (props) => {
 
 DisplayQuestions.propTypes = {
   isChangeable: PropTypes.bool,
+  noDelete: PropTypes.bool,
   isRemovable: PropTypes.bool,
   questionArray: PropTypes.array,
   handleDeleteQuestion: PropTypes.func,
   postTestToServer: PropTypes.func,
   handleDeleteTest: PropTypes.func,
+  isForChange: PropTypes.bool,
 };
 
 export default DisplayQuestions;

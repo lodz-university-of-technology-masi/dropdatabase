@@ -3,8 +3,9 @@ import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
 
-export const App = (props) => {
+export let zmienna = "hehe";
 
+export const App = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
 
   /*------------------------ RETURN REGION ------------------------*/

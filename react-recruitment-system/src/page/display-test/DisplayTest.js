@@ -3,12 +3,14 @@ import React, {
     useState
 } from "react";
 import axios from "axios";
+import "./DisplayTest.css";
 import {
     FIREBASE_PATH
 } from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
 export const DisplayTest = (props) => {
+    
 
     /*----------------------- VARIABLE REGION -----------------------*/
 
@@ -95,7 +97,7 @@ export const DisplayTest = (props) => {
             console.log(test);
             items.push(< DisplayQuestions questionArray = {
                     test.questions
-                } testUUID = {test.testUUID} key = {test.testUUID}
+                } testUUID = {test.testUUID} key = {test.testUUID} all={test}
                 />);
         }
         return(items);

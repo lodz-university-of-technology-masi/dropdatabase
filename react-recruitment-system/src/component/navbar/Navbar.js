@@ -29,7 +29,7 @@ export const Navbar = (props) => {
             </Link>
           </li>
 
-          <li className="nav-item">
+      {/*<li className="nav-item">
             <Link to={UPDATE_TEST_PATH} className="nav-link">
               Update Test
             </Link>
@@ -39,7 +39,7 @@ export const Navbar = (props) => {
             <Link to={DELETE_TEST_PATH} className="nav-link">
               Delete Test
             </Link>
-          </li>
+          </li>*/}
 
         </ul>
       </div>

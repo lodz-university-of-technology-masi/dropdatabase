@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
+import {zmienna} from '../../main/App.js'
 import {FIREBASE_PATH} from "../../constants";
 import {USER_SESSION_ID} from "../../constants";
 import axios from "axios";
@@ -12,7 +13,10 @@ export const CreateTest = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
-    
+        useEffect(() => {
+
+           // zmienna = "hasjdkas";
+        });
   const areEmptyInputs = (...elements) => {
     let result = false;
 
@@ -128,12 +132,13 @@ export const CreateTest = (props) => {
           "questions": questionArray
       };
       console.log(test);
-      axios.post(FIREBASE_PATH+"/test", test).then(() => alert("Test has been sent"));
+      axios.post(FIREBASE_PATH+"/test", test).then(() => {alert("Test has been sent");document.location.replace('/')});
   };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
+      {zmienna}
       <AddQuestion
         isOpenQuestion={isOpenQuestion}
         handleSwitchClick={handleSwitchClick}
@@ -143,6 +148,7 @@ export const CreateTest = (props) => {
 
       <DisplayQuestions
         isChangeable={true}
+      noDelete={true}
         questionArray={questionArray}
         handleDeleteQuestion={handleDeleteQuestion}
         postTestToServer={postTestToServer}
