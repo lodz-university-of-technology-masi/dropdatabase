@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useReducer} from "react";
 import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
@@ -6,15 +6,38 @@ import Routes from "./Routes";
 export let zmienna = "hehe";
 
 export const App = (props) => {
-  /*----------------------- VARIABLE REGION -----------------------*/
+    /*----------------------- VARIABLE REGION -----------------------*/
+    const initialState = {
 
-  /*------------------------ RETURN REGION ------------------------*/
-  return (
-    <BrowserRouter>
-      <Navbar msg={"Recruitment System"}/>
-      <Routes/>
-    </BrowserRouter>
-  );
+        testToBeChanged: '',
+
+    };
+
+    function reducer(state, action) {
+        switch (action.type) {
+            case 'UPDATE_INPUT':
+                return {
+                    testToBeChanged: action.data
+                };
+
+
+            default:
+                return initialState;
+        }
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+    /*------------------------ RETURN REGION ------------------------*/
+    return (
+        <AppContext.Provider value={{state, dispatch}}>
+            <BrowserRouter>
+                <Navbar msg={"Recruitment System"}/>
+                <Routes/>
+            </BrowserRouter>
+        </AppContext.Provider>
+    );
 };
 
+// Create context object
+export const AppContext = React.createContext();
 export default App;

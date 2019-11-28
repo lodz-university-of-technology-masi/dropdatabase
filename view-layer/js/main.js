@@ -25,7 +25,7 @@ function signInButton() {
         onSuccess: function (result) {
 			var accessToken = result.getAccessToken().getJwtToken();
             console.log(accessToken);	
-            window.open("https://dropdatabase-private.s3.amazonaws.com/Testowy/profile.html","_self");
+            /*window.open("https://dropdatabase-private.s3.amazonaws.com/Testowy/profile.html","_self");*/
         },
         onFailure: function(err) {
             alert(err.message || JSON.stringify(err));

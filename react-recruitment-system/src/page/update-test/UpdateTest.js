@@ -1,15 +1,19 @@
-import React, {useEffect, useState} from "react";
-import {USER_SESSION_ID} from "../../constants";
+import React, {useEffect, useState, useContext} from "react";
+import {DISPLAY_TEST, UPDATE_TEST, USER_SESSION_ID} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 import axios from "axios";
 import {FIREBASE_PATH} from "../../constants";
 import uuidv4 from "uuid/v4";
-import {zmienna} from "../../main/App";
+import {AppContext, zmienna} from "../../main/App";
 import AddQuestion from "../../component/add-question/AddQuestion";
-
+import EditQuestion from "../../component/edit-question/EditQuestion";
+import {Link} from "react-router-dom";
 export const DeleteTest = (props) => {
 
+
+
   /*----------------------- VARIABLE REGION -----------------------*/
+    const {state, dispatch} = useContext(AppContext);
   // TEMPORARY ARRAY TO DELETE
 //  const [questionArray, setQuestionArray] = useState([
 //    {"name": "vfvfvfv"},
@@ -147,14 +151,28 @@ export const DeleteTest = (props) => {
   //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
     return (
         <>
-            <h1>lol</h1>
-            <AddQuestion
-                isOpenQuestion={isOpenQuestion}
-                handleSwitchClick={handleSwitchClick}
-                handleSubmitOpenQuestion={handleSubmitOpenQuestion}
-                handleSubmitCloseQuestion={handleSubmitCloseQuestion}
-            />
+            {() => {
+                if(typeof (state.testToBeChanged.questions) === 'undefined')
+                    return(<Link to={DISPLAY_TEST} className="nav-link"/>)
+        }}
+            <p>{JSON.stringify(state.testToBeChanged)}</p>
 
+            <ul className="list-group list-group-flush mt-3">
+                {
+                    state.testToBeChanged.questions.map((it, index) => {
+                        return (
+                            <EditQuestion
+                                isOpenQuestion={state.testToBeChanged.questions[index].isOpen}
+                                handleSwitchClick={handleSwitchClick}
+                                handleSubmitOpenQuestion={handleSubmitOpenQuestion}
+                                handleSubmitCloseQuestion={handleSubmitCloseQuestion}
+                                questionIndex={index}
+                            />
+
+                        );
+                    })
+                }
+            </ul>
             <DisplayQuestions
                 isChangeable={true}
                 noDelete={true}
@@ -162,6 +180,7 @@ export const DeleteTest = (props) => {
                 handleDeleteQuestion={handleDeleteQuestion}
                 postTestToServer={postTestToServer}
             />
+            <button onClick={postTestToServer}>Post</button>
         </>
     );
 };

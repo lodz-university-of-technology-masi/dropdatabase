@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -8,9 +8,13 @@ import {
     FIREBASE_PATH
 } from "../../constants";
 
+import { AppContext } from '../../main/App'
+
 export const DisplayQuestions = (props) => {
 
     /*----------------------- VARIABLE REGION -----------------------*/
+    const {state, dispatch} = useContext(AppContext);
+
     const renderDeleteTestButton = (it) => {
         return (
             <div className="row right mb-4">
@@ -135,6 +139,8 @@ export const DisplayQuestions = (props) => {
             "testUUID": e.testUUID,
             "questions": e.questions
         };
+
+        dispatch({ type: 'UPDATE_INPUT', data: test,});
 
         console.log(test);
 
