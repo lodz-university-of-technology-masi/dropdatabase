@@ -3,6 +3,9 @@ import {USER_SESSION_ID} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 import axios from "axios";
 import {FIREBASE_PATH} from "../../constants";
+import uuidv4 from "uuid/v4";
+import {zmienna} from "../../main/App";
+import AddQuestion from "../../component/add-question/AddQuestion";
 
 export const DeleteTest = (props) => {
 
@@ -14,81 +17,153 @@ export const DeleteTest = (props) => {
 //    {"name": "vfvfvfv"},
 //    {"name": "vfvfvfv"},
 //  ]);
+    const [isOpenQuestion, setIsOpenQuestion] = useState(false);
+    const [questionArray, setQuestionArray] = useState([]);
+    useEffect(() => {
 
-  const [testArray, setTestArray] = useState([]);
-  const [load, setLoad] = useState(false);
-  const [error, setError] = useState('');
+        // zmienna = "hasjdkas";
+    });
+    const areEmptyInputs = (...elements) => {
+        let result = false;
 
-  useEffect(() => {
-    axios.get(FIREBASE_PATH + "/tests")
-      .then(res => {
-        setTestArray(res.data);
-        // setTestArray(Object.entries(res.data));
-        // console.log(res.data)
-        // console.log(Object.entries(res.data));
-        setLoad(true);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoad(true);
-      })
-  }, []);
+        elements.forEach((it) => {
+            if (it.value === "") {
+                result = true;
+            }
+        });
 
-  const handleDeleteTest = (e) => {
-      let test = {
-          "user": {
-            "userToken": USER_SESSION_ID
-          },
-          "testUUID": e.testUUID,
-          "questions": e.questions
-      };
-      console.log(JSON.stringify(test));
-//      console.log(questionArray)
-//      let test = {
-//          "user": {
-//            "userToken": USER_SESSION_ID
-//          },
-//          "testUUID": uuidv4(),
-//          "questions": questionArray
-//      };
-//      console.log(test);
-      console.log(test);
-      console.log(FIREBASE_PATH+"/test");
-      axios.delete(FIREBASE_PATH+"/test", {
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  data: test
-}).then(() => {alert("Test has been deleted");window.location.reload()}).catch((error)=>console.log(error));
-  };
+        return result;
+    };
 
-  /*------------------------ RETURN REGION ------------------------*/
+    const clearTextInputs = (...elements) => {
+        elements.forEach((it) => it.value = "")
+    };
+
+    const clearCheckboxes = (...elements) => {
+        elements.forEach((it) => it.checked = false)
+    };
+
+    const handleSwitchClick = () => {
+        setIsOpenQuestion(!isOpenQuestion);
+    };
+
+    const handleDeleteQuestion = (index) => {
+        let temp = questionArray.slice();
+        temp.splice(index, 1);
+        setQuestionArray(temp);
+    };
+
+    const handleSubmitOpenQuestion = (e) => {
+        e.preventDefault();
+
+        if (areEmptyInputs(e.target.openQuestion, e.target.openAnswer)) {
+            alert("All inputs must be fill in");
+            return;
+        }
+
+        const question = {
+            id: uuidv4(),
+            isOpen: true,
+            questionContent: e.target.openQuestion.value,
+            questionAnswer: e.target.openAnswer.value,
+        };
+
+        setQuestionArray([...questionArray, question]);
+        clearTextInputs(e.target.openQuestion, e.target.openAnswer);
+    };
+
+    const handleSubmitCloseQuestion = (e) => {
+        e.preventDefault();
+
+        if (e.target.checkboxAnswerA.checked === false
+            && e.target.checkboxAnswerB.checked === false
+            && e.target.checkboxAnswerC.checked === false
+            && e.target.checkboxAnswerD.checked === false) {
+            alert("In close quetions at least one answer must be marked as correct");
+            return;
+        }
+
+        if (areEmptyInputs(e.target.closeQuestion, e.target.closeAnswerA,
+            e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD)) {
+            alert("All inputs must be fill in");
+            return;
+        }
+
+        let temp = "";
+        if (e.target.checkboxAnswerA.checked) {
+            temp += "A"
+        }
+        if (e.target.checkboxAnswerB.checked) {
+            temp += "B"
+        }
+        if (e.target.checkboxAnswerC.checked) {
+            temp += "C"
+        }
+        if (e.target.checkboxAnswerD.checked) {
+            temp += "D"
+        }
+
+        const question = {
+            id: uuidv4(),
+            isOpen: false,
+            questionContent: e.target.closeQuestion.value,
+            answerA: e.target.closeAnswerA.value,
+            answerB: e.target.closeAnswerB.value,
+            answerC: e.target.closeAnswerC.value,
+            answerD: e.target.closeAnswerD.value,
+            correct: temp,
+        };
+
+        setQuestionArray([...questionArray, question]);
+
+        clearTextInputs(e.target.closeQuestion, e.target.closeAnswerA,
+            e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD
+        );
+
+        clearCheckboxes(
+            e.target.checkboxAnswerA,
+            e.target.checkboxAnswerB,
+            e.target.checkboxAnswerC,
+            e.target.checkboxAnswerD,
+        );
+    };
+
+    const postTestToServer = () => {
+        console.log(questionArray)
+        let test = {
+            "user": {
+                "userToken": USER_SESSION_ID
+            },
+            "testUUID": uuidv4(),
+            "questions": questionArray
+        };
+        console.log(test);
+        axios.post(FIREBASE_PATH+"/test", test).then(() => {alert("Test has been sent");document.location.replace('/')});
+    };
+
+
+    /*------------------------ RETURN REGION ------------------------*/
 
   //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
-     if (load) {
-        let items = [];
-        for (let test of testArray) {
-            console.log(test);
-            items.push(<DisplayQuestions
-                isForChange={true}
-                isChangeable={true}
-                questionArray={test.questions}
-                handleDeleteTest={handleDeleteTest}
-                testUUID = {test.testUUID} 
-                key = {test.testUUID}
-                all = {test}
-              />)
-        }
-        return(items);
-    } else {
-        return ( <
-            div >
-            Loading...
-            <
-            /div>
-        );
-    }
-};
+    return (
+        <>
+            <h1>lol</h1>
+            <AddQuestion
+                isOpenQuestion={isOpenQuestion}
+                handleSwitchClick={handleSwitchClick}
+                handleSubmitOpenQuestion={handleSubmitOpenQuestion}
+                handleSubmitCloseQuestion={handleSubmitCloseQuestion}
+            />
 
+            <DisplayQuestions
+                isChangeable={true}
+                noDelete={true}
+                questionArray={questionArray}
+                handleDeleteQuestion={handleDeleteQuestion}
+                postTestToServer={postTestToServer}
+            />
+        </>
+    );
+};
 export default DeleteTest;
     
