@@ -28,11 +28,6 @@ export const EditQuestion = (props) => {
                        }}
                 />
 
-                <div className="row justify-content-center mt-3">
-                    <button type="submit" className="btn btn-primary">
-                        Add question to test
-                    </button>
-                </div>
             </form>
         );
     };
@@ -107,11 +102,6 @@ export const EditQuestion = (props) => {
                     <input className="form-control" defaultValue={singleQuestion.answerD} name="closeAnswerD"/>
                 </div>
 
-                <div className="row justify-content-center mt-3">
-                    <button type="submit" className="btn btn-primary">
-                        Add question to test
-                    </button>
-                </div>
             </form>
         );
     };

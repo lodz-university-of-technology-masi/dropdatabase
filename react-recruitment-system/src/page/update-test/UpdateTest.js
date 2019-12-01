@@ -178,7 +178,10 @@ export const DeleteTest = (props) => {
 
     /*------------------------ RETURN REGION ------------------------*/
 
-    //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
+    if(typeof(state.testToBeChanged.questions) === "undefined") {
+        document.location.replace('/');
+    }
+
     return (
         <>
             {/*    {() => {*/}
