@@ -178,7 +178,7 @@ export const DeleteTest = (props) => {
 
     /*------------------------ RETURN REGION ------------------------*/
 
-    if(typeof(state.testToBeChanged.questions) === "undefined") {
+    if (typeof (state.testToBeChanged.questions) === "undefined") {
         document.location.replace('/');
     }
 
@@ -206,7 +206,21 @@ export const DeleteTest = (props) => {
                 }
             </ul>
 
-            <button onClick={postTestToServer}>Post</button>
+            <div className="row justify-content-center mt-3">
+                <button className="btn btn-success white-text"
+                        onClick={
+                            postTestToServer
+                        }>
+                    Update Test
+                </button>
+                <button className="btn btn-danger white-text"
+                        onClick={() => {
+                            document.location.replace('/')
+                        }
+                        }>
+                    Cancel
+                </button>
+            </div>
         </>
     );
 };
