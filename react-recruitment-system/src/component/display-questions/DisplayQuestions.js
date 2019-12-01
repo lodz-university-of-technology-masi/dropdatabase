@@ -140,7 +140,10 @@ export const DisplayQuestions = (props) => {
             "questions": e.questions
         };
 
-        dispatch({ type: 'UPDATE_INPUT', data: test,});
+        const test_orig = test;
+
+        dispatch({ type: 'UPDATE_INPUT', test: test});
+        // dispatch({ type: 'UPDATE_INPUT_ORIG', test_orig: test_orig});
 
         console.log(test);
 

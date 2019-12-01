@@ -2,6 +2,7 @@ import React, {useReducer} from "react";
 import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
+import _ from 'lodash'
 
 export let zmienna = "hehe";
 
@@ -10,16 +11,20 @@ export const App = (props) => {
     const initialState = {
 
         testToBeChanged: '',
+        testToBeChangedOrig: '',
 
     };
 
     function reducer(state, action) {
         switch (action.type) {
             case 'UPDATE_INPUT':
+                console.log(action.data);
                 return {
-                    testToBeChanged: action.data
+                    // ...state, testToBeChanged: action.test,
+                    // ...state, testToBeChangedOrig: _.cloneDeep(action.test)
+                    testToBeChanged: action.test,
+                    testToBeChangedOrig: _.cloneDeep(action.test),
                 };
-
 
             default:
                 return initialState;

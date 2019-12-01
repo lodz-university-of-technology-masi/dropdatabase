@@ -8,13 +8,17 @@ import {AppContext, zmienna} from "../../main/App";
 import AddQuestion from "../../component/add-question/AddQuestion";
 import EditQuestion from "../../component/edit-question/EditQuestion";
 import {Link} from "react-router-dom";
+
 export const DeleteTest = (props) => {
 
 
-
-  /*----------------------- VARIABLE REGION -----------------------*/
+    /*----------------------- VARIABLE REGION -----------------------*/
     const {state, dispatch} = useContext(AppContext);
-  // TEMPORARY ARRAY TO DELETE
+
+    const testToBeChangedOrig1 = state.testToBeChanged;
+    const testToBeChangedOrig2 = testToBeChangedOrig1;
+
+    // TEMPORARY ARRAY TO DELETE
 //  const [questionArray, setQuestionArray] = useState([
 //    {"name": "vfvfvfv"},
 //    {"name": "vfvfvfv"},
@@ -58,6 +62,8 @@ export const DeleteTest = (props) => {
     };
 
     const handleSubmitOpenQuestion = (e) => {
+        console.log(e.target);
+
         e.preventDefault();
 
         if (areEmptyInputs(e.target.openQuestion, e.target.openAnswer)) {
@@ -74,6 +80,26 @@ export const DeleteTest = (props) => {
 
         setQuestionArray([...questionArray, question]);
         clearTextInputs(e.target.openQuestion, e.target.openAnswer);
+    };
+
+    const handleOnChangeOpenQuestion = (e) => {
+        console.log(e.target)
+        // e.preventDefault();
+        //
+        // if (areEmptyInputs(e.target.openQuestion, e.target.openAnswer)) {
+        //     alert("All inputs must be fill in");
+        //     return;
+        // }
+        //
+        // const question = {
+        //     id: uuidv4(),
+        //     isOpen: true,
+        //     questionContent: e.target.openQuestion.value,
+        //     questionAnswer: e.target.openAnswer.value,
+        // };
+        //
+        // setQuestionArray([...questionArray, question]);
+        // clearTextInputs(e.target.openQuestion, e.target.openAnswer);
     };
 
     const handleSubmitCloseQuestion = (e) => {
@@ -133,30 +159,32 @@ export const DeleteTest = (props) => {
     };
 
     const postTestToServer = () => {
-        console.log(questionArray)
-        let test = {
-            "user": {
-                "userToken": USER_SESSION_ID
+        console.log(state.testToBeChangedOrig);
+        console.log(FIREBASE_PATH + "/test");
+        axios.delete(FIREBASE_PATH + "/test", {
+            headers: {
+                'Content-Type': 'application/json'
             },
-            "testUUID": uuidv4(),
-            "questions": questionArray
-        };
-        console.log(test);
-        axios.post(FIREBASE_PATH+"/test", test).then(() => {alert("Test has been sent");document.location.replace('/')});
+            data: state.testToBeChangedOrig
+        }).then(() => {
+            axios.post(FIREBASE_PATH + "/test", state.testToBeChanged).then(() => {
+                alert("Test has been updated");
+                document.location.replace('/');
+            });
+        }).catch((error) => console.log(error));
+
     };
 
 
     /*------------------------ RETURN REGION ------------------------*/
 
-  //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
+    //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
     return (
         <>
-            {() => {
-                if(typeof (state.testToBeChanged.questions) === 'undefined')
-                    return(<Link to={DISPLAY_TEST} className="nav-link"/>)
-        }}
-            <p>{JSON.stringify(state.testToBeChanged)}</p>
-
+            {/*    {() => {*/}
+            {/*        if(typeof (state.testToBeChanged.questions) === 'undefined')*/}
+            {/*            return(<Link to={DISPLAY_TEST} className="nav-link"/>)*/}
+            {/*}}*/}
             <ul className="list-group list-group-flush mt-3">
                 {
                     state.testToBeChanged.questions.map((it, index) => {
@@ -165,6 +193,7 @@ export const DeleteTest = (props) => {
                                 isOpenQuestion={state.testToBeChanged.questions[index].isOpen}
                                 handleSwitchClick={handleSwitchClick}
                                 handleSubmitOpenQuestion={handleSubmitOpenQuestion}
+                                handleOnChangeOpenQuestion={handleOnChangeOpenQuestion}
                                 handleSubmitCloseQuestion={handleSubmitCloseQuestion}
                                 questionIndex={index}
                             />
@@ -173,13 +202,7 @@ export const DeleteTest = (props) => {
                     })
                 }
             </ul>
-            <DisplayQuestions
-                isChangeable={true}
-                noDelete={true}
-                questionArray={questionArray}
-                handleDeleteQuestion={handleDeleteQuestion}
-                postTestToServer={postTestToServer}
-            />
+
             <button onClick={postTestToServer}>Post</button>
         </>
     );
