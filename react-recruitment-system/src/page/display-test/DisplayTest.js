@@ -5,7 +5,7 @@ import {FIREBASE_PATH} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
 export const DisplayTest = (props) => {
-    
+
 
     /*----------------------- VARIABLE REGION -----------------------*/
 
@@ -25,14 +25,14 @@ export const DisplayTest = (props) => {
         {
             "name": "vfvfvfv"
         },
-  ]);
+    ]);
 
     const [testArray, setTestArray] = useState([]);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        axios.get(FIREBASE_PATH+"/tests")
+        axios.get(FIREBASE_PATH + "/tests")
             .then(res => {
                 setTestArray(res.data);
                 //                setTestArray(Object.entries(res.data));
@@ -90,20 +90,20 @@ export const DisplayTest = (props) => {
         let items = [];
         for (let test of testArray) {
             console.log(test);
-            items.push(< DisplayQuestions questionArray = {
-                    test.questions
-                } testUUID = {test.testUUID} key = {test.testUUID} all={test}
-                />);
+            items.push(< DisplayQuestions questionArray={
+                test.questions
+            } testUUID={test.testUUID} key={test.testUUID} all={test}
+            />);
         }
-        return(items);
+        return (items);
     } else {
-        return ( <
-            div >
+        return (<
+            div>
             Loading...
             <
-            /div>
-        );
-    }
-};
+                /div>
+                );
+                }
+                };
 
-export default DisplayTest;
+                export default DisplayTest;;

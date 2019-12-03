@@ -9,18 +9,18 @@ import NotFound from "../page/not-found/NotFound";
 
 export const Routes = (props) => {
 
-  /*----------------------- VARIABLE REGION -----------------------*/
+    /*----------------------- VARIABLE REGION -----------------------*/
 
-  /*------------------------ RETURN REGION ------------------------*/
-  return (
-    <Switch>
-      <Route exact path={HOME_PATH} component={DisplayTest}/>
-      <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
-      <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
-      <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
-      <Route component={NotFound}/>
-    </Switch>
-  );
+    /*------------------------ RETURN REGION ------------------------*/
+    return (
+        <Switch>
+            <Route exact path={HOME_PATH} component={DisplayTest}/>
+            <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
+            <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
+            <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
+            <Route component={NotFound}/>
+        </Switch>
+    );
 };
 
 export default Routes;

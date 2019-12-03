@@ -54,7 +54,7 @@ export const DisplayQuestions = (props) => {
                         );
                     }
                 }
-            })
+            });
             return (<ul className="list-group list-group-flush mt-3 card"><h4
                 className="text-center">Question: {it.questionContent}</h4>{items}</ul>);
         } else {
@@ -138,7 +138,7 @@ export const DisplayQuestions = (props) => {
 
         const test_orig = test;
 
-        dispatch({ type: 'UPDATE_INPUT', test: test});
+        dispatch({type: 'UPDATE_INPUT', test: test});
         // dispatch({ type: 'UPDATE_INPUT_ORIG', test_orig: test_orig});
 
         console.log(test);

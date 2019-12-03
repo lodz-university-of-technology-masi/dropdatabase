@@ -9,7 +9,6 @@ export const EditQuestion = (props) => {
     const singleQuestion = state.testToBeChanged.questions[props.questionIndex];
 
 
-
     const renderOpenQuestion = () => {
         return (
             <form onSubmit={props.handleSubmitOpenQuestion}>
@@ -17,7 +16,7 @@ export const EditQuestion = (props) => {
                        name="openQuestion"
                        onChange={(e) => {
                            state.testToBeChanged.questions[props.questionIndex].questionContent = e.target.value;
-                }}
+                       }}
                 />
 
                 <input className="form-control mb-3" defaultValue={singleQuestion.questionAnswer}
@@ -46,7 +45,7 @@ export const EditQuestion = (props) => {
                         <input type="checkbox" name="checkboxAnswerA"
                                defaultChecked={String(singleQuestion.correct).includes('A')}
                                onChange={(e) => {
-                                   if(!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('A')) {
+                                   if (!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('A')) {
                                        state.testToBeChanged.questions[props.questionIndex].correct += 'A';
                                    } else {
                                        state.testToBeChanged.questions[props.questionIndex].correct = state.testToBeChanged.questions[props.questionIndex].correct.replace('A', '')
@@ -61,7 +60,7 @@ export const EditQuestion = (props) => {
                         <input type="checkbox" name="checkboxAnswerB"
                                defaultChecked={String(singleQuestion.correct).includes('B')}
                                onChange={(e) => {
-                                   if(!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('B')) {
+                                   if (!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('B')) {
                                        state.testToBeChanged.questions[props.questionIndex].correct += 'B';
                                    } else {
                                        state.testToBeChanged.questions[props.questionIndex].correct = state.testToBeChanged.questions[props.questionIndex].correct.replace('B', '')
@@ -76,7 +75,7 @@ export const EditQuestion = (props) => {
                         <input type="checkbox" name="checkboxAnswerC"
                                defaultChecked={String(singleQuestion.correct).includes('C')}
                                onChange={(e) => {
-                                   if(!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('C')) {
+                                   if (!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('C')) {
                                        state.testToBeChanged.questions[props.questionIndex].correct += 'C';
                                    } else {
                                        state.testToBeChanged.questions[props.questionIndex].correct = state.testToBeChanged.questions[props.questionIndex].correct.replace('C', '')
@@ -91,7 +90,7 @@ export const EditQuestion = (props) => {
                         <input type="checkbox" name="checkboxAnswerD"
                                defaultChecked={String(singleQuestion.correct).includes('D')}
                                onChange={(e) => {
-                                   if(!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('D')) {
+                                   if (!String(state.testToBeChanged.questions[props.questionIndex].correct).includes('D')) {
                                        state.testToBeChanged.questions[props.questionIndex].correct += 'D';
                                    } else {
                                        state.testToBeChanged.questions[props.questionIndex].correct = state.testToBeChanged.questions[props.questionIndex].correct.replace('D', '')

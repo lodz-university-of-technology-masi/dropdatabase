@@ -4,10 +4,10 @@ import DisplayQuestions from "../../component/display-questions/DisplayQuestions
 import axios from "axios";
 
 
-export const DeleteTest = (props) => {
+export const DeleteTest = () => {
 
-  /*----------------------- VARIABLE REGION -----------------------*/
-  // TEMPORARY ARRAY TO DELETE
+    /*----------------------- VARIABLE REGION -----------------------*/
+    // TEMPORARY ARRAY TO DELETE
 //  const [questionArray, setQuestionArray] = useState([
 //    {"name": "vfvfvfv"},
 //    {"name": "vfvfvfv"},
@@ -15,34 +15,34 @@ export const DeleteTest = (props) => {
 //    {"name": "vfvfvfv"},
 //  ]);
 
-  const [testArray, setTestArray] = useState([]);
-  const [load, setLoad] = useState(false);
-  const [error, setError] = useState('');
+    const [testArray, setTestArray] = useState([]);
+    const [load, setLoad] = useState(false);
+    const [setError] = useState('');
 
-  useEffect(() => {
-    axios.get(FIREBASE_PATH + "/tests")
-      .then(res => {
-        setTestArray(res.data);
-        // setTestArray(Object.entries(res.data));
-        // console.log(res.data)
-        // console.log(Object.entries(res.data));
-        setLoad(true);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoad(true);
-      })
-  }, []);
+    useEffect(() => {
+        axios.get(FIREBASE_PATH + "/tests")
+            .then(res => {
+                setTestArray(res.data);
+                // setTestArray(Object.entries(res.data));
+                // console.log(res.data)
+                // console.log(Object.entries(res.data));
+                setLoad(true);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoad(true);
+            })
+    }, []);
 
-  const handleDeleteTest = (e) => {
-      let test = {
-          "user": {
-            "userToken": USER_SESSION_ID
-          },
-          "testUUID": e.testUUID,
-          "questions": e.questions
-      };
-      console.log(JSON.stringify(test));
+    const handleDeleteTest = (e) => {
+        let test = {
+            "user": {
+                "userToken": USER_SESSION_ID
+            },
+            "testUUID": e.testUUID,
+            "questions": e.questions
+        };
+        console.log(JSON.stringify(test));
 //      console.log(questionArray)
 //      let test = {
 //          "user": {
@@ -52,20 +52,23 @@ export const DeleteTest = (props) => {
 //          "questions": questionArray
 //      };
 //      console.log(test);
-      console.log(test);
-      console.log(FIREBASE_PATH+"/test");
-      axios.delete(FIREBASE_PATH+"/test", {
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  data: test
-}).then(() => {alert("Test has been deleted");window.location.reload()}).catch((error)=>console.log(error));
-  };
+        console.log(test);
+        console.log(FIREBASE_PATH + "/test");
+        axios.delete(FIREBASE_PATH + "/test", {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: test
+        }).then(() => {
+            alert("Test has been deleted");
+            window.location.reload()
+        }).catch((error) => console.log(error));
+    };
 
-  /*------------------------ RETURN REGION ------------------------*/
+    /*------------------------ RETURN REGION ------------------------*/
 
-  //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
-     if (load) {
+    //THIS SHOULD BE IN LOOP LIKE IN DISPLAY TEST BUT CURRENTLY THERE IS A PROBLEM WITH ARRAY
+    if (load) {
         let items = [];
         for (let test of testArray) {
             console.log(test);
@@ -73,21 +76,21 @@ export const DeleteTest = (props) => {
                 isRemovable={true}
                 questionArray={test.questions}
                 handleDeleteTest={handleDeleteTest}
-                testUUID = {test.testUUID} 
-                key = {test.testUUID}
-                all = {test}
-              />)
+                testUUID={test.testUUID}
+                key={test.testUUID}
+                all={test}
+            />)
         }
-        return(items);
+        return (items);
     } else {
-        return ( <
-            div >
+        return (<
+            div>
             Loading...
             <
-            /div>
-        );
-    }
-};
+                /div>
+                );
+                }
+                };
 
-export default DeleteTest;
+                export default DeleteTest;;
     

@@ -12,10 +12,10 @@ export const CreateTest = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
-        useEffect(() => {
+  useEffect(() => {
 
-           // zmienna = "hasjdkas";
-        });
+    // zmienna = "hasjdkas";
+  });
   const areEmptyInputs = (...elements) => {
     let result = false;
 
@@ -69,15 +69,15 @@ export const CreateTest = (props) => {
     e.preventDefault();
 
     if (e.target.checkboxAnswerA.checked === false
-      && e.target.checkboxAnswerB.checked === false
-      && e.target.checkboxAnswerC.checked === false
-      && e.target.checkboxAnswerD.checked === false) {
+        && e.target.checkboxAnswerB.checked === false
+        && e.target.checkboxAnswerC.checked === false
+        && e.target.checkboxAnswerD.checked === false) {
       alert("In close quetions at least one answer must be marked as correct");
       return;
     }
 
     if (areEmptyInputs(e.target.closeQuestion, e.target.closeAnswerA,
-      e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD)) {
+        e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD)) {
       alert("All inputs must be fill in");
       return;
     }
@@ -110,49 +110,52 @@ export const CreateTest = (props) => {
     setQuestionArray([...questionArray, question]);
 
     clearTextInputs(e.target.closeQuestion, e.target.closeAnswerA,
-      e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD
+        e.target.closeAnswerB, e.target.closeAnswerC, e.target.closeAnswerD
     );
 
     clearCheckboxes(
-      e.target.checkboxAnswerA,
-      e.target.checkboxAnswerB,
-      e.target.checkboxAnswerC,
-      e.target.checkboxAnswerD,
+        e.target.checkboxAnswerA,
+        e.target.checkboxAnswerB,
+        e.target.checkboxAnswerC,
+        e.target.checkboxAnswerD,
     );
   };
 
   const postTestToServer = () => {
-      console.log(questionArray)
-      let test = {
-          "user": {
-            "userToken": USER_SESSION_ID
-          },
-          "testUUID": uuidv4(),
-          "questions": questionArray
-      };
-      console.log(test);
-      axios.post(FIREBASE_PATH+"/test", test).then(() => {alert("Test has been sent");document.location.replace('/')});
+    console.log(questionArray);
+    let test = {
+      "user": {
+        "userToken": USER_SESSION_ID
+      },
+      "testUUID": uuidv4(),
+      "questions": questionArray
+    };
+    console.log(test);
+    axios.post(FIREBASE_PATH + "/test", test).then(() => {
+      alert("Test has been sent");
+      document.location.replace('/')
+    });
   };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <>
-      {zmienna}
-      <AddQuestion
-        isOpenQuestion={isOpenQuestion}
-        handleSwitchClick={handleSwitchClick}
-        handleSubmitOpenQuestion={handleSubmitOpenQuestion}
-        handleSubmitCloseQuestion={handleSubmitCloseQuestion}
-      />
+      <>
+        {zmienna}
+        <AddQuestion
+            isOpenQuestion={isOpenQuestion}
+            handleSwitchClick={handleSwitchClick}
+            handleSubmitOpenQuestion={handleSubmitOpenQuestion}
+            handleSubmitCloseQuestion={handleSubmitCloseQuestion}
+        />
 
-      <DisplayQuestions
-        isChangeable={true}
-      noDelete={true}
-        questionArray={questionArray}
-        handleDeleteQuestion={handleDeleteQuestion}
-        postTestToServer={postTestToServer}
-      />
-    </>
+        <DisplayQuestions
+            isChangeable={true}
+            noDelete={true}
+            questionArray={questionArray}
+            handleDeleteQuestion={handleDeleteQuestion}
+            postTestToServer={postTestToServer}
+        />
+      </>
   );
 };
 
