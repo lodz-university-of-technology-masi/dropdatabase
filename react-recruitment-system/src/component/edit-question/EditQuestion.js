@@ -122,10 +122,8 @@ export const EditQuestion = (props) => {
 
 EditQuestion.propTypes = {
     isOpenQuestion: PropTypes.bool,
-    handleSwitchClick: PropTypes.func,
     handleSubmitOpenQuestion: PropTypes.func,
     handleSubmitCloseQuestion: PropTypes.func,
-    handleOnChangeOpenQuestion: PropTypes.func,
     questionIndex: PropTypes.number,
 };
 

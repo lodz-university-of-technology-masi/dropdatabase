@@ -42,7 +42,7 @@ export const DeleteTest = () => {
             "testUUID": e.testUUID,
             "questions": e.questions
         };
-        console.log(JSON.stringify(test));
+        // console.log(JSON.stringify(test));
 //      console.log(questionArray)
 //      let test = {
 //          "user": {
@@ -52,8 +52,8 @@ export const DeleteTest = () => {
 //          "questions": questionArray
 //      };
 //      console.log(test);
-        console.log(test);
-        console.log(FIREBASE_PATH + "/test");
+//         console.log(test);
+//         console.log(FIREBASE_PATH + "/test");
         axios.delete(FIREBASE_PATH + "/test", {
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ export const DeleteTest = () => {
     if (load) {
         let items = [];
         for (let test of testArray) {
-            console.log(test);
+            // console.log(test);
             items.push(<DisplayQuestions
                 isRemovable={true}
                 questionArray={test.questions}

@@ -86,7 +86,7 @@ export const DisplayQuestions = (props) => {
             "testUUID": e.testUUID,
             "questions": e.questions
         };
-        console.log(JSON.stringify(test));
+        // console.log(JSON.stringify(test));
 //      console.log(questionArray)
 //      let test = {
 //          "user": {
@@ -96,8 +96,8 @@ export const DisplayQuestions = (props) => {
 //          "questions": questionArray
 //      };
 //      console.log(test);
-        console.log(test);
-        console.log(FIREBASE_PATH + "/test");
+//         console.log(test);
+//         console.log(FIREBASE_PATH + "/test");
         axios.delete(FIREBASE_PATH + "/test", {
             headers: {
                 'Content-Type': 'application/json'
@@ -141,7 +141,7 @@ export const DisplayQuestions = (props) => {
         dispatch({type: 'UPDATE_INPUT', test: test});
         // dispatch({ type: 'UPDATE_INPUT_ORIG', test_orig: test_orig});
 
-        console.log(test);
+        // console.log(test);
 
         // document.location.replace(UPDATE_TEST);
     };

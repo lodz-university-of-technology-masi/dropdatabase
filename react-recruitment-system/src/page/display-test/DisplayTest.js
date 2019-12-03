@@ -89,7 +89,7 @@ export const DisplayTest = (props) => {
     if (load) {
         let items = [];
         for (let test of testArray) {
-            console.log(test);
+            // console.log(test);
             items.push(< DisplayQuestions questionArray={
                 test.questions
             } testUUID={test.testUUID} key={test.testUUID} all={test}

@@ -11,16 +11,6 @@ export const DeleteTest = (props) => {
     /*----------------------- VARIABLE REGION -----------------------*/
     const {state, dispatch} = useContext(AppContext);
 
-    const testToBeChangedOrig1 = state.testToBeChanged;
-    const testToBeChangedOrig2 = testToBeChangedOrig1;
-
-    // TEMPORARY ARRAY TO DELETE
-//  const [questionArray, setQuestionArray] = useState([
-//    {"name": "vfvfvfv"},
-//    {"name": "vfvfvfv"},
-//    {"name": "vfvfvfv"},
-//    {"name": "vfvfvfv"},
-//  ]);
     const [isOpenQuestion, setIsOpenQuestion] = useState(false);
     const [questionArray, setQuestionArray] = useState([]);
     useEffect(() => {
@@ -58,7 +48,7 @@ export const DeleteTest = (props) => {
     };
 
     const handleSubmitOpenQuestion = (e) => {
-        console.log(e.target);
+        // console.log(e.target);
 
         e.preventDefault();
 
@@ -76,26 +66,6 @@ export const DeleteTest = (props) => {
 
         setQuestionArray([...questionArray, question]);
         clearTextInputs(e.target.openQuestion, e.target.openAnswer);
-    };
-
-    const handleOnChangeOpenQuestion = (e) => {
-        console.log(e.target)
-        // e.preventDefault();
-        //
-        // if (areEmptyInputs(e.target.openQuestion, e.target.openAnswer)) {
-        //     alert("All inputs must be fill in");
-        //     return;
-        // }
-        //
-        // const question = {
-        //     id: uuidv4(),
-        //     isOpen: true,
-        //     questionContent: e.target.openQuestion.value,
-        //     questionAnswer: e.target.openAnswer.value,
-        // };
-        //
-        // setQuestionArray([...questionArray, question]);
-        // clearTextInputs(e.target.openQuestion, e.target.openAnswer);
     };
 
     const handleSubmitCloseQuestion = (e) => {
@@ -155,8 +125,8 @@ export const DeleteTest = (props) => {
     };
 
     const postTestToServer = () => {
-        console.log(state.testToBeChangedOrig);
-        console.log(FIREBASE_PATH + "/test");
+        // console.log(state.testToBeChangedOrig);
+        // console.log(FIREBASE_PATH + "/test");
         axios.delete(FIREBASE_PATH + "/test", {
             headers: {
                 'Content-Type': 'application/json'
@@ -190,9 +160,7 @@ export const DeleteTest = (props) => {
                         return (
                             <EditQuestion
                                 isOpenQuestion={state.testToBeChanged.questions[index].isOpen}
-                                handleSwitchClick={handleSwitchClick}
                                 handleSubmitOpenQuestion={handleSubmitOpenQuestion}
-                                handleOnChangeOpenQuestion={handleOnChangeOpenQuestion}
                                 handleSubmitCloseQuestion={handleSubmitCloseQuestion}
                                 questionIndex={index}
                             />
