@@ -1,7 +1,6 @@
-import React, {useState,useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {zmienna} from '../../main/App.js'
-import {FIREBASE_PATH} from "../../constants";
-import {USER_SESSION_ID} from "../../constants";
+import {FIREBASE_PATH, USER_SESSION_ID} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTest.css";

@@ -1,7 +1,6 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import {AppContext} from "../../main/App";
-import _ from 'lodash'
 
 export const EditQuestion = (props) => {
 

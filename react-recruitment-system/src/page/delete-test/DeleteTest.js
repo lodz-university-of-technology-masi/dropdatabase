@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {USER_SESSION_ID} from "../../constants";
+import {FIREBASE_PATH, USER_SESSION_ID} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 import axios from "axios";
-import {FIREBASE_PATH} from "../../constants";
 
 
 export const DeleteTest = (props) => {

@@ -1,13 +1,9 @@
-import React, {useEffect, useState, useContext} from "react";
-import {DISPLAY_TEST, UPDATE_TEST, USER_SESSION_ID} from "../../constants";
-import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
-import axios from "axios";
+import React, {useContext, useEffect, useState} from "react";
 import {FIREBASE_PATH} from "../../constants";
+import axios from "axios";
 import uuidv4 from "uuid/v4";
-import {AppContext, zmienna} from "../../main/App";
-import AddQuestion from "../../component/add-question/AddQuestion";
+import {AppContext} from "../../main/App";
 import EditQuestion from "../../component/edit-question/EditQuestion";
-import {Link} from "react-router-dom";
 
 export const DeleteTest = (props) => {
 

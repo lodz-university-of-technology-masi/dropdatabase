@@ -1,14 +1,10 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {UPDATE_TEST, USER_SESSION_ID} from "../../constants";
-import {CREATE_TEST} from "../../constants";
-import {
-    FIREBASE_PATH
-} from "../../constants";
+import {FIREBASE_PATH, UPDATE_TEST, USER_SESSION_ID} from "../../constants";
 
-import { AppContext } from '../../main/App'
+import {AppContext} from '../../main/App'
 
 export const DisplayQuestions = (props) => {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {CREATE_TEST_PATH, DELETE_TEST_PATH, HOME_PATH, UPDATE_TEST_PATH} from "../../constants";
+import {CREATE_TEST_PATH, HOME_PATH} from "../../constants";
 
 export const Navbar = (props) => {
 

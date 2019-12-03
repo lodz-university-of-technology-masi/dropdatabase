@@ -1,12 +1,7 @@
-import React, {
-    useEffect,
-    useState
-} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "./DisplayTest.css";
-import {
-    FIREBASE_PATH
-} from "../../constants";
+import {FIREBASE_PATH} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
 export const DisplayTest = (props) => {
