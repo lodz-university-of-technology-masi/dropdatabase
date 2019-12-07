@@ -15,7 +15,6 @@ export const DeleteTest = (props) => {
     const [questionArray, setQuestionArray] = useState([]);
     useEffect(() => {
 
-        // zmienna = "hasjdkas";
     });
     const areEmptyInputs = (...elements) => {
         let result = false;
@@ -125,8 +124,6 @@ export const DeleteTest = (props) => {
     };
 
     const postTestToServer = () => {
-        // console.log(state.testToBeChangedOrig);
-        // console.log(FIREBASE_PATH + "/test");
         axios.delete(FIREBASE_PATH + "/test", {
             headers: {
                 'Content-Type': 'application/json'
@@ -150,10 +147,6 @@ export const DeleteTest = (props) => {
 
     return (
         <>
-            {/*    {() => {*/}
-            {/*        if(typeof (state.testToBeChanged.questions) === 'undefined')*/}
-            {/*            return(<Link to={DISPLAY_TEST} className="nav-link"/>)*/}
-            {/*}}*/}
             <ul className="list-group list-group-flush mt-3">
                 {
                     state.testToBeChanged.questions.map((it, index) => {

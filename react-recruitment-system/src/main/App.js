@@ -18,10 +18,7 @@ export const App = (props) => {
     function reducer(state, action) {
         switch (action.type) {
             case 'UPDATE_INPUT':
-                // console.log(action.data);
                 return {
-                    // ...state, testToBeChanged: action.test,
-                    // ...state, testToBeChangedOrig: _.cloneDeep(action.test)
                     testToBeChanged: action.test,
                     testToBeChangedOrig: _.cloneDeep(action.test),
                 };

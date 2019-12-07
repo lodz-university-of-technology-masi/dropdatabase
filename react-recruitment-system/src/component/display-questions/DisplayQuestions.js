@@ -24,7 +24,6 @@ export const DisplayQuestions = (props) => {
         );
     };
 
-    // TODO ADD DISPLAY QUESTION ID
     const renderTestId = (id) => {
         return (
             <h6 className="font-weight-bold text-center mb-1">
@@ -35,7 +34,6 @@ export const DisplayQuestions = (props) => {
 
 
     const renderWholeQuestion = (it, index) => {
-        //TODO ADD MORE VALUE FROM ARRAY - MORE THAN IT.NAME
         let items = [];
         if (!it.isOpen) {
             Object.keys(it).map((it2, index) => {

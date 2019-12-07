@@ -2,7 +2,6 @@ import React from "react";
 import {Route, Switch} from "react-router-dom";
 import {CREATE_TEST_PATH, DELETE_TEST_PATH, HOME_PATH, UPDATE_TEST_PATH} from "../constants";
 import CreateTest from "../page/create-test/CreateTest";
-import DeleteTest from "../page/delete-test/DeleteTest";
 import DisplayTest from "../page/display-test/DisplayTest";
 import UpdateTest from "../page/update-test/UpdateTest";
 import NotFound from "../page/not-found/NotFound";
@@ -16,7 +15,6 @@ export const Routes = (props) => {
         <Switch>
             <Route exact path={HOME_PATH} component={DisplayTest}/>
             <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
-            <Route exact path={DELETE_TEST_PATH} component={DeleteTest}/>
             <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
             <Route component={NotFound}/>
         </Switch>

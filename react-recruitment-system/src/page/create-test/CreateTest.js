@@ -14,7 +14,6 @@ export const CreateTest = (props) => {
     const [questionArray, setQuestionArray] = useState([]);
     useEffect(() => {
 
-        // zmienna = "hasjdkas";
     });
     const areEmptyInputs = (...elements) => {
         let result = false;
@@ -130,7 +129,6 @@ export const CreateTest = (props) => {
             "testUUID": uuidv4(),
             "questions": questionArray
         };
-        // console.log(test);
         axios.post(FIREBASE_PATH + "/test", test).then(() => {
             alert("Test has been sent");
             document.location.replace('/')
