@@ -11,6 +11,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
 import App from './main/App';
+import Amplify from "aws-amplify";
+import config from "./config.js";
+
+// TODO ADD CONFIG
+// Amplify.configure({
+//   Auth: {
+//     // mandatorySignIn: true,
+//     userPoolId: config.cognito.userPoolId,
+//     region: config.cognito.region,
+//     clientId: config.cognito.clientId,
+//   }
+// });
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
