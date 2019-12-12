@@ -1,0 +1,21 @@
+.blur-background::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/loginBackground.jpg");
+    filter: blur(7px);
+}
+
+.personal-card {
+    font-size: 2rem;
+    margin-top: 4rem;
+    margin-bottom: auto;
+}
+
+.light-grey-font {
+    color: #cfd8dc;
+}

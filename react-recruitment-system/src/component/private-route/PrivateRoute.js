@@ -1,5 +1,4 @@
-import React, {useContext, useState} from "react";
-import PropTypes from "prop-types";
+import React, {useContext} from "react";
 import {Redirect, Route} from "react-router-dom";
 import {LOGIN_PATH} from "../../constants";
 import {AppContext} from "../../main/App";

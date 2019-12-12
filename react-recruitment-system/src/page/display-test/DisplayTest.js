@@ -41,8 +41,10 @@ export const DisplayTest = (props) => {
     return (items);
   } else {
     return (
-      <div>
-        Loading...
+      <div className="container margin-text text-center">
+        <h2 className="font-weight-bold">
+          Loading...
+        </h2>
       </div>
     );
   }

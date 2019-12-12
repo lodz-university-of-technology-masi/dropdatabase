@@ -7,6 +7,7 @@ export const RegisterPage = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmationCode, setConfirmationCode] = useState("");
 
   const isEmptyInputs = (...elements) => {
     let result = false;
