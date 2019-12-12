@@ -1,6 +1,12 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import {CREATE_TEST_PATH, HOME_PATH, LOGIN_PATH, REGISTER_PATH} from "../../constants";
+import {
+  CREATE_TEST_PATH,
+  HOME_PATH,
+  LOGIN_PATH,
+  REGISTER_PATH,
+  UPDATE_INPUT, UPDATE_LOGGED_IN
+} from "../../constants";
 import {AppContext} from "../../main/App";
 
 export const Navbar = (props) => {
@@ -8,10 +14,20 @@ export const Navbar = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {state, dispatch} = useContext(AppContext);
 
-  const renderNavItem = (path, value) => {
+  /**
+   * Render single nav item
+   * @param path - path to the page
+   * @param value - text to display in nav item
+   * @param isLogout - if true then value in context isUserLoggedIn
+   * is set to false - user is logout
+   * @returns {*}
+   */
+  const renderNavItem = (path, value, isLogout) => {
     return (
       <li className="nav-item">
-        <Link to={path} className="nav-link">
+        <Link to={path} className="nav-link"
+              onClick={() => isLogout ? dispatch({type: UPDATE_LOGGED_IN, isLogged: false}) : null}
+        >
           {value}
         </Link>
       </li>
@@ -25,7 +41,12 @@ export const Navbar = (props) => {
    */
   const renderNavItemList = (isUserLoggedIn) => {
     if (isUserLoggedIn) {
-      return renderNavItem(CREATE_TEST_PATH, "Create Test")
+      return (
+        <>
+          {renderNavItem(CREATE_TEST_PATH, "Create Test")}
+          {renderNavItem(LOGIN_PATH, "Logout", true)}
+        </>
+      );
     } else {
       return (
         <>

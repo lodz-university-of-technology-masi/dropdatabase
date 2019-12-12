@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
 import _ from 'lodash'
+import {UPDATE_INPUT, UPDATE_LOGGED_IN} from "../constants";
 
 export const App = (props) => {
 
@@ -15,10 +16,15 @@ export const App = (props) => {
 
   function reducer(state, action) {
     switch (action.type) {
-      case 'UPDATE_INPUT':
+      case UPDATE_INPUT:
         return {
           testToBeChanged: action.test,
           testToBeChangedOrig: _.cloneDeep(action.test),
+        };
+
+      case UPDATE_LOGGED_IN:
+        return {
+          isUserLoggedIn: action.isLogged,
         };
 
       default:

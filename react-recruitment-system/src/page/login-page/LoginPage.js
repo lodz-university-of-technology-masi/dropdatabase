@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import "./LoginPage.css";
+import {Auth} from "aws-amplify";
+import {SLASH} from "../../constants";
 
 export const LoginPage = (props) => {
 
@@ -19,7 +21,7 @@ export const LoginPage = (props) => {
     return result;
   };
 
-  const handleSubmitLogin = (e) => {
+  const handleSubmitLogin = async (e) => {
     e.preventDefault();
 
     if (isEmptyInputs(e.target.inputUsername, e.target.inputPassword)) {
@@ -27,8 +29,13 @@ export const LoginPage = (props) => {
       return;
     }
 
-    setUsername(e.target.inputUsername.value);
-    setPassword(e.target.inputPassword.value);
+    try {
+      await Auth.signIn(username, password);
+      alert("Logged in");
+      document.location.replace(SLASH);
+    } catch (e) {
+      alert(e.message);
+    }
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -38,12 +45,14 @@ export const LoginPage = (props) => {
         <form className="sign-form" onSubmit={handleSubmitLogin}>
           <header className="h4 sign-header">Sign in</header>
 
-          <input type="text" name="inputUsername"
-                 className="form-control sign-input" placeholder="Username"
+          <input className="form-control sign-input" value={username}
+                 onChange={(e) => setUsername(e.target.value)}
+                 type="text" name="inputUsername" placeholder="Username"
           />
 
-          <input type="password" name="inputPassword"
-                 className="form-control sign-input" placeholder="Password"
+          <input className="form-control sign-input" value={password}
+                 onChange={(e) => setPassword(e.target.value)}
+                 type="password" name="inputPassword" placeholder="Password"
           />
 
           <button className="btn btn-indigo sign-button" type="submit">

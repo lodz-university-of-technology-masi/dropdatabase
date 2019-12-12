@@ -7,6 +7,9 @@ export const LOGIN = "login";
 export const REGISTER = "register";
 export const PROFILE = "profile";
 
+export const UPDATE_INPUT = "UPDATE_INPUT";
+export const UPDATE_LOGGED_IN = "UPDATE_LOGGED_IN";
+
 /*---------- PATHS ----------*/
 export const HOME_PATH = SLASH;
 export const CREATE_TEST_PATH = SLASH + CREATE_TEST;

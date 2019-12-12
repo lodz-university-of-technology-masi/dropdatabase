@@ -4,6 +4,10 @@ import "./RegisterPage.css";
 export const RegisterPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const isEmptyInputs = (...elements) => {
     let result = false;
 
@@ -23,6 +27,14 @@ export const RegisterPage = (props) => {
       e.target.inputPassword, e.target.inputRepeatPassword, e.target.selectRole)) {
       alert("All inputs must be fill in");
       return;
+    }
+
+    if (e.target.inputPassword.value === e.target.inputRepeatPassword.value) {
+      setUsername(e.target.inputUsername.value);
+      setEmail(e.target.inputEmail.value);
+      setPassword(e.target.inputPassword.value)
+    } else {
+      alert("Passwords don't match!")
     }
 
   };
