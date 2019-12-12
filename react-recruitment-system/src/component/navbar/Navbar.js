@@ -41,6 +41,7 @@ export const Navbar = (props) => {
       return (
         <>
           {renderNavItem(CREATE_TEST_PATH, "Create Test")}
+          {renderNavItem(REGISTER_PATH, "Register User")}
           {renderNavItem(LOGIN_PATH, "Logout", true)}
         </>
       );
@@ -48,7 +49,6 @@ export const Navbar = (props) => {
       return (
         <>
           {renderNavItem(LOGIN_PATH, "Login")}
-          {renderNavItem(REGISTER_PATH, "Register")}
         </>
       )
     }

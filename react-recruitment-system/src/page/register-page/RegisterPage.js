@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import "./RegisterPage.css";
+import {LOGIN_PATH} from "../../constants";
+import {Auth} from "aws-amplify";
 
 export const RegisterPage = (props) => {
 
@@ -7,7 +9,6 @@ export const RegisterPage = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmationCode, setConfirmationCode] = useState("");
 
   const isEmptyInputs = (...elements) => {
     let result = false;
@@ -21,7 +22,7 @@ export const RegisterPage = (props) => {
     return result;
   };
 
-  const handleSubmitRegister = (e) => {
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
 
     if (isEmptyInputs(e.target.inputUsername, e.target.inputEmail,
@@ -38,7 +39,18 @@ export const RegisterPage = (props) => {
       alert("Passwords don't match!")
     }
 
+    try {
+      await Auth.signUp({
+        //  TODO
+      });
+
+      document.location.replace(LOGIN_PATH);
+    } catch (e) {
+      alert(e.message)
+    }
+
   };
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>

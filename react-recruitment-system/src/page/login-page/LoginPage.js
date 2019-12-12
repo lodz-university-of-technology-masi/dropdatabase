@@ -35,7 +35,7 @@ export const LoginPage = (props) => {
       await Auth.signIn(username, password);
       alert("Logged in");
 
-      dispatch({type: UPDATE_LOGGED_IN, isLogged: false});
+      dispatch({type: UPDATE_LOGGED_IN, isLogged: true});
       document.location.replace(HOME_PATH);
     } catch (e) {
       alert(e.message);

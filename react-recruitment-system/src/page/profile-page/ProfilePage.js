@@ -4,7 +4,7 @@ import "./ProfilePage.css";
 export const ProfilePage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-
+  // TODO ADD DISPLAYING REAL DATA FROM AWS
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="blur-background">
