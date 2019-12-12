@@ -1,5 +1,5 @@
 /*---------- STRINGS ----------*/
-export const SLASH = "/";
+const SLASH = "/";
 export const TESTS = "tests";
 export const CREATE_TEST = "createtest";
 export const UPDATE_TEST = "updatetest";

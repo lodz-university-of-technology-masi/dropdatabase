@@ -1,13 +1,9 @@
 import React, {useContext} from "react";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {
-  CREATE_TEST_PATH,
-  HOME_PATH,
-  LOGIN_PATH,
-  REGISTER_PATH,
-  UPDATE_INPUT, UPDATE_LOGGED_IN
-} from "../../constants";
+import {CREATE_TEST_PATH, HOME_PATH, LOGIN_PATH, REGISTER_PATH} from "../../constants";
 import {AppContext} from "../../main/App";
+import DisplayQuestions from "../display-questions/DisplayQuestions";
 
 export const Navbar = (props) => {
 
@@ -25,8 +21,10 @@ export const Navbar = (props) => {
   const renderNavItem = (path, value, isLogout) => {
     return (
       <li className="nav-item">
-        <Link to={path} className="nav-link"
-              onClick={() => isLogout ? dispatch({type: UPDATE_LOGGED_IN, isLogged: false}) : null}
+        <Link
+          to={path}
+          className="nav-link"
+          onClick={isLogout ? props.handleLogout : null}
         >
           {value}
         </Link>
@@ -77,6 +75,10 @@ export const Navbar = (props) => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  handleLogout: PropTypes.func,
 };
 
 export default Navbar;

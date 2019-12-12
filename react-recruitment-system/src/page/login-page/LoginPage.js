@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./LoginPage.css";
 import {Auth} from "aws-amplify";
-import {SLASH} from "../../constants";
+import {HOME_PATH, UPDATE_LOGGED_IN} from "../../constants";
+import {AppContext} from "../../main/App";
 
 export const LoginPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {state, dispatch} = useContext(AppContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,7 +34,9 @@ export const LoginPage = (props) => {
     try {
       await Auth.signIn(username, password);
       alert("Logged in");
-      document.location.replace(SLASH);
+
+      dispatch({type: UPDATE_LOGGED_IN, isLogged: false});
+      document.location.replace(HOME_PATH);
     } catch (e) {
       alert(e.message);
     }
@@ -47,13 +51,11 @@ export const LoginPage = (props) => {
 
           <input className="form-control sign-input" value={username}
                  onChange={(e) => setUsername(e.target.value)}
-                 type="text" name="inputUsername" placeholder="Username"
-          />
+                 type="text" name="inputUsername" placeholder="Username"/>
 
           <input className="form-control sign-input" value={password}
                  onChange={(e) => setPassword(e.target.value)}
-                 type="password" name="inputPassword" placeholder="Password"
-          />
+                 type="password" name="inputPassword" placeholder="Password"/>
 
           <button className="btn btn-indigo sign-button" type="submit">
             Sign in
