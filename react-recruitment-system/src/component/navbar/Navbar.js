@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {CREATE_TEST_PATH, HOME_PATH, LOGIN_PATH, REGISTER_PATH} from "../../constants";
 import {AppContext} from "../../main/App";
-import DisplayQuestions from "../display-questions/DisplayQuestions";
 
 export const Navbar = (props) => {
 

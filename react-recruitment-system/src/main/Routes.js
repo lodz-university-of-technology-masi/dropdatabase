@@ -15,6 +15,7 @@ import NotFound from "../page/not-found/NotFound";
 import LoginPage from "../page/login-page/LoginPage";
 import ProfilePage from "../page/profile-page/ProfilePage";
 import RegisterPage from "../page/register-page/RegisterPage";
+import PrivateRoute from "../component/private-route/PrivateRoute";
 
 export const Routes = (props) => {
 
@@ -23,12 +24,13 @@ export const Routes = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <Switch>
-      <Route exact path={HOME_PATH} component={DisplayTest}/>
-      <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
-      <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
+      <PrivateRoute exact path={HOME_PATH} component={DisplayTest}/>
+      <PrivateRoute exact path={CREATE_TEST_PATH} component={CreateTest}/>
+      <PrivateRoute exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
+      <PrivateRoute exact path={REGISTER_PATH} component={RegisterPage}/>
+      <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
+
       <Route exact path={LOGIN_PATH} component={LoginPage}/>
-      <Route exact path={REGISTER_PATH} component={RegisterPage}/>
-      <Route exact path={PROFILE_PATH} component={ProfilePage}/>
       <Route component={NotFound}/>
     </Switch>
   );
