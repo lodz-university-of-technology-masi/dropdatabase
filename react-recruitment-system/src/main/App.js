@@ -5,10 +5,12 @@ import Routes from "./Routes";
 import _ from 'lodash'
 
 export const App = (props) => {
+
   /*----------------------- VARIABLE REGION -----------------------*/
   const initialState = {
     testToBeChanged: '',
     testToBeChangedOrig: '',
+    isUserLoggedIn: false,
   };
 
   function reducer(state, action) {
@@ -25,6 +27,7 @@ export const App = (props) => {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <AppContext.Provider value={{state, dispatch}}>

@@ -1,10 +1,40 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import {CREATE_TEST_PATH, HOME_PATH} from "../../constants";
+import {CREATE_TEST_PATH, HOME_PATH, LOGIN_PATH, REGISTER_PATH} from "../../constants";
+import {AppContext} from "../../main/App";
 
 export const Navbar = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {state, dispatch} = useContext(AppContext);
+
+  const renderNavItem = (path, value) => {
+    return (
+      <li className="nav-item">
+        <Link to={path} className="nav-link">
+          {value}
+        </Link>
+      </li>
+    );
+  };
+
+  /**
+   * If user is logged in then return CreateTestPage, if not return Login and Register
+   * @param isUserLoggedIn - if true user is logged in
+   * @returns {*}
+   */
+  const renderNavItemList = (isUserLoggedIn) => {
+    if (isUserLoggedIn) {
+      return renderNavItem(CREATE_TEST_PATH, "Create Test")
+    } else {
+      return (
+        <>
+          {renderNavItem(LOGIN_PATH, "Login")}
+          {renderNavItem(REGISTER_PATH, "Register")}
+        </>
+      )
+    }
+  };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
@@ -21,13 +51,7 @@ export const Navbar = (props) => {
 
       <div className="collapse navbar-collapse" id="navList">
         <ul className="navbar-nav ml-auto">
-
-          <li className="nav-item">
-            <Link to={CREATE_TEST_PATH} className="nav-link">
-              Create Test
-            </Link>
-          </li>
-
+          {renderNavItemList(state.isUserLoggedIn)}
         </ul>
       </div>
     </nav>
