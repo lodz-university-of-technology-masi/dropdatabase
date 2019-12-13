@@ -15,14 +15,14 @@ import Amplify from "aws-amplify";
 import config from "./config.js";
 
 // TODO ADD CONFIG
-// Amplify.configure({
-//   Auth: {
-//     // mandatorySignIn: true,
-//     userPoolId: config.cognito.userPoolId,
-//     region: config.cognito.region,
-//     clientId: config.cognito.clientId,
-//   }
-// });
+Amplify.configure({
+  Auth: {
+    identityPoolId: config.cognito.IdentityPoolId,
+    userPoolId: config.cognito.userPoolId,
+    region: config.cognito.region,
+    userPoolWebClientId: config.cognito.clientId,
+  }
+});
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 

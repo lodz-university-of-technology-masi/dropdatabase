@@ -9,6 +9,7 @@ export const RegisterPage = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userRole, setUserRole] = useState(0);
 
   const isEmptyInputs = (...elements) => {
     let result = false;
@@ -34,14 +35,20 @@ export const RegisterPage = (props) => {
     if (e.target.inputPassword.value === e.target.inputRepeatPassword.value) {
       setUsername(e.target.inputUsername.value);
       setEmail(e.target.inputEmail.value);
-      setPassword(e.target.inputPassword.value)
+      setPassword(e.target.inputPassword.value);
+      setUserRole(e.target.selectRole);
     } else {
       alert("Passwords don't match!")
     }
 
     try {
       await Auth.signUp({
-        //  TODO
+        username: username,
+        password: password,
+        attributes: {
+          email: email,
+          'custom:custom:account_type': userRole,
+        }
       });
 
       document.location.replace(LOGIN_PATH);
