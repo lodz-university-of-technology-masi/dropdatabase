@@ -3,7 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
 import _ from 'lodash'
-import {UPDATE_INPUT, UPDATE_LOGGED_IN} from "../constants";
+import {UPDATE_INPUT, UPDATE_LOGGED_IN, UPDATE_TOKEN} from "../constants";
 import {Auth} from "aws-amplify";
 
 export const App = (props) => {
@@ -13,6 +13,7 @@ export const App = (props) => {
     testToBeChanged: '',
     testToBeChangedOrig: '',
     isUserLoggedIn: true, //TODO CHANGE TO FALSE
+    // USER_SESSION_ID: "",
   };
 
   function reducer(state, action) {
@@ -29,6 +30,12 @@ export const App = (props) => {
           isUserLoggedIn: action.isLogged,
         };
       }
+
+      // case UPDATE_TOKEN: {
+      //   return {
+      //     USER_SESSION_ID: action.token,
+      //   };
+      // }
 
       default:
         return initialState;

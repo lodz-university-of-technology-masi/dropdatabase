@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import "./LoginPage.css";
 import {Auth} from "aws-amplify";
-import {HOME_PATH, UPDATE_LOGGED_IN} from "../../constants";
+import {HOME_PATH, UPDATE_LOGGED_IN, UPDATE_TOKEN} from "../../constants";
 import {AppContext} from "../../main/App";
 
 export const LoginPage = (props) => {
@@ -34,6 +34,18 @@ export const LoginPage = (props) => {
     try {
       await Auth.signIn(username, password);
       alert("Logged in");
+
+      //TODO - I DO NOT KNOW WHY ASSIGN VALUE TO CONTEXT DOES NOT WORK
+      // Auth.currentAuthenticatedUser({
+      //     bypassCache: false
+      //   }
+      // ).then(user => {
+      //     dispatch({
+      //       type: UPDATE_TOKEN,
+      //       token: user.signInUserSession.accessToken.jwtToken
+      //     });
+      //   }
+      // ).catch(err => console.log(err));
 
       dispatch({type: UPDATE_LOGGED_IN, isLogged: true});
       document.location.replace(HOME_PATH);
