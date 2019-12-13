@@ -14,7 +14,6 @@ import App from './main/App';
 import Amplify from "aws-amplify";
 import config from "./config.js";
 
-// TODO ADD CONFIG
 Amplify.configure({
   Auth: {
     identityPoolId: config.cognito.IdentityPoolId,

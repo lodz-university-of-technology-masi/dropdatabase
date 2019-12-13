@@ -1,7 +1,13 @@
 import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {CREATE_TEST_PATH, HOME_PATH, LOGIN_PATH, REGISTER_PATH} from "../../constants";
+import {
+  CREATE_TEST_PATH,
+  HOME_PATH,
+  LOGIN_PATH,
+  PROFILE_PATH,
+  REGISTER_PATH
+} from "../../constants";
 import {AppContext} from "../../main/App";
 
 export const Navbar = (props) => {
@@ -42,6 +48,7 @@ export const Navbar = (props) => {
         <>
           {renderNavItem(CREATE_TEST_PATH, "Create Test")}
           {renderNavItem(REGISTER_PATH, "Register User")}
+          {renderNavItem(PROFILE_PATH, "Account")}
           {renderNavItem(LOGIN_PATH, "Logout", true)}
         </>
       );

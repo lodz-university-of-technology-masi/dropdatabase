@@ -12,7 +12,7 @@ export const App = (props) => {
   const initialState = {
     testToBeChanged: '',
     testToBeChangedOrig: '',
-    isUserLoggedIn: true,
+    isUserLoggedIn: true, //TODO CHANGE TO FALSE
   };
 
   function reducer(state, action) {
