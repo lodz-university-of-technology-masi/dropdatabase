@@ -27,18 +27,9 @@ export const RegisterPage = (props) => {
     e.preventDefault();
 
     if (isEmptyInputs(e.target.inputUsername, e.target.inputEmail,
-      e.target.inputPassword, e.target.inputRepeatPassword, e.target.selectRole)) {
+      e.target.inputPassword, e.target.selectRole)) {
       alert("All inputs must be fill in");
       return;
-    }
-
-    if (e.target.inputPassword.value === e.target.inputRepeatPassword.value) {
-      setUsername(e.target.inputUsername.value);
-      setEmail(e.target.inputEmail.value);
-      setPassword(e.target.inputPassword.value);
-      setUserRole(e.target.selectRole);
-    } else {
-      alert("Passwords don't match!")
     }
 
     try {
@@ -67,19 +58,20 @@ export const RegisterPage = (props) => {
             <header className="h4 register-header">Register</header>
 
             <input className="form-control register-input" type="text"
-                   placeholder="Username" name="inputUsername"
+                   placeholder="Username" name="inputUsername" value={username}
+                   onChange={(e) => setUsername(e.target.value)}
             />
             <input className="form-control register-input" type="text"
-                   placeholder="E-mail" name="inputEmail"
+                   placeholder="E-mail" name="inputEmail" value={email}
+                   onChange={(e) => setEmail(e.target.value)}
             />
             <input className="form-control register-input" type="password"
-                   placeholder="Password" name="inputPassword"
-            />
-            <input className="form-control register-input" type="password"
-                   placeholder="Repeat Password" name="inputRepeatPassword"
+                   placeholder="Password" name="inputPassword" value={password}
+                   onChange={(e) => setPassword(e.target.value)}
             />
 
-            <select className="browser-default custom-select register-input" name="selectRole">
+            <select className="browser-default custom-select register-input" name="selectRole"
+                    onChange={(e) => setUserRole(e.target.value)}>
               <option value="" disabled selected>Choose Role</option>
               <option value="0">Candidate</option>
               <option value="1">Recruiter</option>
