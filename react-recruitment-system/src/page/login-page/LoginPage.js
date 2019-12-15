@@ -48,6 +48,7 @@ export const LoginPage = (props) => {
       // ).catch(err => console.log(err));
 
       dispatch({type: UPDATE_LOGGED_IN, isLogged: true});
+      localStorage.setItem('isLoggedIn', true);
       document.location.replace(HOME_PATH);
     } catch (e) {
       alert(e.message);

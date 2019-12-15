@@ -15,7 +15,6 @@ export const DisplayTest = (props) => {
     axios.get(FIREBASE_PATH + TESTS_PATH, {
       params: {
         'token': USER_SESSION_ID
-
       }
     })
       .then(res => {

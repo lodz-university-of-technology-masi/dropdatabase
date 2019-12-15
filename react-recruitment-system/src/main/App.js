@@ -3,61 +3,61 @@ import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
 import _ from 'lodash'
-import {UPDATE_INPUT, UPDATE_LOGGED_IN, UPDATE_TOKEN} from "../constants";
+import {UPDATE_INPUT, UPDATE_LOGGED_IN} from "../constants";
 import {Auth} from "aws-amplify";
+import update from 'immutability-helper';
 
 export const App = (props) => {
 
-  /*----------------------- VARIABLE REGION -----------------------*/
-  const initialState = {
-    testToBeChanged: '',
-    testToBeChangedOrig: '',
-    isUserLoggedIn: true, //TODO CHANGE TO FALSE
-    // USER_SESSION_ID: "",
-  };
+    /*----------------------- VARIABLE REGION -----------------------*/
+    const initialState = {
+        testToBeChanged: '',
+        testToBeChangedOrig: '',
+        isUserLoggedIn: localStorage.getItem('isLoggedIn'), //TODO CHANGE TO FALSE
+        // USER_SESSION_ID: "",
+    };
 
-  function reducer(state, action) {
-    switch (action.type) {
-      case UPDATE_INPUT: {
-        return {
-          testToBeChanged: action.test,
-          testToBeChangedOrig: _.cloneDeep(action.test),
-        };
-      }
+    function reducer(state, action) {
+        switch (action.type) {
+            case UPDATE_INPUT: {
+                return update(state, {
+                    testToBeChanged: {$set: action.test},
+                    testToBeChangedOrig: {$set: _.cloneDeep(action.test)}
+                });
+            }
 
-      case UPDATE_LOGGED_IN: {
-        return {
-          isUserLoggedIn: action.isLogged,
-        };
-      }
+            case UPDATE_LOGGED_IN: {
+                return update(state, {isUserLoggedIn: {$set: action.isLogged}});
+            }
 
-      // case UPDATE_TOKEN: {
-      //   return {
-      //     USER_SESSION_ID: action.token,
-      //   };
-      // }
+            // case UPDATE_TOKEN: {
+            //   return {
+            //     USER_SESSION_ID: action.token,
+            //   };
+            // }
 
-      default:
-        return initialState;
+            default:
+                return initialState;
+        }
     }
-  }
 
-  const handleLogout = async () => {
-    await Auth.signOut();
-    dispatch({type: UPDATE_LOGGED_IN, isLogged: false})
-  };
+    const handleLogout = async () => {
+        await Auth.signOut();
+        dispatch({type: UPDATE_LOGGED_IN, isLogged: false});
+        localStorage.setItem('isLoggedIn', false);
+    };
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-  /*------------------------ RETURN REGION ------------------------*/
-  return (
-    <AppContext.Provider value={{state, dispatch}}>
-      <BrowserRouter>
-        <Navbar handleLogout={handleLogout} msg={"Recruitment System"}/>
-        <Routes/>
-      </BrowserRouter>
-    </AppContext.Provider>
-  );
+    /*------------------------ RETURN REGION ------------------------*/
+    return (
+        <AppContext.Provider value={{state, dispatch}}>
+            <BrowserRouter>
+                <Navbar handleLogout={handleLogout} msg={"Recruitment System"}/>
+                <Routes/>
+            </BrowserRouter>
+        </AppContext.Provider>
+    );
 };
 
 // Create context object
