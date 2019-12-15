@@ -14,7 +14,7 @@ export const DisplayTest = (props) => {
   useEffect(() => {
     axios.get(FIREBASE_PATH + TESTS_PATH, {
       params: {
-        'token': USER_SESSION_ID
+        'token': sessionStorage.getItem('token')
       }
     })
       .then(res => {
@@ -30,7 +30,7 @@ export const DisplayTest = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   if (load) {
     let items = [];
-
+    console.log(testArray)
     for (let test of testArray) {
       items.push(
         <DisplayQuestions

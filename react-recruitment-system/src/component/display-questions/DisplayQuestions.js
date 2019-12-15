@@ -91,7 +91,7 @@ export const DisplayQuestions = (props) => {
   const handleDeleteTest = (e) => {
     let test = {
       "user": {
-        "userToken": USER_SESSION_ID
+        "userToken": sessionStorage.getItem('token')
       },
       "testUUID": e.testUUID,
       "questions": e.questions
@@ -129,7 +129,7 @@ export const DisplayQuestions = (props) => {
   const handleChangeTest = (e) => {
     let test = {
       "user": {
-        "userToken": USER_SESSION_ID
+        "userToken": sessionStorage.getItem('token')
       },
       "testUUID": e.testUUID,
       "questions": e.questions

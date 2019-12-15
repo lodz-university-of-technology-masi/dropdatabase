@@ -123,11 +123,12 @@ export const CreateTest = (props) => {
     // console.log(questionArray);
     let test = {
       "user": {
-        "userToken": USER_SESSION_ID
+        "userToken": sessionStorage.getItem('token')
       },
       "testUUID": uuidv4(),
       "questions": questionArray
     };
+
     axios.post(FIREBASE_PATH + "/test", test).then(() => {
       alert("Test has been sent");
       document.location.replace('/')

@@ -36,19 +36,22 @@ export const LoginPage = (props) => {
       alert("Logged in");
 
       //TODO - I DO NOT KNOW WHY ASSIGN VALUE TO CONTEXT DOES NOT WORK
-      // Auth.currentAuthenticatedUser({
-      //     bypassCache: false
-      //   }
-      // ).then(user => {
-      //     dispatch({
-      //       type: UPDATE_TOKEN,
-      //       token: user.signInUserSession.accessToken.jwtToken
-      //     });
-      //   }
-      // ).catch(err => console.log(err));
+      Auth.currentAuthenticatedUser({
+          bypassCache: false
+        }
+      ).then(user => {
+          dispatch({
+            type: UPDATE_TOKEN,
+            token: user.signInUserSession.accessToken.jwtToken
+          });
+        sessionStorage.setItem('token', user.signInUserSession.accessToken.jwtToken);
+        }
+      ).catch(err => console.log(err));
+
+
 
       dispatch({type: UPDATE_LOGGED_IN, isLogged: true});
-      localStorage.setItem('isLoggedIn', true);
+      sessionStorage.setItem('isLoggedIn', true);
       document.location.replace(HOME_PATH);
     } catch (e) {
       alert(e.message);
