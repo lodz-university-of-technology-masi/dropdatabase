@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "./DisplayTest.css";
-import {FIREBASE_PATH, TESTS_PATH} from "../../constants";
+import {FIREBASE_PATH, TESTS_PATH, USER_SESSION_ID} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
 export const DisplayTest = (props) => {
@@ -12,7 +12,12 @@ export const DisplayTest = (props) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(FIREBASE_PATH + TESTS_PATH)
+    axios.get(FIREBASE_PATH + TESTS_PATH, {
+      params: {
+        'token': USER_SESSION_ID
+
+      }
+    })
       .then(res => {
         setTestArray(res.data);
         setLoad(true);
