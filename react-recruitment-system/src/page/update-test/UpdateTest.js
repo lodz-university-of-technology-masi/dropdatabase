@@ -127,6 +127,7 @@ export const DeleteTest = (props) => {
       },
       data: state.testToBeChangedOrig
     }).then(() => {
+        console.log(JSON.stringify(state))
       axios.post(FIREBASE_PATH + "/test", state.testToBeChanged).then(() => {
         alert("Test has been updated");
         document.location.replace('/');

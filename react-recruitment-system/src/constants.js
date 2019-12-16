@@ -1,16 +1,26 @@
 /*---------- STRINGS ----------*/
-export const SLASH = "/";
+const SLASH = "/";
+export const TESTS = "tests";
 export const CREATE_TEST = "createtest";
-export const DELETE_TEST = "deletetest";
-export const DISPLAY_TEST = "displaytest";
 export const UPDATE_TEST = "updatetest";
+export const LOGIN = "login";
+export const REGISTER = "register";
+export const PROFILE = "profile";
+
+export const UPDATE_INPUT = "UPDATE_INPUT";
+export const UPDATE_LOGGED_IN = "UPDATE_LOGGED_IN";
+export const UPDATE_TOKEN = "UPDATE_TOKEN";
 
 /*---------- PATHS ----------*/
 export const HOME_PATH = SLASH;
 export const CREATE_TEST_PATH = SLASH + CREATE_TEST;
 export const UPDATE_TEST_PATH = SLASH + UPDATE_TEST;
+export const LOGIN_PATH = SLASH + LOGIN;
+export const REGISTER_PATH = SLASH + REGISTER;
+export const PROFILE_PATH = SLASH + PROFILE;
+export const TESTS_PATH = SLASH + TESTS;
 
 /*---------- KEYS ----------*/
-export const USER_SESSION_ID = "eyJraWQiOiI3NW4yY1pzUTFrdFBDbXV6WW1ucFRIVlR5UHFWWWthTjJuXC92QnkwUnNzYz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjNGIzMjNmYS1iY2RiLTRlZDMtYWUzNi0xMWQ0YjVkNDZkYTciLCJldmVudF9pZCI6ImIyMDlmNjEwLTM5YmItNGI0My1hYzMyLTdlYzJjMDA1M2U5MyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE1NzU4MzU0MDUsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX3JITDNuVlBrMCIsImV4cCI6MTU3NTgzOTAwNSwiaWF0IjoxNTc1ODM1NDA1LCJqdGkiOiI5MGM0ZDA4My02ZjVkLTQwNDAtYTRlMi0yZTE1M2JjODIzZDMiLCJjbGllbnRfaWQiOiI1ZjJtYXM5NnJjbDFtYjJrZW84MDRkcjNzZCIsInVzZXJuYW1lIjoidGVzdCJ9.i9GDCZuAE-ihltuop584-aV0S7I5dMyEfGoM2NiIReC168nK3ONHlq2AwieIh2RO4PB2pk5BSNe8qG_NyRznssP_D9OZbkt7Hj9JGk2VmsC0YBNLdr1fMx60cX37C8g2Wm2iUWbISpr4RC7tb3S_NAqwa4dPAsaObz5D4d-pioX9CR4pRXeoRjfHPpJ-hD8j4rNi_xnkP7mjrzX4dPdD83QbHICwt-MD4ibCUrePcYawxRdpZB5pBi9X5gk1sWcEN40xDN5KZ9c6efBuDCsShn2eUSHpstYteNJJ1FkliDbdqzkVkd0r4uzunvPwTfgyzdvz15EhMo64UWQgRRuEpA";
+// export const USER_SESSION_ID = "eyJraWQiOiI3NW4yY1pzUTFrdFBDbXV6WW1ucFRIVlR5UHFWWWthTjJuXC92QnkwUnNzYz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjNGIzMjNmYS1iY2RiLTRlZDMtYWUzNi0xMWQ0YjVkNDZkYTciLCJldmVudF9pZCI6Ijc0NWVhMjM2LWQ1OTAtNGNhNC1iMWI0LWQ5NGM3YzZkMDk0MCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE1NzY0MjE2NTIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX3JITDNuVlBrMCIsImV4cCI6MTU3NjQyNTI1MiwiaWF0IjoxNTc2NDIxNjUyLCJqdGkiOiJlYWIxNjk3NC1hYzc5LTQ4MzAtOTQwNi00NzFlMzYwODhjNWMiLCJjbGllbnRfaWQiOiI1ZjJtYXM5NnJjbDFtYjJrZW84MDRkcjNzZCIsInVzZXJuYW1lIjoidGVzdCJ9.SNRmtALMf-IGezhv0sVI1lrZr3_E2pL7AySkRFmjsfPceI104w8DdeDYQUo6n1cmiITSpe_pvTV7ItNlTrsXEy39ULaBge26IMwThwdgObG3LblxoK_9CsxquRWgQ_aqyehtK9QI1vyWYOgBMf4mkAUMKBuJ_neOaeAoLcvZ0QPIr07hxnhaCLFp1CnxzZjthsfgF9aRR7AVKHxAXUls5W9QIgfPsEx2b_c82yjspaSI3UvHTlFznUpsjMk_lBJ089FZ-o8_BNtlZUubIjcipB9KMjoZo5hnK6lHJLDRJ7sLUpRWIPfBKYTmZscDh_xFwr5XjTLVDUQ1KpQq-Rin2w";
 
 export const FIREBASE_PATH = "https://8ry9799483.execute-api.us-east-1.amazonaws.com/testowy";

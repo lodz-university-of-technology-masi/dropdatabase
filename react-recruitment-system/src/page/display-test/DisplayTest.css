@@ -3,3 +3,12 @@
     right: 50px;
     top: 10px;
 }
+
+.margin-text {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+h1 {
+    font-size: 5rem;
+}

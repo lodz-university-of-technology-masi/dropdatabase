@@ -64,6 +64,7 @@ export const CreateTest = (props) => {
   };
 
   const handleSubmitCloseQuestion = (e) => {
+      document.getElementsByClassName('blur-background')[0].style('height',window.outerHeight);
     e.preventDefault();
 
     if (e.target.checkboxAnswerA.checked === false
@@ -123,11 +124,12 @@ export const CreateTest = (props) => {
     // console.log(questionArray);
     let test = {
       "user": {
-        "userToken": USER_SESSION_ID
+        "userToken": sessionStorage.getItem('token')
       },
       "testUUID": uuidv4(),
       "questions": questionArray
     };
+
     axios.post(FIREBASE_PATH + "/test", test).then(() => {
       alert("Test has been sent");
       document.location.replace('/')
@@ -136,7 +138,7 @@ export const CreateTest = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <>
+    <div className="blur-background">
       <AddQuestion
         isOpenQuestion={isOpenQuestion}
         handleSwitchClick={handleSwitchClick}
@@ -151,7 +153,7 @@ export const CreateTest = (props) => {
         handleDeleteQuestion={handleDeleteQuestion}
         postTestToServer={postTestToServer}
       />
-    </>
+    </div>
   );
 };
 

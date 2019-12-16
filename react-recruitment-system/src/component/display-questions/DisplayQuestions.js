@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {FIREBASE_PATH, UPDATE_TEST, USER_SESSION_ID} from "../../constants";
+import {FIREBASE_PATH, UPDATE_INPUT, UPDATE_TEST, USER_SESSION_ID} from "../../constants";
 
 import {AppContext} from '../../main/App'
 
@@ -91,7 +91,7 @@ export const DisplayQuestions = (props) => {
   const handleDeleteTest = (e) => {
     let test = {
       "user": {
-        "userToken": USER_SESSION_ID
+        "userToken": sessionStorage.getItem('token')
       },
       "testUUID": e.testUUID,
       "questions": e.questions
@@ -129,7 +129,7 @@ export const DisplayQuestions = (props) => {
   const handleChangeTest = (e) => {
     let test = {
       "user": {
-        "userToken": USER_SESSION_ID
+        "userToken": sessionStorage.getItem('token')
       },
       "testUUID": e.testUUID,
       "questions": e.questions
@@ -137,7 +137,7 @@ export const DisplayQuestions = (props) => {
 
     const test_orig = test;
 
-    dispatch({type: 'UPDATE_INPUT', test: test});
+    dispatch({type: UPDATE_INPUT, test: test});
   };
   const renderChangeTestButton = (it) => {
     return (

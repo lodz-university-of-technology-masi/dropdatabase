@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "./DisplayTest.css";
-import {FIREBASE_PATH} from "../../constants";
+import {FIREBASE_PATH, TESTS_PATH, USER_SESSION_ID} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
 export const DisplayTest = (props) => {
@@ -12,7 +12,11 @@ export const DisplayTest = (props) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(FIREBASE_PATH + "/tests")
+    axios.get(FIREBASE_PATH + TESTS_PATH, {
+      params: {
+        'token': sessionStorage.getItem('token')
+      }
+    })
       .then(res => {
         setTestArray(res.data);
         setLoad(true);
@@ -26,6 +30,7 @@ export const DisplayTest = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   if (load) {
     let items = [];
+    console.log(testArray)
     for (let test of testArray) {
       items.push(
         <DisplayQuestions
@@ -36,11 +41,14 @@ export const DisplayTest = (props) => {
         />
       );
     }
+
     return (items);
   } else {
     return (
-      <div>
-        Loading...
+      <div className="container margin-text text-center">
+        <h2 className="font-weight-bold">
+          Loading...
+        </h2>
       </div>
     );
   }
