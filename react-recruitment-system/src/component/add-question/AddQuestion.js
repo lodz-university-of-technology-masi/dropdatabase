@@ -79,7 +79,7 @@ export const AddQuestion = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
-      <section className="card container mt-5">
+      <section className="card border container mt-5">
         <header className="card-body row justify-content-center">
           <h5 className="font-weight-bold mb-3">Add New Question</h5>
         </header>

@@ -1,4 +1,4 @@
-.blur-background::before {
+.blur-background_blur::before {
     z-index: -1;
     content: "";
     position: absolute;
@@ -14,8 +14,13 @@
     font-size: 2rem;
     margin-top: 4rem;
     margin-bottom: auto;
+    border: 1px solid #f8f9fa !important;
 }
 
 .light-grey-font {
     color: #cfd8dc;
+}
+
+.card-header{
+    background: rgba(0,0,0,0)
 }

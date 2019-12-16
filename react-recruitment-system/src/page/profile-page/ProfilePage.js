@@ -27,9 +27,9 @@ export const ProfilePage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="blur-background">
-      <div className="container personal-card">
-        <div className="card text-white indigo mb-3">
+    <div className="">
+      <div className="blur-background_blur container personal-card">
+        <div className="text-white mb-3">
 
           <div className="card-header text-center">
             Personal Information
