@@ -9,11 +9,11 @@ import AddQuestion from "../../component/add-question/AddQuestion";
 export const CreateTest = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
   useEffect(() => {
 
   });
+
   const areEmptyInputs = (...elements) => {
     let result = false;
 
@@ -32,10 +32,6 @@ export const CreateTest = (props) => {
 
   const clearCheckboxes = (...elements) => {
     elements.forEach((it) => it.checked = false)
-  };
-
-  const handleSwitchClick = () => {
-    setIsOpenQuestion(!isOpenQuestion);
   };
 
   const handleDeleteQuestion = (index) => {
@@ -64,7 +60,6 @@ export const CreateTest = (props) => {
   };
 
   const handleSubmitCloseQuestion = (e) => {
-      document.getElementsByClassName('blur-background')[0].style('height',window.outerHeight);
     e.preventDefault();
 
     if (e.target.checkboxAnswerA.checked === false
@@ -120,6 +115,25 @@ export const CreateTest = (props) => {
     );
   };
 
+  const handleSubmitNumericalQuestion = (e) => {
+    // e.preventDefault();
+    //
+    // if (areEmptyInputs(e.target.numericalQuestion, e.target.numericalAnswer)) {
+    //   alert("All inputs must be fill in");
+    //   return;
+    // }
+    //
+    // const question = {
+    //   id: uuidv4(),
+    //   isOpen: true,
+    //   questionContent: e.target.numericalQuestion.value,
+    //   questionAnswer: e.target.numericalAnswer.value,
+    // };
+    //
+    // setQuestionArray([...questionArray, question]);
+    // clearTextInputs(e.target.numericalQuestion, e.target.numericalAnswer);
+  };
+
   const postTestToServer = () => {
     // console.log(questionArray);
     let test = {
@@ -140,10 +154,9 @@ export const CreateTest = (props) => {
   return (
     <div className="blur-background">
       <AddQuestion
-        isOpenQuestion={isOpenQuestion}
-        handleSwitchClick={handleSwitchClick}
         handleSubmitOpenQuestion={handleSubmitOpenQuestion}
         handleSubmitCloseQuestion={handleSubmitCloseQuestion}
+        handleSubmitNumericalQuestion={handleSubmitNumericalQuestion}
       />
 
       <DisplayQuestions
