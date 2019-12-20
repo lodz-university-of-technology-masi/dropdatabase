@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {FIREBASE_PATH, USER_SESSION_ID} from "../../constants";
+import React, {useState} from "react";
+import {FIREBASE_PATH} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTest.css";
@@ -10,9 +10,6 @@ export const CreateTest = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [questionArray, setQuestionArray] = useState([]);
-  useEffect(() => {
-
-  });
 
   const areEmptyInputs = (...elements) => {
     let result = false;
@@ -51,6 +48,8 @@ export const CreateTest = (props) => {
     const question = {
       id: uuidv4(),
       isOpen: true,
+      isClosed: false,
+      isNumerical: false,
       questionContent: e.target.openQuestion.value,
       questionAnswer: e.target.openAnswer.value,
     };
@@ -93,6 +92,8 @@ export const CreateTest = (props) => {
     const question = {
       id: uuidv4(),
       isOpen: false,
+      isClosed: true,
+      isNumerical: false,
       questionContent: e.target.closeQuestion.value,
       answerA: e.target.closeAnswerA.value,
       answerB: e.target.closeAnswerB.value,
@@ -116,22 +117,24 @@ export const CreateTest = (props) => {
   };
 
   const handleSubmitNumericalQuestion = (e) => {
-    // e.preventDefault();
-    //
-    // if (areEmptyInputs(e.target.numericalQuestion, e.target.numericalAnswer)) {
-    //   alert("All inputs must be fill in");
-    //   return;
-    // }
-    //
-    // const question = {
-    //   id: uuidv4(),
-    //   isOpen: true,
-    //   questionContent: e.target.numericalQuestion.value,
-    //   questionAnswer: e.target.numericalAnswer.value,
-    // };
-    //
-    // setQuestionArray([...questionArray, question]);
-    // clearTextInputs(e.target.numericalQuestion, e.target.numericalAnswer);
+    e.preventDefault();
+
+    if (areEmptyInputs(e.target.numericalQuestion, e.target.numericalAnswer)) {
+      alert("All inputs must be fill in");
+      return;
+    }
+
+    const question = {
+      id: uuidv4(),
+      isOpen: false,
+      isClosed: false,
+      isNumerical: true,
+      questionContent: e.target.numericalQuestion.value,
+      questionAnswer: e.target.numericalAnswer.value,
+    };
+
+    setQuestionArray([...questionArray, question]);
+    clearTextInputs(e.target.numericalQuestion, e.target.numericalAnswer);
   };
 
   const postTestToServer = () => {

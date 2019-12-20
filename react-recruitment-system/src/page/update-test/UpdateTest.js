@@ -1,20 +1,16 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {FIREBASE_PATH} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import {AppContext} from "../../main/App";
 import EditQuestion from "../../component/edit-question/EditQuestion";
 
-export const DeleteTest = (props) => {
+export const UpdateTest = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {state, dispatch} = useContext(AppContext);
-
-  const [isOpenQuestion, setIsOpenQuestion] = useState(false);
   const [questionArray, setQuestionArray] = useState([]);
-  useEffect(() => {
 
-  });
   const areEmptyInputs = (...elements) => {
     let result = false;
 
@@ -35,16 +31,6 @@ export const DeleteTest = (props) => {
     elements.forEach((it) => it.checked = false)
   };
 
-  const handleSwitchClick = () => {
-    setIsOpenQuestion(!isOpenQuestion);
-  };
-
-  const handleDeleteQuestion = (index) => {
-    let temp = questionArray.slice();
-    temp.splice(index, 1);
-    setQuestionArray(temp);
-  };
-
   const handleSubmitOpenQuestion = (e) => {
     e.preventDefault();
 
@@ -56,6 +42,8 @@ export const DeleteTest = (props) => {
     const question = {
       id: uuidv4(),
       isOpen: true,
+      isClosed: false,
+      isNumerical: false,
       questionContent: e.target.openQuestion.value,
       questionAnswer: e.target.openAnswer.value,
     };
@@ -98,6 +86,8 @@ export const DeleteTest = (props) => {
     const question = {
       id: uuidv4(),
       isOpen: false,
+      isClosed: true,
+      isNumerical: false,
       questionContent: e.target.closeQuestion.value,
       answerA: e.target.closeAnswerA.value,
       answerB: e.target.closeAnswerB.value,
@@ -120,6 +110,27 @@ export const DeleteTest = (props) => {
     );
   };
 
+  const handleSubmitNumericalQuestion = (e) => {
+    e.preventDefault();
+
+    if (areEmptyInputs(e.target.numericalQuestion, e.target.numericalAnswer)) {
+      alert("All inputs must be fill in");
+      return;
+    }
+
+    const question = {
+      id: uuidv4(),
+      isOpen: false,
+      isClosed: false,
+      isNumerical: true,
+      questionContent: e.target.numericalQuestion.value,
+      questionAnswer: e.target.numericalAnswer.value,
+    };
+
+    setQuestionArray([...questionArray, question]);
+    clearTextInputs(e.target.numericalQuestion, e.target.numericalAnswer);
+  };
+
   const postTestToServer = () => {
     axios.delete(FIREBASE_PATH + "/test", {
       headers: {
@@ -127,7 +138,7 @@ export const DeleteTest = (props) => {
       },
       data: state.testToBeChangedOrig
     }).then(() => {
-        console.log(JSON.stringify(state))
+      console.log(JSON.stringify(state))
       axios.post(FIREBASE_PATH + "/test", state.testToBeChanged).then(() => {
         alert("Test has been updated");
         document.location.replace('/');
@@ -149,10 +160,10 @@ export const DeleteTest = (props) => {
           state.testToBeChanged.questions.map((it, index) => {
             return (
               <EditQuestion
-                isOpenQuestion={state.testToBeChanged.questions[index].isOpen}
+                questionIndex={index}
                 handleSubmitOpenQuestion={handleSubmitOpenQuestion}
                 handleSubmitCloseQuestion={handleSubmitCloseQuestion}
-                questionIndex={index}
+                handleSubmitNumericalQuestion={handleSubmitNumericalQuestion}
               />
             );
           })
@@ -160,22 +171,17 @@ export const DeleteTest = (props) => {
       </ul>
 
       <div className="row justify-content-center mt-3">
-        <button className="btn btn-success white-text"
-                onClick={
-                  postTestToServer
-                }>
+        <button className="btn btn-success white-text" onClick={postTestToServer}>
           Update Test
         </button>
         <button className="btn btn-danger white-text"
-                onClick={() => {
-                  document.location.replace('/')
-                }
-                }>
+                onClick={() => document.location.replace('/')}>
           Cancel
         </button>
       </div>
     </>
   );
 };
-export default DeleteTest;
+
+export default UpdateTest;
     

@@ -31,22 +31,19 @@ export const AddQuestion = (props) => {
       <div className="row justify-content-center">
         <button
           className={isOpenQuestion ? "btn btn-primary disabled" : "btn btn-primary"}
-          onClick={handleSwitchToOpenQuestion}
-        >
+          onClick={handleSwitchToOpenQuestion}>
           Change to Open Question
         </button>
 
         <button
           className={isClosedQuestion ? "btn btn-primary disabled" : "btn btn-primary"}
-          onClick={handleSwitchToClosedQuestion}
-        >
+          onClick={handleSwitchToClosedQuestion}>
           Change to Close Question
         </button>
 
         <button
           className={isNumericalQuestion ? "btn btn-primary disabled" : "btn btn-primary"}
-          onClick={handleSwitchToNumericalQuestion}
-        >
+          onClick={handleSwitchToNumericalQuestion}>
           Change to Numerical Question
         </button>
       </div>
