@@ -42,13 +42,11 @@ export const LoginPage = (props) => {
       ).then(user => {
           dispatch({
             type: UPDATE_TOKEN,
-            token: user.signInUserSession.accessToken.jwtToken
+            token: user.signInUserSession.idToken.jwtToken
           });
-        sessionStorage.setItem('token', user.signInUserSession.accessToken.jwtToken);
+          sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
         }
       ).catch(err => console.log(err));
-
-
 
       dispatch({type: UPDATE_LOGGED_IN, isLogged: true});
       sessionStorage.setItem('isLoggedIn', true);
