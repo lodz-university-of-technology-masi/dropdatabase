@@ -32,9 +32,57 @@ export const DisplayQuestions = (props) => {
     );
   };
 
+  const renderDeleteQuestionButton = (index) => {
+    return (
+      <button className="btn btn-danger white-text float-right"
+              onClick={() => props.handleDeleteQuestion(index)}>
+        Delete
+      </button>
+    );
+  };
+
+  const renderCreateTestButton = () => {
+    return (
+      <div className="row justify-content-center my-3">
+        <button className="btn btn-primary" onClick={props.postTestToServer}>
+          Create Test
+        </button>
+      </div>
+    );
+  };
+
+  const renderChangeTestButton = (it) => {
+    return (
+      <div className="row justify-content-center my-3">
+        <Link to={UPDATE_TEST} className="nav-link">
+
+          <button className="btn btn-primary" onClick={() => {
+            handleChangeTest(it)
+          }}>
+            Change Test
+          </button>
+        </Link>
+      </div>
+    );
+  };
+
   const renderWholeQuestion = (it, index) => {
     let items = [];
-    if (!it.isOpen) {
+
+    if (it.isOpen || it.isNumerical) {
+      return (
+        <ul className="list-group list-group-flush mt-3 card">
+          <h4 className="text-center">
+            Question: {it.questionContent}
+          </h4>
+          <li className="list-group-item">
+            Answer: {it.questionAnswer}
+          </li>
+        </ul>
+      );
+    }
+
+    if (it.isClosed) {
       Object.keys(it).map((it2, index) => {
         if (it2.includes("answer")) {
           if (it.correct && it.correct.includes(it2[it2.length - 1])) {
@@ -60,17 +108,6 @@ export const DisplayQuestions = (props) => {
           </h4>{items}
         </ul>
       );
-    } else {
-      return (
-        <ul className="list-group list-group-flush mt-3 card">
-          <h4 className="text-center">
-            Question: {it.questionContent}
-          </h4>
-          <li className="list-group-item">
-            Anwser: {it.questionAnswer}
-          </li>
-        </ul>
-      );
     }
 
     return (
@@ -88,6 +125,7 @@ export const DisplayQuestions = (props) => {
       </li>
     );
   };
+
   const handleDeleteTest = (e) => {
     let test = {
       "user": {
@@ -107,24 +145,6 @@ export const DisplayQuestions = (props) => {
       window.location.reload()
     }).catch((error) => console.log(error));
   };
-  const renderDeleteQuestionButton = (index) => {
-    return (
-      <button className="btn btn-danger white-text float-right"
-              onClick={() => props.handleDeleteQuestion(index)}>
-        Delete
-      </button>
-    );
-  };
-
-  const renderCreateTestButton = () => {
-    return (
-      <div className="row justify-content-center my-3">
-        <button className="btn btn-primary" onClick={props.postTestToServer}>
-          Create Test
-        </button>
-      </div>
-    );
-  };
 
   const handleChangeTest = (e) => {
     let test = {
@@ -139,20 +159,7 @@ export const DisplayQuestions = (props) => {
 
     dispatch({type: UPDATE_INPUT, test: test});
   };
-  const renderChangeTestButton = (it) => {
-    return (
-      <div className="row justify-content-center my-3">
-        <Link to={UPDATE_TEST} className="nav-link">
 
-          <button className="btn btn-primary" onClick={() => {
-            handleChangeTest(it)
-          }}>
-            Change Test
-          </button>
-        </Link>
-      </div>
-    );
-  };
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
