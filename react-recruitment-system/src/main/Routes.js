@@ -1,6 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import {
+  CANDIDATE_LIST_PATH,
   CREATE_TEST_PATH,
   HOME_PATH,
   LOGIN_PATH,
@@ -16,6 +17,7 @@ import LoginPage from "../page/login-page/LoginPage";
 import ProfilePage from "../page/profile-page/ProfilePage";
 import RegisterPage from "../page/register-page/RegisterPage";
 import PrivateRoute from "../component/private-route/PrivateRoute";
+import CandidateListPage from "../page/candidate-list-page/CandidateListPage";
 
 export const Routes = (props) => {
 
@@ -29,6 +31,7 @@ export const Routes = (props) => {
       <PrivateRoute exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
       <PrivateRoute exact path={REGISTER_PATH} component={RegisterPage}/>
       <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
+      <PrivateRoute exact path={CANDIDATE_LIST_PATH} component={CandidateListPage}/>
 
       <Route exact path={LOGIN_PATH} component={LoginPage}/>
       <Route component={NotFound}/>

@@ -43,6 +43,8 @@ export const App = (props) => {
         await Auth.signOut();
         dispatch({type: UPDATE_LOGGED_IN, isLogged: false});
         localStorage.setItem('isLoggedIn', false);
+        localStorage.clear();
+        sessionStorage.clear();
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);
