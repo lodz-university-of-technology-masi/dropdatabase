@@ -5,7 +5,7 @@ import uuidv4 from "uuid/v4";
 import {AppContext} from "../../main/App";
 import EditQuestion from "../../component/edit-question/EditQuestion";
 
-export const UpdateTest = (props) => {
+export const UpdateTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {state, dispatch} = useContext(AppContext);
@@ -183,5 +183,5 @@ export const UpdateTest = (props) => {
   );
 };
 
-export default UpdateTest;
+export default UpdateTestPage;
     

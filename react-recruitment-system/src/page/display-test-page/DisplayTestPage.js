@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import "./DisplayTest.css";
+import "./DisplayTestPage.css";
 import {FIREBASE_PATH, TESTS_PATH} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
-export const DisplayTest = (props) => {
+export const DisplayTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [testArray, setTestArray] = useState([]);
@@ -54,4 +54,4 @@ export const DisplayTest = (props) => {
   }
 };
 
-export default DisplayTest;
+export default DisplayTestPage;

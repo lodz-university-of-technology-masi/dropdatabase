@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import {FIREBASE_PATH} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
-import "./CreateTest.css";
+import "./CreateTestPage.css";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 import AddQuestion from "../../component/add-question/AddQuestion";
 
-export const CreateTest = (props) => {
+export const CreateTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [questionArray, setQuestionArray] = useState([]);
@@ -173,4 +173,4 @@ export const CreateTest = (props) => {
   );
 };
 
-export default CreateTest;
+export default CreateTestPage;

@@ -9,15 +9,15 @@ import {
   REGISTER_PATH,
   UPDATE_TEST_PATH
 } from "../constants";
-import CreateTest from "../page/create-test/CreateTest";
-import DisplayTest from "../page/display-test/DisplayTest";
-import UpdateTest from "../page/update-test/UpdateTest";
-import NotFound from "../page/not-found/NotFound";
+import {AppContext} from "./App";
 import LoginPage from "../page/login-page/LoginPage";
 import ProfilePage from "../page/profile-page/ProfilePage";
 import RegisterPage from "../page/register-page/RegisterPage";
 import CandidateListPage from "../page/candidate-list-page/CandidateListPage";
-import {AppContext} from "./App";
+import DisplayTestPage from "../page/display-test-page/DisplayTestPage";
+import UpdateTestPage from "../page/update-test-page/UpdateTestPage";
+import {NotFoundPage} from "../page/not-found-page/NotFoundPage";
+import {CreateTestPage} from "../page/create-test-page/CreateTestPage";
 
 export const Routes = (props) => {
 
@@ -28,9 +28,9 @@ export const Routes = (props) => {
     if (isUserLoggedIn && isRecruiter) {
       return (
         <>
-          <Route exact path={HOME_PATH} component={DisplayTest}/>
-          <Route exact path={UPDATE_TEST_PATH} component={UpdateTest}/>
-          <Route exact path={CREATE_TEST_PATH} component={CreateTest}/>
+          <Route exact path={HOME_PATH} component={DisplayTestPage}/>
+          <Route exact path={UPDATE_TEST_PATH} component={UpdateTestPage}/>
+          <Route exact path={CREATE_TEST_PATH} component={CreateTestPage}/>
           <Route exact path={REGISTER_PATH} component={RegisterPage}/>
           <Route exact path={PROFILE_PATH} component={ProfilePage}/>
           <Route exact path={CANDIDATE_LIST_PATH} component={CandidateListPage}/>
@@ -40,7 +40,7 @@ export const Routes = (props) => {
       //TODO CHANGE COMPONENT IN HOME_PATH
       return (
         <>
-          <Route exact path={HOME_PATH} component={DisplayTest}/>
+          <Route exact path={HOME_PATH} component={DisplayTestPage}/>
           <Route exact path={PROFILE_PATH} component={ProfilePage}/>
         </>
       );
@@ -55,7 +55,7 @@ export const Routes = (props) => {
   return (
     <Switch>
       {renderPrivateRoutes(state.isUserLoggedIn, Boolean(Number(state.userAccountType)))}
-      <Route component={NotFound}/>
+      <Route component={NotFoundPage}/>
     </Switch>
   );
 };

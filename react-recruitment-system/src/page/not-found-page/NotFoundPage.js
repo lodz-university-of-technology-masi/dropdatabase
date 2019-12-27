@@ -1,7 +1,7 @@
 import React from "react";
-import "./NotFound.css"
+import "./NotFoundPage.css"
 
-export const NotFound = (props) => {
+export const NotFoundPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
 
@@ -16,5 +16,5 @@ export const NotFound = (props) => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;
     
