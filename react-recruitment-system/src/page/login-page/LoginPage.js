@@ -35,7 +35,6 @@ export const LoginPage = (props) => {
       await Auth.signIn(username, password);
       alert("Logged in");
 
-      //TODO - I DO NOT KNOW WHY ASSIGN VALUE TO CONTEXT DOES NOT WORK
       Auth.currentAuthenticatedUser({
           bypassCache: false
         }
@@ -44,6 +43,9 @@ export const LoginPage = (props) => {
             type: UPDATE_TOKEN,
             token: user.signInUserSession.idToken.jwtToken
           });
+          //TODO ADD SAVING TO SESSIONSTORAGE AND TO CONTEXT
+          console.log((user.attributes["custom:custom:account_type"]));
+
           sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
         }
       ).catch(err => console.log(err));

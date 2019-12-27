@@ -13,7 +13,7 @@ export const App = (props) => {
     const initialState = {
         testToBeChanged: '',
         testToBeChangedOrig: '',
-        isUserLoggedIn: sessionStorage.getItem('isLoggedIn'), //TODO CHANGE TO FALSE
+        isUserLoggedIn: sessionStorage.getItem('isLoggedIn'),
         USER_SESSION_ID: sessionStorage.getItem('token'),
     };
 
