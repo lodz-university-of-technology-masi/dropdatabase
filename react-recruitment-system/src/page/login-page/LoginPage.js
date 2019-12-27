@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import "./LoginPage.css";
 import {Auth} from "aws-amplify";
-import {HOME_PATH, UPDATE_COGNITO_USER, UPDATE_LOGGED_IN, UPDATE_TOKEN} from "../../constants";
+import {HOME_PATH, UPDATE_COGNITO_USER, UPDATE_LOGGED_IN} from "../../constants";
 import {AppContext} from "../../main/App";
 
 export const LoginPage = (props) => {
