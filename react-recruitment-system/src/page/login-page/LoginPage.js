@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import "./LoginPage.css";
 import {Auth} from "aws-amplify";
-import {HOME_PATH, UPDATE_LOGGED_IN, UPDATE_TOKEN} from "../../constants";
+import {HOME_PATH, UPDATE_COGNITO_USER, UPDATE_LOGGED_IN, UPDATE_TOKEN} from "../../constants";
 import {AppContext} from "../../main/App";
 
 export const LoginPage = (props) => {
@@ -33,20 +33,20 @@ export const LoginPage = (props) => {
 
     try {
       await Auth.signIn(username, password);
-      alert("Logged in");
+      // alert("Logged in");
 
       Auth.currentAuthenticatedUser({
           bypassCache: false
         }
       ).then(user => {
           dispatch({
-            type: UPDATE_TOKEN,
-            token: user.signInUserSession.idToken.jwtToken
+            type: UPDATE_COGNITO_USER,
+            token: user.signInUserSession.idToken.jwtToken,
+            accountType: user.attributes["custom:custom:account_type"],
           });
-          //TODO ADD SAVING TO SESSIONSTORAGE AND TO CONTEXT
-          console.log((user.attributes["custom:custom:account_type"]));
 
           sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
+          sessionStorage.setItem('accountType', user.attributes["custom:custom:account_type"]);
         }
       ).catch(err => console.log(err));
 

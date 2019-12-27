@@ -41,16 +41,24 @@ export const Navbar = (props) => {
   /**
    * If user is logged in then return CreateTestPage, if not return Login and Register
    * @param isUserLoggedIn - if true user is logged in
+   * @param isRecruiter - if true user is a Recruiter - has additional options
    * @returns {*}
    */
-  const renderNavItemList = (isUserLoggedIn) => {
-    if (isUserLoggedIn) {
+  const renderNavItemList = (isUserLoggedIn, isRecruiter) => {
+    if (isUserLoggedIn && isRecruiter) {
       return (
         <>
           {renderNavItem(CREATE_TEST_PATH, "Create Test")}
           {renderNavItem(REGISTER_PATH, "Register User")}
           {renderNavItem(PROFILE_PATH, "Account")}
           {renderNavItem(CANDIDATE_LIST_PATH, "Candidates")}
+          {renderNavItem(LOGIN_PATH, "Logout", true)}
+        </>
+      );
+    } else if (isUserLoggedIn && !isRecruiter) {
+      return (
+        <>
+          {renderNavItem(PROFILE_PATH, "Account")}
           {renderNavItem(LOGIN_PATH, "Logout", true)}
         </>
       );
@@ -78,7 +86,7 @@ export const Navbar = (props) => {
 
       <div className="collapse navbar-collapse" id="navList">
         <ul className="navbar-nav ml-auto">
-          {renderNavItemList(state.isUserLoggedIn)}
+          {renderNavItemList(state.isUserLoggedIn, true)} {/*TODO*/}
         </ul>
       </div>
     </nav>

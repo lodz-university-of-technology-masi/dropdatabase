@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./ProfilePage.css";
 import {Auth} from "aws-amplify";
+import {AppContext} from "../../main/App";
 
 export const ProfilePage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {state, dispatch} = useContext(AppContext);
   const [userType, setUserType] = useState("");
   const [email, setEmail] = useState("");
 
@@ -12,9 +14,9 @@ export const ProfilePage = (props) => {
       bypassCache: false
     }
   ).then(user => {
-      if (Number(user.attributes["custom:custom:account_type"]) === 0) {
+      if (Number(state.userAccountType) === 0) {
         setUserType("Candidate");
-      } else if (Number(user.attributes["custom:custom:account_type"]) === 1) {
+      } else if (Number(state.userAccountType) === 1) {
         setUserType("Recruiter");
       }
 
@@ -34,12 +36,12 @@ export const ProfilePage = (props) => {
 
           <div className="card-body">
             <h5 className="card-title">
-              <label className="light-grey-font">Type:&nbsp;</label>
+              <label className="mdb-color-text">Type:&nbsp;</label>
               {userType}
             </h5>
 
             <h5 className="card-title">
-              <label className="light-grey-font">Email:&nbsp;</label>
+              <label className="mdb-color-text">Email:&nbsp;</label>
               {email}
             </h5>
           </div>
