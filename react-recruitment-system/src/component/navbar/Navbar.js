@@ -86,7 +86,7 @@ export const Navbar = (props) => {
 
       <div className="collapse navbar-collapse" id="navList">
         <ul className="navbar-nav ml-auto">
-          {renderNavItemList(state.isUserLoggedIn, true)} {/*TODO*/}
+          {renderNavItemList(state.isUserLoggedIn, Boolean(Number(state.userAccountType)))}
         </ul>
       </div>
     </nav>

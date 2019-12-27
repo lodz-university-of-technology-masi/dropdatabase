@@ -7,6 +7,7 @@ export const ProfilePage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {state, dispatch} = useContext(AppContext);
+  const [username, setUsername] = useState("");
   const [userType, setUserType] = useState("");
   const [email, setEmail] = useState("");
 
@@ -20,6 +21,7 @@ export const ProfilePage = (props) => {
         setUserType("Recruiter");
       }
 
+      setUsername(user.username);
       setEmail(user.attributes.email);
     }
   ).catch(err => console.log(err));
@@ -38,6 +40,11 @@ export const ProfilePage = (props) => {
             <h5 className="card-title">
               <label className="mdb-color-text">Type:&nbsp;</label>
               {userType}
+            </h5>
+
+            <h5 className="card-title">
+              <label className="mdb-color-text">Username:&nbsp;</label>
+              {username}
             </h5>
 
             <h5 className="card-title">
