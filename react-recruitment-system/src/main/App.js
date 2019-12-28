@@ -16,6 +16,7 @@ export const App = (props) => {
     isUserLoggedIn: sessionStorage.getItem('isLoggedIn'),
     userSessionId: sessionStorage.getItem('token'),
     userAccountType: sessionStorage.getItem('accountType'),
+    username: sessionStorage.getItem('username'),
   };
 
   function reducer(state, action) {
@@ -36,7 +37,8 @@ export const App = (props) => {
       case UPDATE_COGNITO_USER: {
         return update(state, {
           userSessionId: {$set: action.token},
-          userAccountType:{$set: action.accountType},
+          userAccountType: {$set: action.accountType},
+          username: {$set: action.username},
         });
       }
 

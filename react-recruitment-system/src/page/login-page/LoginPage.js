@@ -43,10 +43,12 @@ export const LoginPage = (props) => {
             type: UPDATE_COGNITO_USER,
             token: user.signInUserSession.idToken.jwtToken,
             accountType: user.attributes["custom:custom:account_type"],
+            username: user.username
           });
 
           sessionStorage.setItem('token', user.signInUserSession.idToken.jwtToken);
           sessionStorage.setItem('accountType', user.attributes["custom:custom:account_type"]);
+          sessionStorage.setItem('username', user.username);
         }
       ).catch(err => console.log(err));
 

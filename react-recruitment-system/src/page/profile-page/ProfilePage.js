@@ -21,7 +21,7 @@ export const ProfilePage = (props) => {
         setUserType("Recruiter");
       }
 
-      setUsername(user.username);
+      setUsername(state.username);
       setEmail(user.attributes.email);
     }
   ).catch(err => console.log(err));

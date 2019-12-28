@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./RegisterPage.css";
-import {LOGIN_PATH} from "../../constants";
+import {HOME_PATH} from "../../constants";
 import {Auth} from "aws-amplify";
 
 export const RegisterPage = (props) => {
@@ -42,7 +42,7 @@ export const RegisterPage = (props) => {
         }
       });
 
-      document.location.replace(LOGIN_PATH);
+      document.location.replace(HOME_PATH);
     } catch (e) {
       alert(e.message)
     }

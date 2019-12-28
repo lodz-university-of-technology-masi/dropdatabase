@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import "./DisplayTestPage.css";
 import {FIREBASE_PATH, TESTS_PATH} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
+import {AppContext} from "../../main/App";
 
 /**
  * This page is for displaying, updating, deleting tests of selected recruiter,
@@ -14,6 +15,7 @@ import DisplayQuestions from "../../component/display-questions/DisplayQuestions
 export const DisplayTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {state, dispatch} = useContext(AppContext);
   const [testArray, setTestArray] = useState([]);
   const [load, setLoad] = useState(false);
   const [error, setError] = useState('');
@@ -25,7 +27,15 @@ export const DisplayTestPage = (props) => {
       }
     })
       .then(res => {
-        setTestArray(res.data);
+        let temporaryArray = [];
+
+        Array.from(res.data).forEach((it) => {
+          if (state.username === it.user.userName) {
+            temporaryArray.push(it);
+          }
+        });
+
+        setTestArray(temporaryArray);
         setLoad(true);
       })
       .catch(err => {
