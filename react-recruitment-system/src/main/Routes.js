@@ -3,10 +3,12 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import {
   CANDIDATE_LIST_PATH,
   CREATE_TEST_PATH,
+  EVALUATE_TEST_PATH,
   HOME_PATH,
   LOGIN_PATH,
   PROFILE_PATH,
   REGISTER_PATH,
+  SOLVE_TEST_PATH,
   UPDATE_TEST_PATH
 } from "../constants";
 import {AppContext} from "./App";
@@ -16,9 +18,11 @@ import RegisterPage from "../page/register-page/RegisterPage";
 import CandidateListPage from "../page/candidate-list-page/CandidateListPage";
 import DisplayTestPage from "../page/display-test-page/DisplayTestPage";
 import UpdateTestPage from "../page/update-test-page/UpdateTestPage";
-import {CreateTestPage} from "../page/create-test-page/CreateTestPage";
+import CreateTestPage from "../page/create-test-page/CreateTestPage";
 import PrivateRoute from "../component/private-route/PrivateRoute";
 import CandidateTestsPage from "../page/candidate-tests-page/CandidateTestsPage";
+import EvaluateTestPage from "../page/evaluate-test-page/EvaluateTestPage";
+import SolveTestPage from "../page/solve-test-page/SolveTestPage";
 
 export const Routes = (props) => {
 
@@ -35,6 +39,7 @@ export const Routes = (props) => {
           <PrivateRoute exact path={REGISTER_PATH} component={RegisterPage}/>
           <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
           <PrivateRoute exact path={CANDIDATE_LIST_PATH} component={CandidateListPage}/>
+          <PrivateRoute exact path={EVALUATE_TEST_PATH} component={EvaluateTestPage}/>
         </>
       )
     } else if (isUserLoggedIn && !isRecruiter) {
@@ -42,6 +47,7 @@ export const Routes = (props) => {
         <>
           <PrivateRoute exact path={HOME_PATH} component={CandidateTestsPage}/>
           <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
+          <PrivateRoute exact path={SOLVE_TEST_PATH} component={SolveTestPage}/>
         </>
       );
     } else {

@@ -26,16 +26,16 @@ export const CandidateListPage = (props) => {
     //     alert(err.message)
     //   });
 
-    setIsLoaded(true);
-    setCandidateArray([
-      {
-        "username": "Kamil",
-        "email": "abc@gmail.com"
-      },
-      {
-        "username": "Artur",
-        "email": "acde@gmail.com"
-      }]);
+    // setIsLoaded(true);
+    // setCandidateArray([
+    //   {
+    //     "username": "Kamil",
+    //     "email": "abc@gmail.com"
+    //   },
+    //   {
+    //     "username": "Artur",
+    //     "email": "acde@gmail.com"
+    //   }]);
 
   }, []);
 
