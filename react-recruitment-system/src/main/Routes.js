@@ -16,9 +16,9 @@ import RegisterPage from "../page/register-page/RegisterPage";
 import CandidateListPage from "../page/candidate-list-page/CandidateListPage";
 import DisplayTestPage from "../page/display-test-page/DisplayTestPage";
 import UpdateTestPage from "../page/update-test-page/UpdateTestPage";
-import {NotFoundPage} from "../page/not-found-page/NotFoundPage";
 import {CreateTestPage} from "../page/create-test-page/CreateTestPage";
 import PrivateRoute from "../component/private-route/PrivateRoute";
+import CandidateTestsPage from "../page/candidate-tests-page/CandidateTestsPage";
 
 export const Routes = (props) => {
 
@@ -38,10 +38,9 @@ export const Routes = (props) => {
         </>
       )
     } else if (isUserLoggedIn && !isRecruiter) {
-      //TODO CHANGE COMPONENT IN HOME_PATH
       return (
         <>
-          <PrivateRoute exact path={HOME_PATH} component={DisplayTestPage}/>
+          <PrivateRoute exact path={HOME_PATH} component={CandidateTestsPage}/>
           <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
         </>
       );
@@ -60,8 +59,6 @@ export const Routes = (props) => {
   return (
     <Switch>
       {renderPrivateRoutes(state.isUserLoggedIn, Boolean(Number(state.userAccountType)))}
-
-      <PrivateRoute component={NotFoundPage}/>
     </Switch>
   );
 };

@@ -4,6 +4,13 @@ import "./DisplayTestPage.css";
 import {FIREBASE_PATH, TESTS_PATH} from "../../constants";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 
+/**
+ * This page is for displaying, updating, deleting tests of selected recruiter,
+ * it is available only for recruiter
+ * @param props
+ * @returns {[]|*}
+ * @constructor
+ */
 export const DisplayTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/

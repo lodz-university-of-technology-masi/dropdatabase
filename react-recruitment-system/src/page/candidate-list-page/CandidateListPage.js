@@ -2,6 +2,12 @@ import React, {Fragment, useEffect, useState} from "react";
 import "./CandidateListPage.css";
 import axios from "axios";
 
+/**
+ * This page displaying list of candidates for specific recruiter
+ * @param props
+ * @returns {unknown[]|*}
+ * @constructor
+ */
 export const CandidateListPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
@@ -9,7 +15,7 @@ export const CandidateListPage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    //TODO ADD AXIOS WITH REAL URL
+    //TODO ADD AXIOS WITH REAL URL AND REMOVE TEMP DATA IN ARRAY BELOW
     // axios.get("")
     //   .then((res) => {
     //     setCandidateArray(res.data);
@@ -30,6 +36,7 @@ export const CandidateListPage = (props) => {
         "username": "Artur",
         "email": "acde@gmail.com"
       }]);
+
   }, []);
 
   const renderCandidateId = (id) => {

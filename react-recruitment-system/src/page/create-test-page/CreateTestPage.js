@@ -6,6 +6,12 @@ import "./CreateTestPage.css";
 import DisplayQuestions from "../../component/display-questions/DisplayQuestions";
 import AddQuestion from "../../component/add-question/AddQuestion";
 
+/**
+ * This page is for creating test, it is available only for recruiter
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 export const CreateTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
