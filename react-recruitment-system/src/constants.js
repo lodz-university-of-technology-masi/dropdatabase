@@ -13,6 +13,7 @@ export const EVALUATE_TEST = "evaluatetest";
 export const UPDATE_INPUT = "UPDATE_INPUT";
 export const UPDATE_LOGGED_IN = "UPDATE_LOGGED_IN";
 export const UPDATE_COGNITO_USER = "UPDATE_COGNITO_USER";
+export const START_SOLVING_TEST = "START_SOLVING_TEST";
 
 /*---------- PATHS ----------*/
 export const HOME_PATH = SLASH;

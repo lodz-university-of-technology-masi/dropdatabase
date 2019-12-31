@@ -3,7 +3,12 @@ import {BrowserRouter} from "react-router-dom";
 import Navbar from "../component/navbar/Navbar";
 import Routes from "./Routes";
 import _ from 'lodash'
-import {UPDATE_INPUT, UPDATE_LOGGED_IN, UPDATE_COGNITO_USER} from "../constants";
+import {
+  START_SOLVING_TEST,
+  UPDATE_COGNITO_USER,
+  UPDATE_INPUT,
+  UPDATE_LOGGED_IN
+} from "../constants";
 import {Auth} from "aws-amplify";
 import update from 'immutability-helper';
 
@@ -17,6 +22,7 @@ export const App = (props) => {
     userSessionId: sessionStorage.getItem('token'),
     userAccountType: sessionStorage.getItem('accountType'),
     username: sessionStorage.getItem('username'),
+    selectedTestToSolve: '',
   };
 
   function reducer(state, action) {
@@ -40,6 +46,12 @@ export const App = (props) => {
           userAccountType: {$set: action.accountType},
           username: {$set: action.username},
         });
+      }
+
+      case START_SOLVING_TEST: {
+        return update(state, {
+          selectedTestToSolve: {$set: action.test},
+        })
       }
 
       default: {

@@ -1,6 +1,13 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useContext, useEffect, useState} from "react";
 import axios from "axios";
-import {FIREBASE_PATH, SOLVE_TEST_PATH, TESTS_PATH} from "../../constants";
+import {
+  FIREBASE_PATH,
+  SOLVE_TEST_PATH,
+  START_SOLVING_TEST,
+  TESTS_PATH,
+  UPDATE_INPUT
+} from "../../constants";
+import {AppContext} from "../../main/App";
 
 /**
  * This page is for displaying assigned tests for selected candidate.
@@ -11,6 +18,7 @@ import {FIREBASE_PATH, SOLVE_TEST_PATH, TESTS_PATH} from "../../constants";
 export const CandidateTestsPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {state, dispatch} = useContext(AppContext);
   const [candidateTestArray, setCandidateTestArray] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -31,6 +39,18 @@ export const CandidateTestsPage = (props) => {
       });
   }, []);
 
+  const handleStartSolvingButton = (it) => {
+    dispatch({
+      type: START_SOLVING_TEST,
+      test: it,
+    });
+
+    //TODO Tutaj jest wszystko ok bo sie dobrze obiekt wyswietla
+    console.log(it);
+
+    document.location.replace(SOLVE_TEST_PATH);
+  };
+
   const renderTestId = (id) => {
     return (
       <h6 className="font-weight-bold text-center my-2">
@@ -39,11 +59,11 @@ export const CandidateTestsPage = (props) => {
     );
   };
 
-  const renderStartSolvingButton = () => {
+  const renderStartSolvingButton = (it) => {
     return (
       <div className="row justify-content-center mt-2 mb-3">
         <button className="btn btn-primary"
-                onClick={() => document.location.replace(SOLVE_TEST_PATH)}>
+                onClick={() => handleStartSolvingButton(it)}>
           Start Solving Test
         </button>
       </div>
@@ -59,7 +79,7 @@ export const CandidateTestsPage = (props) => {
           </header>
 
           {renderTestId(it.testUUID)}
-          {renderStartSolvingButton()}
+          {renderStartSolvingButton(it)}
         </section>
       </Fragment>
     );
