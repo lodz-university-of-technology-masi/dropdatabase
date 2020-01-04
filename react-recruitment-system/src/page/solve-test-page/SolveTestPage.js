@@ -15,8 +15,8 @@ export const SolveTestPage = (props) => {
 
   //TODO I tutaj jest problem bo w `selectedTestToSolve` jest ciagle
   // initial value czyli '' tzn pusty string
-  alert(state.selectedTestToSolve)
-  console.log(state.selectedTestToSolve.testUUID)
+  alert(sessionStorage.getItem('selectedTestToSolve'));
+  console.log(JSON.parse(sessionStorage.getItem('selectedTestToSolve')).testUUID);
 
   /*------------------------ RETURN REGION ------------------------*/
   return (

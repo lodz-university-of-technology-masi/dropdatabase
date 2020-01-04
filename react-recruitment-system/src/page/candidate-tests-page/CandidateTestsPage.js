@@ -44,6 +44,7 @@ export const CandidateTestsPage = (props) => {
       type: START_SOLVING_TEST,
       test: it,
     });
+    sessionStorage.setItem('selectedTestToSolve', JSON.stringify(it));
 
     //TODO Tutaj jest wszystko ok bo sie dobrze obiekt wyswietla
     console.log(it);
