@@ -156,8 +156,15 @@ export const SolveTestPage = (props) => {
                 'answers': JSON.parse(sessionStorage.getItem('answers')),
                 'requestToken': sessionStorage.getItem('token')
             }
-        ).then(() => {
-            alert("Test has been sent");
+        ).then(function (response) {
+            console.log(response);
+            // handle success
+            if(response.data === "FORBIDDEN") {
+                alert("You can submit the test only once");
+            } else {
+                alert("Test has been sent");
+            }
+
             document.location.replace('/');
         }).catch((error) => console.log(error));
         console.log({
