@@ -57,7 +57,7 @@ export const CandidateListPage = (props) => {
             <h5 className="font-weight-bold black-text mb-1">Candidate</h5>
           </header>
 
-          {renderCandidateId("15151515151515151VFUVFVNFKVSKLNVFNVFLFKVNFNVLFD")}
+          {renderCandidateId(it.candidateName)}
 
           <div className="card-body">
             <h5 className="card-title">
