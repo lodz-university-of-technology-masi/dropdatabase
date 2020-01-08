@@ -29,3 +29,4 @@ export const EVALUATE_TEST_PATH = SLASH + EVALUATE_TEST;
 
 /*---------- KEYS ----------*/
 export const FIREBASE_PATH = "https://8ry9799483.execute-api.us-east-1.amazonaws.com/testowy";
+export const CANDIDATE_API = "https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates";

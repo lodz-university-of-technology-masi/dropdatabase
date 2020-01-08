@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./RegisterPage.css";
-import {FIREBASE_PATH, HOME_PATH, TESTS_PATH} from "../../constants";
+import {CANDIDATE_API, FIREBASE_PATH, HOME_PATH, TESTS_PATH} from "../../constants";
 import {Auth} from "aws-amplify";
 import axios from "axios";
 
@@ -43,12 +43,13 @@ export const RegisterPage = (props) => {
         }
       });
 
-      axios.put(FIREBASE_PATH + "/candidate", {
-        params: {
+      axios.put(CANDIDATE_API + "/candidate", {
           'requestToken': sessionStorage.getItem('token'),
           'candidateName': username
         }
-      }).then(() => {document.location.replace(HOME_PATH)})
+      ).then((res) => {
+        console.log(res);
+        document.location.replace(HOME_PATH)})
     } catch (e) {
       alert(e.message)
     }

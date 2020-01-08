@@ -1,6 +1,7 @@
 import React, {Fragment, useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {
+  CANDIDATE_API,
   FIREBASE_PATH,
   SOLVE_TEST_PATH,
   START_SOLVING_TEST,
@@ -23,13 +24,15 @@ export const CandidateTestsPage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   //TODO ADD AXIOS WITH REAL URL
+
   useEffect(() => {
-    axios.get(FIREBASE_PATH + TESTS_PATH, {
+    axios.get( "https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates/cadidates", {
       params: {
         'token': sessionStorage.getItem('token')
       }
     })
       .then((res) => {
+        console.log(res)
         setCandidateTestArray(res.data);
         setIsLoaded(true);
       })

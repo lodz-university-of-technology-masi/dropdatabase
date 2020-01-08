@@ -15,29 +15,21 @@ export const CandidateListPage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    //TODO ADD AXIOS WITH REAL URL AND REMOVE TEMP DATA IN ARRAY BELOW
-    // axios.get("")
-    //   .then((res) => {
-    //     setCandidateArray(res.data);
-    //     setIsLoaded(true);
-    //   })
-    //   .catch((err) => {
-    //     setIsLoaded(true);
-    //     alert(err.message)
-    //   });
-
-    // setIsLoaded(true);
-    // setCandidateArray([
-    //   {
-    //     "username": "Kamil",
-    //     "email": "abc@gmail.com"
-    //   },
-    //   {
-    //     "username": "Artur",
-    //     "email": "acde@gmail.com"
-    //   }]);
-
-  }, []);
+    axios.get( "https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates/cadidates", {
+      params: {
+        'token': sessionStorage.getItem('token')
+      }
+    })
+        .then((res) => {
+          console.log(res)
+          setCandidateArray(res.data);
+          setIsLoaded(true);
+        })
+        .catch((err) => {
+          setIsLoaded(true);
+          alert(err.message)
+        });
+  }, [])
 
   const renderCandidateId = (id) => {
     return (
