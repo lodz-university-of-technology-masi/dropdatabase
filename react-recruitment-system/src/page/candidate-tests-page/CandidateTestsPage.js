@@ -26,7 +26,7 @@ export const CandidateTestsPage = (props) => {
   //TODO ADD AXIOS WITH REAL URL
 
   useEffect(() => {
-    axios.get( "https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates/cadidates", {
+    axios.get( "https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates/myself", {
       params: {
         'token': sessionStorage.getItem('token')
       }
