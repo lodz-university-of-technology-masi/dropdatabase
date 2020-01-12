@@ -3,6 +3,7 @@ const SLASH = "/";
 export const TESTS = "tests";
 export const CREATE_TEST = "createtest";
 export const UPDATE_TEST = "updatetest";
+export const EXPORT_TEST = "exporttest";
 export const LOGIN = "login";
 export const REGISTER = "register";
 export const PROFILE = "profile";
