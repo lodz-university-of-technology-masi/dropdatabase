@@ -7,6 +7,7 @@ import {
   HOME_PATH,
   LOGIN_PATH,
   PROFILE_PATH,
+  ANSWERS_PATH,
   REGISTER_PATH
 } from "../../constants";
 import {AppContext} from "../../main/App";
@@ -52,6 +53,7 @@ export const Navbar = (props) => {
           {renderNavItem(REGISTER_PATH, "Register User")}
           {renderNavItem(PROFILE_PATH, "Account")}
           {renderNavItem(CANDIDATE_LIST_PATH, "Candidates")}
+          {renderNavItem(ANSWERS_PATH, "Answers")}
           {renderNavItem(LOGIN_PATH, "Logout", true)}
         </>
       );

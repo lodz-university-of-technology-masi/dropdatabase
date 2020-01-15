@@ -7,6 +7,7 @@ import {
   HOME_PATH,
   LOGIN_PATH,
   PROFILE_PATH,
+  ANSWERS_PATH,
   REGISTER_PATH,
   SOLVE_TEST_PATH,
   UPDATE_TEST_PATH
@@ -23,6 +24,7 @@ import PrivateRoute from "../component/private-route/PrivateRoute";
 import CandidateTestsPage from "../page/candidate-tests-page/CandidateTestsPage";
 import EvaluateTestPage from "../page/evaluate-test-page/EvaluateTestPage";
 import SolveTestPage from "../page/solve-test-page/SolveTestPage";
+import AnswersPage from "../page/answers-page/AnswersPage";
 
 export const Routes = (props) => {
 
@@ -37,6 +39,7 @@ export const Routes = (props) => {
           <PrivateRoute exact path={UPDATE_TEST_PATH} component={UpdateTestPage}/>
           <PrivateRoute exact path={CREATE_TEST_PATH} component={CreateTestPage}/>
           <PrivateRoute exact path={REGISTER_PATH} component={RegisterPage}/>
+          <PrivateRoute exact path={ANSWERS_PATH} component={AnswersPage}/>
           <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
           <PrivateRoute exact path={CANDIDATE_LIST_PATH} component={CandidateListPage}/>
           <PrivateRoute exact path={EVALUATE_TEST_PATH} component={EvaluateTestPage}/>
