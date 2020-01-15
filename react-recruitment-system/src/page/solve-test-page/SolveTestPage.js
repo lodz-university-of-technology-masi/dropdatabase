@@ -151,8 +151,8 @@ export const SolveTestPage = (props) => {
     };
 
     const postSolutionToServer = () => {
-        axios.post("https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates/candidate", {
-                'testUUID': JSON.parse(sessionStorage.getItem('selectedTestToSolve')).testUUID,
+        axios.put("https://lwn1nhn8s4.execute-api.us-east-1.amazonaws.com/cc_candidates/candidate/solutions", {
+                'test': JSON.parse(sessionStorage.getItem('selectedTestToSolve')),
                 'answers': JSON.parse(sessionStorage.getItem('answers')),
                 'requestToken': sessionStorage.getItem('token')
             }
