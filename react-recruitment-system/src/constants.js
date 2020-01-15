@@ -8,6 +8,7 @@ export const LOGIN = "login";
 export const ANSWERS = "answers";
 export const REGISTER = "register";
 export const PROFILE = "profile";
+export const SCORES = "scores";
 export const CANDIDATE_LIST = "candidatelist";
 export const SOLVE_TEST = "solvetest";
 export const EVALUATE_TEST = "evaluatetest";
@@ -19,6 +20,7 @@ export const START_SOLVING_TEST = "START_SOLVING_TEST";
 
 /*---------- PATHS ----------*/
 export const HOME_PATH = SLASH;
+export const SCORES_PATH = SLASH + SCORES;
 export const CREATE_TEST_PATH = SLASH + CREATE_TEST;
 export const UPDATE_TEST_PATH = SLASH + UPDATE_TEST;
 export const LOGIN_PATH = SLASH + LOGIN;

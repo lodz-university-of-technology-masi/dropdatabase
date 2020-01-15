@@ -8,6 +8,7 @@ import {
   LOGIN_PATH,
   PROFILE_PATH,
   ANSWERS_PATH,
+  SCORES_PATH,
   REGISTER_PATH,
   SOLVE_TEST_PATH,
   UPDATE_TEST_PATH
@@ -25,6 +26,7 @@ import CandidateTestsPage from "../page/candidate-tests-page/CandidateTestsPage"
 import EvaluateTestPage from "../page/evaluate-test-page/EvaluateTestPage";
 import SolveTestPage from "../page/solve-test-page/SolveTestPage";
 import AnswersPage from "../page/answers-page/AnswersPage";
+import ScoresPage from "../page/scores-page/ScoresPage";
 
 export const Routes = (props) => {
 
@@ -50,6 +52,7 @@ export const Routes = (props) => {
         <>
           <PrivateRoute exact path={HOME_PATH} component={CandidateTestsPage}/>
           <PrivateRoute exact path={PROFILE_PATH} component={ProfilePage}/>
+          <PrivateRoute exact path={SCORES_PATH} component={ScoresPage}/>
           <PrivateRoute exact path={SOLVE_TEST_PATH} component={SolveTestPage}/>
         </>
       );

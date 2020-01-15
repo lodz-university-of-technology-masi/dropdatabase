@@ -6,6 +6,7 @@ import {
   CREATE_TEST_PATH,
   HOME_PATH,
   LOGIN_PATH,
+  SCORES_PATH,
   PROFILE_PATH,
   ANSWERS_PATH,
   REGISTER_PATH
@@ -61,6 +62,7 @@ export const Navbar = (props) => {
       return (
         <>
           {renderNavItem(PROFILE_PATH, "Account")}
+          {renderNavItem(SCORES_PATH, "Scores")}
           {renderNavItem(LOGIN_PATH, "Logout", true)}
         </>
       );
