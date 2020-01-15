@@ -159,7 +159,7 @@ export const SolveTestPage = (props) => {
         ).then(function (response) {
             console.log(response);
             // handle success
-            if(response.data === "FORBIDDEN") {
+            if(response.data === "No kolego ten test juz był rozwiazywany") {
                 alert("You can submit the test only once");
             } else {
                 alert("Test has been sent");
@@ -168,7 +168,7 @@ export const SolveTestPage = (props) => {
             document.location.replace('/');
         }).catch((error) => console.log(error));
         console.log({
-            'testUUID': JSON.parse(sessionStorage.getItem('selectedTestToSolve')).testUUID,
+            'test': JSON.parse(sessionStorage.getItem('selectedTestToSolve')),
             'answers': JSON.parse(sessionStorage.getItem('answers')),
             'requestToken': sessionStorage.getItem('token')
         })
