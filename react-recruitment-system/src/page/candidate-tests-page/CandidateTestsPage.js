@@ -83,6 +83,7 @@ export const CandidateTestsPage = (props) => {
           </header>
 
           {renderTestId(it.testUUID)}
+            <div>Recruter name: {it.user.userName}</div>
           {renderStartSolvingButton(it)}
         </section>
       </Fragment>
