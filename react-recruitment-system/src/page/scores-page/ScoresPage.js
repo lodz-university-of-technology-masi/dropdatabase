@@ -78,7 +78,7 @@ export const ScoresPage = (props) => {
     
     
     const displayScored = (score)=>{
-        if(score){
+        if(score != undefined){
             return (
                 <h3 className='black-text' style={{background: perc2color(score)}}>Already marked for {score}%</h3>
             )
@@ -112,7 +112,6 @@ export const ScoresPage = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   if (isLoaded) {
       
-    answersArray.sort((it, other)=>{return (it.score)?-1:1});
     return (
     answersArray.map((it, index) => {          
         return renderAnswerPanel(it, index)

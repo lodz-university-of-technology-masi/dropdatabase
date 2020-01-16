@@ -107,7 +107,8 @@ export const AnswersPage = (props) => {
     }
     
     const displayScored = (score)=>{
-        if(score){
+        console.log(score);
+        if(score != undefined){
             return (
                 <h3 className='black-text' style={{background: perc2color(score)}}>Already scored for {score}%</h3>
             )
@@ -148,7 +149,7 @@ export const AnswersPage = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   if (isLoaded) {
       
-    answersArray.sort((it, other)=>{return (it.score)?1:-1});
+    answersArray.sort((it, other)=>{if(it.score==undefined) return -1; else ;return it.score - other.score});
     return (
     answersArray.map((it, index) => {          
         return renderAnswerPanel(it, index)
