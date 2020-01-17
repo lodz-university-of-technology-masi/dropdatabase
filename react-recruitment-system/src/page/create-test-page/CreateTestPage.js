@@ -161,6 +161,34 @@ export const CreateTestPage = (props) => {
     });
   };
 
+  const renderDeleteQuestionButton = (index) => {
+    return (
+      <button className="btn btn-danger white-text float-right"
+              onClick={() => handleDeleteQuestion(index)}>
+        Delete
+      </button>
+    );
+  };
+
+  const renderPartQuestion = (it, index) => {
+    return (
+      <li className="list-group-item" key={index}>
+        {it.questionContent}
+        {renderDeleteQuestionButton(index)}
+      </li>
+    );
+  };
+
+  const renderCreateTestButton = () => {
+    return (
+      <div className="row justify-content-center my-3">
+        <button className="btn btn-primary" onClick={postTestToServer}>
+          Create Test
+        </button>
+      </div>
+    );
+  };
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="blur-background">
@@ -170,15 +198,34 @@ export const CreateTestPage = (props) => {
         handleSubmitNumericalQuestion={handleSubmitNumericalQuestion}
       />
 
-      <DisplayQuestions
-        isChangeable={true}
-        noDelete={true}
-        questionArray={questionArray}
-        handleDeleteQuestion={handleDeleteQuestion}
-        postTestToServer={postTestToServer}
-        isLangDisplay={true}
-        setLanguage={setLanguage}
-      />
+      <section className="card container my-5">
+        <header className="card-body row justify-content-center">
+          <h5 className="font-weight-bold mb-1">Questions in the Test</h5>
+        </header>
+
+        <ul className="list-group list-group-flush mt-3">
+          {
+            questionArray.map((it, index) => {
+              return (
+                renderPartQuestion(it, index)
+              );
+            })
+          }
+        </ul>
+
+        <div className="row justify-content-center mt-2">
+          <select className="browser-default custom-select register-input" name="selectLang"
+                  onChange={(e) => setLanguage(e.target.value)}
+                  required={true}
+          >
+            <option value="en" selected>English</option>
+            <option value="pl">Polish</option>
+          </select>
+        </div>
+
+        {renderCreateTestButton()}
+
+      </section>
     </div>
   );
 };
