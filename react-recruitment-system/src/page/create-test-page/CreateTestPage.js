@@ -145,6 +145,7 @@ export const CreateTestPage = (props) => {
 
   const postTestToServer = () => {
     // console.log(questionArray);
+      console.log(questionArray);
     let test = {
       "user": {
         "userToken": sessionStorage.getItem('token')
@@ -152,12 +153,46 @@ export const CreateTestPage = (props) => {
       "testUUID": uuidv4(),
       "questions": questionArray
     };
-
+      //
     axios.post(FIREBASE_PATH + "/test", test).then(() => {
       alert("Test has been sent");
       document.location.replace('/')
     });
   };
+    const handleFile = ()=>{
+        var f = document.getElementById('file-input').files[0];
+        var contents;
+        if (f) {
+          var r = new FileReader();
+          r.onload = function(e) { 
+              contents = e.target.result;
+              var tab = contents.split('\n').map((it)=>{return it.replace(/"/g, '').split(',')});;
+              var qArray = [];
+              for(var i = 1; i < tab.length; i++){
+                  var q = {};
+                    q.id = tab[i][0];
+                  q.isOpen = (tab[i][1] == "O"); 
+                  q.isClosed = (tab[i][1] == "W"); 
+                  q.isNumerical = (tab[i][1] == "L"); 
+                    q.questionContent = tab[i][3];
+                  if(tab[i][1] == "W") {
+                      var odp = tab[i][4].split('|');
+                      q.answerA = odp[0];
+                      q.answerB = odp[1];
+                      q.answerC = odp[2];
+                      q.answerD = odp[3];
+                      q.correct = tab[i][5]
+                  }else
+                      q.questionAnswer = tab[i][5];
+                    qArray.push(q);
+              }
+              setQuestionArray([...qArray]);
+          }
+          r.readAsText(f);
+        } else { 
+          alert("Failed to load file");
+        }
+    }
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
@@ -167,7 +202,15 @@ export const CreateTestPage = (props) => {
         handleSubmitCloseQuestion={handleSubmitCloseQuestion}
         handleSubmitNumericalQuestion={handleSubmitNumericalQuestion}
       />
-
+      <div className="container card">
+      <div className="custom-file-padding">
+      <h4>Import from file:</h4>
+        <div className="custom-file">
+          <input type="file" className="custom-file-input" id="file-input" onChange={handleFile}/>
+          <label className="custom-file-label" htmlFor="customFile">Choose file</label>
+        </div>
+        </div>
+      </div>
       <DisplayQuestions
         isChangeable={true}
         noDelete={true}
