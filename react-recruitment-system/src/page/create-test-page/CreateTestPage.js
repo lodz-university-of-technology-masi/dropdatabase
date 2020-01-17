@@ -243,13 +243,7 @@ export const CreateTestPage = (props) => {
         </div>
       </div>
       
-      <DisplayQuestions
-        isChangeable={true}
-        noDelete={true}
-        questionArray={questionArray}
-        handleDeleteQuestion={handleDeleteQuestion}
-        postTestToServer={postTestToServer}
-      />
+
 
       <section className="card container my-5">
         <header className="card-body row justify-content-center">
