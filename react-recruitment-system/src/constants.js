@@ -19,7 +19,7 @@ export const UPDATE_COGNITO_USER = "UPDATE_COGNITO_USER";
 export const START_SOLVING_TEST = "START_SOLVING_TEST";
 
 export const LANG_PL = "pl";
-export const LANG_ENG = "eng";
+export const LANG_ENG = "en";
 
 /*---------- PATHS ----------*/
 export const HOME_PATH = SLASH;

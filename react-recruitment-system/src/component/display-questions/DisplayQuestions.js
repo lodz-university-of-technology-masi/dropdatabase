@@ -2,7 +2,14 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {FIREBASE_PATH, UPDATE_INPUT, UPDATE_TEST, EXPORT_TEST} from "../../constants";
+import {
+  FIREBASE_PATH,
+  UPDATE_INPUT,
+  UPDATE_TEST,
+  EXPORT_TEST,
+  LANG_ENG,
+  LANG_PL
+} from "../../constants";
 import {CSVLink} from "react-csv";
 
 import {AppContext} from "../../main/App"
@@ -309,6 +316,26 @@ export const DisplayQuestions = (props) => {
     }
   };
 
+  const renderTranslateLangButton = () => {
+    if (props.all.lang === LANG_ENG) {
+      return (
+        <div className="row justify-content-center">
+          <button className="btn btn-primary">
+            Translate to Polish
+          </button>
+        </div>
+      );
+    } else if (props.all.lang === LANG_PL) {
+      return (
+        <div className="row justify-content-center">
+          <button className="btn btn-primary">
+            Translate to English
+          </button>
+        </div>
+      );
+    }
+  };
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
@@ -318,6 +345,7 @@ export const DisplayQuestions = (props) => {
         </header>
 
         {!props.noDelete ? renderDeleteTestButton(props.all) : null}
+        {props.isTranslate ? renderTranslateLangButton() : null}
         {renderExportTestButton(props.all)}
         {props.isChangeable ? null : renderTestId(props.testUUID)}
 
@@ -337,7 +365,7 @@ export const DisplayQuestions = (props) => {
                     onChange={(e) => props.setLanguage(e.target.value)}
                     required={true}
             >
-              <option value="en" selected>English</option>
+              <option value="en">English</option>
               <option value="pl">Polish</option>
             </select>
           </div>
@@ -363,7 +391,8 @@ DisplayQuestions.propTypes = {
   isForChange: PropTypes.bool,
   callback: PropTypes.func,
   isLangDisplay: PropTypes.bool,
-  setLanguage: PropTypes.func
+  setLanguage: PropTypes.func,
+  isTranslate: PropTypes.bool,
 };
 
 export default DisplayQuestions;

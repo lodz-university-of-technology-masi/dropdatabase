@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {FIREBASE_PATH} from "../../constants";
+import {FIREBASE_PATH, LANG_ENG} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTestPage.css";
@@ -16,7 +16,7 @@ export const CreateTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [questionArray, setQuestionArray] = useState([]);
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState(LANG_ENG);
 
   const areEmptyInputs = (...elements) => {
     let result = false;
