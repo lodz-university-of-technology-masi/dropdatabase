@@ -55,6 +55,7 @@ export const DisplayTestPage = (props) => {
           testUUID={test.testUUID}
           key={test.testUUID}
           all={test}
+          isTranslate={true}
         />
       );
     }

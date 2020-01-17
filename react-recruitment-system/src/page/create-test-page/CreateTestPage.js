@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {FIREBASE_PATH} from "../../constants";
+import {FIREBASE_PATH, LANG_ENG} from "../../constants";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import "./CreateTestPage.css";
@@ -16,6 +16,7 @@ export const CreateTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [questionArray, setQuestionArray] = useState([]);
+  const [language, setLanguage] = useState(LANG_ENG);
 
   const areEmptyInputs = (...elements) => {
     let result = false;
@@ -148,15 +149,16 @@ export const CreateTestPage = (props) => {
       console.log(questionArray);
     let test = {
       "user": {
-        "userToken": sessionStorage.getItem('token')
+        "userToken": sessionStorage.getItem("token")
       },
       "testUUID": uuidv4(),
-      "questions": questionArray
+      "questions": questionArray,
+      "lang": language,
     };
       //
     axios.post(FIREBASE_PATH + "/test", test).then(() => {
       alert("Test has been sent");
-      document.location.replace('/')
+      document.location.replace("/")
     });
   };
     const handleFile = ()=>{
@@ -194,6 +196,34 @@ export const CreateTestPage = (props) => {
         }
     }
 
+  const renderDeleteQuestionButton = (index) => {
+    return (
+      <button className="btn btn-danger white-text float-right"
+              onClick={() => handleDeleteQuestion(index)}>
+        Delete
+      </button>
+    );
+  };
+
+  const renderPartQuestion = (it, index) => {
+    return (
+      <li className="list-group-item" key={index}>
+        {it.questionContent}
+        {renderDeleteQuestionButton(index)}
+      </li>
+    );
+  };
+
+  const renderCreateTestButton = () => {
+    return (
+      <div className="row justify-content-center my-3">
+        <button className="btn btn-primary" onClick={postTestToServer}>
+          Create Test
+        </button>
+      </div>
+    );
+  };
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="blur-background">
@@ -202,6 +232,7 @@ export const CreateTestPage = (props) => {
         handleSubmitCloseQuestion={handleSubmitCloseQuestion}
         handleSubmitNumericalQuestion={handleSubmitNumericalQuestion}
       />
+
       <div className="container card">
       <div className="custom-file-padding">
       <h4>Import from file:</h4>
@@ -211,6 +242,7 @@ export const CreateTestPage = (props) => {
         </div>
         </div>
       </div>
+      
       <DisplayQuestions
         isChangeable={true}
         noDelete={true}
@@ -218,6 +250,35 @@ export const CreateTestPage = (props) => {
         handleDeleteQuestion={handleDeleteQuestion}
         postTestToServer={postTestToServer}
       />
+
+      <section className="card container my-5">
+        <header className="card-body row justify-content-center">
+          <h5 className="font-weight-bold mb-1">Questions in the Test</h5>
+        </header>
+
+        <ul className="list-group list-group-flush mt-3">
+          {
+            questionArray.map((it, index) => {
+              return (
+                renderPartQuestion(it, index)
+              );
+            })
+          }
+        </ul>
+
+        <div className="row justify-content-center mt-2">
+          <select className="browser-default custom-select register-input" name="selectLang"
+                  onChange={(e) => setLanguage(e.target.value)}
+                  required={true}
+          >
+            <option value="en" selected>English</option>
+            <option value="pl">Polish</option>
+          </select>
+        </div>
+
+        {renderCreateTestButton()}
+
+      </section>
     </div>
   );
 };

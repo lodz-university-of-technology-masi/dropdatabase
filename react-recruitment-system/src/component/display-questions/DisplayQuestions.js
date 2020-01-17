@@ -1,18 +1,19 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {FIREBASE_PATH, UPDATE_INPUT, UPDATE_TEST, EXPORT_TEST} from "../../constants";
+import {FIREBASE_PATH, LANG_ENG, LANG_PL, UPDATE_INPUT, UPDATE_TEST} from "../../constants";
 import {CSVLink} from "react-csv";
-
 import {AppContext} from "../../main/App"
-
 import {Parser} from "json2csv";
+import _ from "lodash";
 
 export const DisplayQuestions = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {state, dispatch} = useContext(AppContext);
+  const [localQuestionArray, setLocalQuestionArray] = useState(props.questionArray);
+  const [lang, setLang] = useState(_.cloneDeep(props.all.lang));
 
   const renderDeleteTestButton = (it) => {
     return (
@@ -309,6 +310,41 @@ export const DisplayQuestions = (props) => {
     }
   };
 
+  const handleTranslateButton = (test) => {
+    axios.post(
+      "https://n5608yixy5.execute-api.us-east-1.amazonaws.com/dictionary/translate", test)
+      .then((res) => {
+        setLocalQuestionArray(res.data.questions);
+        if (lang === LANG_ENG) {
+          setLang(LANG_PL);
+          test.lang = LANG_PL;
+        } else if (lang === LANG_PL) {
+          setLang(LANG_ENG);
+          test.lang = LANG_ENG;
+        }
+      })
+  };
+
+  const renderTranslateLangButton = (test) => {
+    if (lang === LANG_ENG) {
+      return (
+        <div className="row justify-content-center">
+          <button className="btn btn-primary" onClick={() => handleTranslateButton(test)}>
+            Translate to Polish
+          </button>
+        </div>
+      );
+    } else if (lang === LANG_PL) {
+      return (
+        <div className="row justify-content-center">
+          <button className="btn btn-primary" onClick={() => handleTranslateButton(test)}>
+            Translate to English
+          </button>
+        </div>
+      );
+    }
+  };
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
@@ -318,18 +354,34 @@ export const DisplayQuestions = (props) => {
         </header>
 
         {!props.noDelete ? renderDeleteTestButton(props.all) : null}
+        {props.isTranslate ? renderTranslateLangButton(props.all) : null}
+
         {renderExportTestButton(props.all)}
         {props.isChangeable ? null : renderTestId(props.testUUID)}
 
         <ul className="list-group list-group-flush mt-3">
           {
-            props.questionArray.map((it, index) => {
+            localQuestionArray.map((it, index) => {
               return (
                 props.isChangeable ? renderPartQuestion(it, index) : renderWholeQuestion(it, index)
               );
             })
           }
         </ul>
+
+        {props.isLangDisplay ?
+          <div className="row justify-content-center mt-2">
+            <select className="browser-default custom-select register-input" name="selectLang"
+                    onChange={(e) => props.setLanguage(e.target.value)}
+                    required={true}
+            >
+              <option value="en">English</option>
+              <option value="pl">Polish</option>
+            </select>
+          </div>
+          :
+          null
+        }
 
         {(props.isChangeable && !props.isForChange) ? renderCreateTestButton() : renderChangeTestButton(props.all)}
 
@@ -348,6 +400,9 @@ DisplayQuestions.propTypes = {
   handleDeleteTest: PropTypes.func,
   isForChange: PropTypes.bool,
   callback: PropTypes.func,
+  isLangDisplay: PropTypes.bool,
+  setLanguage: PropTypes.func,
+  isTranslate: PropTypes.bool,
 };
 
 export default DisplayQuestions;

@@ -18,6 +18,9 @@ export const UPDATE_LOGGED_IN = "UPDATE_LOGGED_IN";
 export const UPDATE_COGNITO_USER = "UPDATE_COGNITO_USER";
 export const START_SOLVING_TEST = "START_SOLVING_TEST";
 
+export const LANG_PL = "pl";
+export const LANG_ENG = "en";
+
 /*---------- PATHS ----------*/
 export const HOME_PATH = SLASH;
 export const SCORES_PATH = SLASH + SCORES;
