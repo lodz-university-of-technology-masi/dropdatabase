@@ -331,6 +331,20 @@ export const DisplayQuestions = (props) => {
           }
         </ul>
 
+        {props.isLangDisplay ?
+          <div className="row justify-content-center mt-2">
+            <select className="browser-default custom-select register-input" name="selectLang"
+                    onChange={(e) => props.setLanguage(e.target.value)}
+                    required={true}
+            >
+              <option value="en" selected>English</option>
+              <option value="pl">Polish</option>
+            </select>
+          </div>
+          :
+          null
+        }
+
         {(props.isChangeable && !props.isForChange) ? renderCreateTestButton() : renderChangeTestButton(props.all)}
 
       </section>
@@ -348,6 +362,8 @@ DisplayQuestions.propTypes = {
   handleDeleteTest: PropTypes.func,
   isForChange: PropTypes.bool,
   callback: PropTypes.func,
+  isLangDisplay: PropTypes.bool,
+  setLanguage: PropTypes.func
 };
 
 export default DisplayQuestions;

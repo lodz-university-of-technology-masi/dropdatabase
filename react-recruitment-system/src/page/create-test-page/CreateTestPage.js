@@ -16,6 +16,7 @@ export const CreateTestPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [questionArray, setQuestionArray] = useState([]);
+  const [language, setLanguage] = useState("");
 
   const areEmptyInputs = (...elements) => {
     let result = false;
@@ -147,15 +148,16 @@ export const CreateTestPage = (props) => {
     // console.log(questionArray);
     let test = {
       "user": {
-        "userToken": sessionStorage.getItem('token')
+        "userToken": sessionStorage.getItem("token")
       },
       "testUUID": uuidv4(),
-      "questions": questionArray
+      "questions": questionArray,
+      "lang": language,
     };
 
     axios.post(FIREBASE_PATH + "/test", test).then(() => {
       alert("Test has been sent");
-      document.location.replace('/')
+      document.location.replace("/")
     });
   };
 
@@ -174,6 +176,8 @@ export const CreateTestPage = (props) => {
         questionArray={questionArray}
         handleDeleteQuestion={handleDeleteQuestion}
         postTestToServer={postTestToServer}
+        isLangDisplay={true}
+        setLanguage={setLanguage}
       />
     </div>
   );
