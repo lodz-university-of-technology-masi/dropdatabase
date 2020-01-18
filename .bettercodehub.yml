@@ -1,6 +1,8 @@
-component_depth: 7
+component_depth: 8
 languages:
 - java
 exclude:
 - /react-recruitment-system/*
 - /view-layer/*
+include:
+- /lambda/*
