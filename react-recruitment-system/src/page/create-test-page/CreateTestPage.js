@@ -169,7 +169,7 @@ export const CreateTestPage = (props) => {
             r.onload = function (e) {
                 contents = e.target.result;
                 let tab = contents.split('\n').map((it) => {
-                    return it.split(';')
+                    return it.replace(/"/g, '').replace(";;;;;;", '').split(';')
                 });
                 let lang = "";
                 let qArray = [];
