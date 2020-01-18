@@ -1,8 +1,9 @@
 component_depth: 8
 languages:
-- java
-exclude:
-- /react-recruitment-system/*
-- /view-layer/*
-include:
-- /lambda/*
+- name: java
+  production:
+    include:
+      - .*/lambda/.*\.java
+  test:
+    include:
+      - .*/Tests/.*\.jv
