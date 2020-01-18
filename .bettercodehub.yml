@@ -1,0 +1,6 @@
+component_depth: 7
+languages:
+- java
+exclude:
+- /react-recruitment-system/*
+- /view-layer/*
