@@ -90,7 +90,7 @@ export const DisplayQuestions = (props) => {
                     answers = item.questionAnswer;
                 }
                 question = item.questionContent;
-                let line = id + ";" + type + ";" + it.lang + ";" + question + ";" + answers + ";";
+                let line = "\"" + id + ";" + type + ";" + it.lang + ";" + question + ";" + answers + ";\";;;;;;";
                 test.push(line);
             }
             let csv = "";
