@@ -6,7 +6,7 @@
     "aws-amplify": "^2.2.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash": "latest",
     "mdbreact": "^4.22.0",
     "prop-types": "^15.7.2",
